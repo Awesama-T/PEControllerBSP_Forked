@@ -373,7 +373,7 @@ static void mxt_read_messages_t44(mxt_data_t *data)
 	}
 }
 
-volatile uint8_t touchTH;
+//volatile uint8_t touchTH;
 static void SetResolution(mxt_data_t *data, uint16_t x, uint16_t y)
 {
 	if (mxt_get_object(data, MXT_TOUCH_MULTI_T100) != NULL) {
@@ -402,9 +402,11 @@ static void SetResolution(mxt_data_t *data, uint16_t x, uint16_t y)
 		//		orient = (val & 0xE0) >> 5;
 	}
 
-	uint8_t val = 0;
-	mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHTHR, &touchTH);
-	mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHTHR, 0x10);
+//	uint8_t val = 0;
+//	mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHTHR, &touchTH);
+//	mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHTHR, 0x10);
+
+
 }
 // gets the object table
 static uint16_t mxt_get_object_table(mxt_data_t *data)
@@ -626,10 +628,19 @@ static uint16_t mxt_initialize(mxt_data_t *data, uint16_t ts_SizeX, uint16_t ts_
 			return error;
 	}
 
+
 	SetResolution(data, ts_SizeX, ts_SizeY);
 
 	// set touch threshold
-	mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHTHR, 50);
+	mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHTHR, 30);
+
+	uint8_t init_val;
+	mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_CFG1, &init_val);
+	init_val = init_val & (0b00110011);
+	mxt_write_object(data, MXT_SPT_COMMSCONFIG_T18, MXT_COMMS_CTRL, init_val);
+	init_val = 1;
+	mxt_write_object(data, MXT_SPT_COMMSCONFIG_T18, MXT_COMMS_CMD, init_val);
+
 
 	//	while(1)
 	//		mxt_read_messages_t44(data);

@@ -538,7 +538,7 @@ extern "C" {
 #define MXT_INPUT_EVENT_WAKUP_MODE_ON		5
 #define MXT_INPUT_EVENT_END		5
 
-#define MXT_MAX_FINGER_NUM	16
+#define MXT_MAX_FINGER_NUM	5//16
 #define BOOTLOADER_1664_1188	1
 /********************************************************************************
  * Typedefs

@@ -44,6 +44,7 @@
 static I2C_HandleTypeDef hi2c2;
 static bool initComplete = false;
 static TS_StateTypeDef tsState;
+
 /********************************************************************************
  * Global Variables
  *******************************************************************************/
@@ -246,7 +247,7 @@ uint8_t BSP_TS_Init(uint16_t ts_SizeX, uint16_t ts_SizeY)
 	ts_bsp_drv.Delay = TS_Delay;
 
 	TS_Init();
-	TS_Reset();
+	TS_Reset(); //mxT336T has power-on reset feature built-in
 	if(MXTDrivers_Init(800, 480) == HAL_OK)
 	{
 		initComplete = true;
