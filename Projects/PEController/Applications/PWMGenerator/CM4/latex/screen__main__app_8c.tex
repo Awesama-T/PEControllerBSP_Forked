@@ -1,0 +1,229 @@
+\doxysection{C\+:/\+Taraz\+Server/work\+\_\+directory/00\+\_\+\+Osama\+\_\+\+Tahir/\+BSP/\+PEController\+BSP\+\_\+\+Forked/\+Projects/\+PEController/\+Applications/\+PWMGenerator/\+CM4/\+BSP/\+Display/screen\+\_\+main\+\_\+app.c File Reference}
+\hypertarget{screen__main__app_8c}{}\label{screen__main__app_8c}\index{C:/TarazServer/work\_directory/00\_Osama\_Tahir/BSP/PEControllerBSP\_Forked/Projects/PEController/Applications/PWMGenerator/CM4/BSP/Display/screen\_main\_app.c@{C:/TarazServer/work\_directory/00\_Osama\_Tahir/BSP/PEControllerBSP\_Forked/Projects/PEController/Applications/PWMGenerator/CM4/BSP/Display/screen\_main\_app.c}}
+
+
+~\newline
+  
+
+
+{\ttfamily \#include \"{}screen\+\_\+main\+\_\+app.\+h\"{}}\newline
+{\ttfamily \#include \"{}shared\+\_\+memory.\+h\"{}}\newline
+{\ttfamily \#include \"{}data\+\_\+config.\+h\"{}}\newline
+Include dependency graph for screen\+\_\+main\+\_\+app.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{screen__main__app_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structparam__disp__t}{param\+\_\+disp\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{screen__main__app_8c_ab09304e67879cb2c6c0d72a79afc42d8}{BASE\+\_\+\+PARAM\+\_\+\+TAG}}~(55)
+\item 
+\#define \mbox{\hyperlink{screen__main__app_8c_ac6303e65a80d1e15dc7e96172c0195ec}{PARAM\+\_\+\+TAG}}(index)~TAG\+\_\+\+ATTACH(index + \mbox{\hyperlink{screen__main__app_8c_ab09304e67879cb2c6c0d72a79afc42d8}{BASE\+\_\+\+PARAM\+\_\+\+TAG}})
+\item 
+\#define \mbox{\hyperlink{screen__main__app_8c_a681a701635b2c599dfe8c49a25277757}{IS\+\_\+\+PARAM\+\_\+\+TAG}}(tag)~(tag $>$= \mbox{\hyperlink{screen__main__app_8c_ab09304e67879cb2c6c0d72a79afc42d8}{BASE\+\_\+\+PARAM\+\_\+\+TAG}} \&\& tag $<$ (\mbox{\hyperlink{screen__main__app_8c_ab09304e67879cb2c6c0d72a79afc42d8}{BASE\+\_\+\+PARAM\+\_\+\+TAG}} + \mbox{\hyperlink{screen__main__app_8h_a6be23b12dfc4530ca10e05cfe9785e41}{CONTROL\+\_\+\+CONFS\+\_\+\+COUNT}}))
+\item 
+\#define \mbox{\hyperlink{screen__main__app_8c_a4e68431d0bc0e1f8836fb2ec08a6f3a5}{GET\+\_\+\+PARAM\+\_\+\+INDEX}}(tag)~(tag -\/ \mbox{\hyperlink{screen__main__app_8c_ab09304e67879cb2c6c0d72a79afc42d8}{BASE\+\_\+\+PARAM\+\_\+\+TAG}})
+\item 
+\#define \mbox{\hyperlink{screen__main__app_8c_ac0e563abf071dc6eb25ad2e04c17ae13}{CONTROL\+\_\+\+ROW\+\_\+\+COUNT}}~(((\mbox{\hyperlink{screen__main__app_8h_a6be23b12dfc4530ca10e05cfe9785e41}{CONTROL\+\_\+\+CONFS\+\_\+\+COUNT}} -\/ 1) / \mbox{\hyperlink{screen__main__app_8h_ab822f3208019115f34e26b92ae3922c7}{CONTROL\+\_\+\+COL\+\_\+\+COUNT}}) + 1)
+\item 
+\#define \mbox{\hyperlink{screen__main__app_8c_adba1cd701dff614e05c85f97e935fddc}{MONITOR\+\_\+\+ROW\+\_\+\+COUNT}}~(((\mbox{\hyperlink{screen__main__app_8h_ac309e48e220e1fd5ab5dccbc895be6f5}{MONITOR\+\_\+\+CONFS\+\_\+\+COUNT}} -\/ 1) / \mbox{\hyperlink{screen__main__app_8h_a90efbd8c59cc25dc576ba28b7a8e143b}{MONITOR\+\_\+\+COL\+\_\+\+COUNT}}) + 1)
+\item 
+\#define \mbox{\hyperlink{screen__main__app_8c_a4c312c3e879dba2ef226eafe978230c5}{DEFAULT\+\_\+\+FLOAT\+\_\+\+PRECISION}}~(2)
+\item 
+\#define \mbox{\hyperlink{screen__main__app_8c_ae55abe04c52102900756bf7a1c2f575b}{NAME\+\_\+\+CELL\+\_\+\+HEIGHT}}~(35)
+\begin{DoxyCompactList}\small\item\em Cell Height for the Name of both control and monitor parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{screen__main__app_8c_a3f0d68bbeb285bf12c74f76240f7d310}{Config\+Screen\+\_\+\+Load\+Param}} (data\+\_\+param\+\_\+info\+\_\+t \texorpdfstring{$\ast$}{*}\+\_\+param\+Conf, char \texorpdfstring{$\ast$}{*}val)
+\item 
+void \mbox{\hyperlink{screen__main__app_8c_a3c6b6915d76e05da1702b2138b4ed45f}{App\+Control\+Grid\+\_\+\+Create}} (lv\+\_\+obj\+\_\+t \texorpdfstring{$\ast$}{*}parent, int row, int col)
+\begin{DoxyCompactList}\small\item\em Creates the application dependent area of the main screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{screen__main__app_8c_a91227bcfccad8cddea765dca99b23842}{App\+Control\+Grid\+\_\+\+Refresh}} (void)
+\begin{DoxyCompactList}\small\item\em Refreshes the application dependent area of the main screen. \end{DoxyCompactList}\item 
+screen\+\_\+type\+\_\+t \mbox{\hyperlink{screen__main__app_8c_ae39bc54927882a0f2b454546973cb1de}{App\+Control\+Grid\+\_\+\+Touch\+Detect}} (void)
+\begin{DoxyCompactList}\small\item\em Touch detection of the application dependent area of the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+~\newline
+ 
+
+\begin{DoxyAuthor}{Author}
+Waqas Ehsan Butt 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+May 23, 2023
+\end{DoxyDate}
+
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2021 Taraz Technologies Pvt. Ltd.\end{center} }
+
+\doxysubsubsubsection*{\begin{center}All rights reserved.\end{center} }
+
+\begin{center}This software component is licensed by Taraz Technologies under BSD 3-\/Clause license, the \"{}\+License\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: www.\+opensource.\+org/licenses/\+BSD-\/3-\/\+Clause\end{center}  
+
+Definition in file \mbox{\hyperlink{screen__main__app_8c_source}{screen\+\_\+main\+\_\+app.\+c}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{screen__main__app_8c_ab09304e67879cb2c6c0d72a79afc42d8}\label{screen__main__app_8c_ab09304e67879cb2c6c0d72a79afc42d8} 
+\index{screen\_main\_app.c@{screen\_main\_app.c}!BASE\_PARAM\_TAG@{BASE\_PARAM\_TAG}}
+\index{BASE\_PARAM\_TAG@{BASE\_PARAM\_TAG}!screen\_main\_app.c@{screen\_main\_app.c}}
+\doxysubsubsection{\texorpdfstring{BASE\_PARAM\_TAG}{BASE\_PARAM\_TAG}}
+{\footnotesize\ttfamily \#define BASE\+\_\+\+PARAM\+\_\+\+TAG~(55)}
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8c_source_l00033}{33}} of file \mbox{\hyperlink{screen__main__app_8c_source}{screen\+\_\+main\+\_\+app.\+c}}.
+
+\Hypertarget{screen__main__app_8c_ac0e563abf071dc6eb25ad2e04c17ae13}\label{screen__main__app_8c_ac0e563abf071dc6eb25ad2e04c17ae13} 
+\index{screen\_main\_app.c@{screen\_main\_app.c}!CONTROL\_ROW\_COUNT@{CONTROL\_ROW\_COUNT}}
+\index{CONTROL\_ROW\_COUNT@{CONTROL\_ROW\_COUNT}!screen\_main\_app.c@{screen\_main\_app.c}}
+\doxysubsubsection{\texorpdfstring{CONTROL\_ROW\_COUNT}{CONTROL\_ROW\_COUNT}}
+{\footnotesize\ttfamily \#define CONTROL\+\_\+\+ROW\+\_\+\+COUNT~(((\mbox{\hyperlink{screen__main__app_8h_a6be23b12dfc4530ca10e05cfe9785e41}{CONTROL\+\_\+\+CONFS\+\_\+\+COUNT}} -\/ 1) / \mbox{\hyperlink{screen__main__app_8h_ab822f3208019115f34e26b92ae3922c7}{CONTROL\+\_\+\+COL\+\_\+\+COUNT}}) + 1)}
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8c_source_l00041}{41}} of file \mbox{\hyperlink{screen__main__app_8c_source}{screen\+\_\+main\+\_\+app.\+c}}.
+
+\Hypertarget{screen__main__app_8c_a4c312c3e879dba2ef226eafe978230c5}\label{screen__main__app_8c_a4c312c3e879dba2ef226eafe978230c5} 
+\index{screen\_main\_app.c@{screen\_main\_app.c}!DEFAULT\_FLOAT\_PRECISION@{DEFAULT\_FLOAT\_PRECISION}}
+\index{DEFAULT\_FLOAT\_PRECISION@{DEFAULT\_FLOAT\_PRECISION}!screen\_main\_app.c@{screen\_main\_app.c}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_FLOAT\_PRECISION}{DEFAULT\_FLOAT\_PRECISION}}
+{\footnotesize\ttfamily \#define DEFAULT\+\_\+\+FLOAT\+\_\+\+PRECISION~(2)}
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8c_source_l00049}{49}} of file \mbox{\hyperlink{screen__main__app_8c_source}{screen\+\_\+main\+\_\+app.\+c}}.
+
+\Hypertarget{screen__main__app_8c_a4e68431d0bc0e1f8836fb2ec08a6f3a5}\label{screen__main__app_8c_a4e68431d0bc0e1f8836fb2ec08a6f3a5} 
+\index{screen\_main\_app.c@{screen\_main\_app.c}!GET\_PARAM\_INDEX@{GET\_PARAM\_INDEX}}
+\index{GET\_PARAM\_INDEX@{GET\_PARAM\_INDEX}!screen\_main\_app.c@{screen\_main\_app.c}}
+\doxysubsubsection{\texorpdfstring{GET\_PARAM\_INDEX}{GET\_PARAM\_INDEX}}
+{\footnotesize\ttfamily \#define GET\+\_\+\+PARAM\+\_\+\+INDEX(\begin{DoxyParamCaption}\item[{}]{tag }\end{DoxyParamCaption})~(tag -\/ \mbox{\hyperlink{screen__main__app_8c_ab09304e67879cb2c6c0d72a79afc42d8}{BASE\+\_\+\+PARAM\+\_\+\+TAG}})}
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8c_source_l00036}{36}} of file \mbox{\hyperlink{screen__main__app_8c_source}{screen\+\_\+main\+\_\+app.\+c}}.
+
+\Hypertarget{screen__main__app_8c_a681a701635b2c599dfe8c49a25277757}\label{screen__main__app_8c_a681a701635b2c599dfe8c49a25277757} 
+\index{screen\_main\_app.c@{screen\_main\_app.c}!IS\_PARAM\_TAG@{IS\_PARAM\_TAG}}
+\index{IS\_PARAM\_TAG@{IS\_PARAM\_TAG}!screen\_main\_app.c@{screen\_main\_app.c}}
+\doxysubsubsection{\texorpdfstring{IS\_PARAM\_TAG}{IS\_PARAM\_TAG}}
+{\footnotesize\ttfamily \#define IS\+\_\+\+PARAM\+\_\+\+TAG(\begin{DoxyParamCaption}\item[{}]{tag }\end{DoxyParamCaption})~(tag $>$= \mbox{\hyperlink{screen__main__app_8c_ab09304e67879cb2c6c0d72a79afc42d8}{BASE\+\_\+\+PARAM\+\_\+\+TAG}} \&\& tag $<$ (\mbox{\hyperlink{screen__main__app_8c_ab09304e67879cb2c6c0d72a79afc42d8}{BASE\+\_\+\+PARAM\+\_\+\+TAG}} + \mbox{\hyperlink{screen__main__app_8h_a6be23b12dfc4530ca10e05cfe9785e41}{CONTROL\+\_\+\+CONFS\+\_\+\+COUNT}}))}
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8c_source_l00035}{35}} of file \mbox{\hyperlink{screen__main__app_8c_source}{screen\+\_\+main\+\_\+app.\+c}}.
+
+\Hypertarget{screen__main__app_8c_adba1cd701dff614e05c85f97e935fddc}\label{screen__main__app_8c_adba1cd701dff614e05c85f97e935fddc} 
+\index{screen\_main\_app.c@{screen\_main\_app.c}!MONITOR\_ROW\_COUNT@{MONITOR\_ROW\_COUNT}}
+\index{MONITOR\_ROW\_COUNT@{MONITOR\_ROW\_COUNT}!screen\_main\_app.c@{screen\_main\_app.c}}
+\doxysubsubsection{\texorpdfstring{MONITOR\_ROW\_COUNT}{MONITOR\_ROW\_COUNT}}
+{\footnotesize\ttfamily \#define MONITOR\+\_\+\+ROW\+\_\+\+COUNT~(((\mbox{\hyperlink{screen__main__app_8h_ac309e48e220e1fd5ab5dccbc895be6f5}{MONITOR\+\_\+\+CONFS\+\_\+\+COUNT}} -\/ 1) / \mbox{\hyperlink{screen__main__app_8h_a90efbd8c59cc25dc576ba28b7a8e143b}{MONITOR\+\_\+\+COL\+\_\+\+COUNT}}) + 1)}
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8c_source_l00045}{45}} of file \mbox{\hyperlink{screen__main__app_8c_source}{screen\+\_\+main\+\_\+app.\+c}}.
+
+\Hypertarget{screen__main__app_8c_ae55abe04c52102900756bf7a1c2f575b}\label{screen__main__app_8c_ae55abe04c52102900756bf7a1c2f575b} 
+\index{screen\_main\_app.c@{screen\_main\_app.c}!NAME\_CELL\_HEIGHT@{NAME\_CELL\_HEIGHT}}
+\index{NAME\_CELL\_HEIGHT@{NAME\_CELL\_HEIGHT}!screen\_main\_app.c@{screen\_main\_app.c}}
+\doxysubsubsection{\texorpdfstring{NAME\_CELL\_HEIGHT}{NAME\_CELL\_HEIGHT}}
+{\footnotesize\ttfamily \#define NAME\+\_\+\+CELL\+\_\+\+HEIGHT~(35)}
+
+
+
+Cell Height for the Name of both control and monitor parameters. 
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8c_source_l00055}{55}} of file \mbox{\hyperlink{screen__main__app_8c_source}{screen\+\_\+main\+\_\+app.\+c}}.
+
+\Hypertarget{screen__main__app_8c_ac6303e65a80d1e15dc7e96172c0195ec}\label{screen__main__app_8c_ac6303e65a80d1e15dc7e96172c0195ec} 
+\index{screen\_main\_app.c@{screen\_main\_app.c}!PARAM\_TAG@{PARAM\_TAG}}
+\index{PARAM\_TAG@{PARAM\_TAG}!screen\_main\_app.c@{screen\_main\_app.c}}
+\doxysubsubsection{\texorpdfstring{PARAM\_TAG}{PARAM\_TAG}}
+{\footnotesize\ttfamily \#define PARAM\+\_\+\+TAG(\begin{DoxyParamCaption}\item[{}]{index }\end{DoxyParamCaption})~TAG\+\_\+\+ATTACH(index + \mbox{\hyperlink{screen__main__app_8c_ab09304e67879cb2c6c0d72a79afc42d8}{BASE\+\_\+\+PARAM\+\_\+\+TAG}})}
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8c_source_l00034}{34}} of file \mbox{\hyperlink{screen__main__app_8c_source}{screen\+\_\+main\+\_\+app.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{screen__main__app_8c_a3c6b6915d76e05da1702b2138b4ed45f}\label{screen__main__app_8c_a3c6b6915d76e05da1702b2138b4ed45f} 
+\index{screen\_main\_app.c@{screen\_main\_app.c}!AppControlGrid\_Create@{AppControlGrid\_Create}}
+\index{AppControlGrid\_Create@{AppControlGrid\_Create}!screen\_main\_app.c@{screen\_main\_app.c}}
+\doxysubsubsection{\texorpdfstring{AppControlGrid\_Create()}{AppControlGrid\_Create()}}
+{\footnotesize\ttfamily void App\+Control\+Grid\+\_\+\+Create (\begin{DoxyParamCaption}\item[{lv\+\_\+obj\+\_\+t \texorpdfstring{$\ast$}{*}}]{parent,  }\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+Creates the application dependent area of the main screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & Parent lv\+\_\+obj\+\_\+t of the device. \\
+\hline
+{\em row} & Row index for the item. \\
+\hline
+{\em col} & Column index for the item. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8c_source_l00319}{319}} of file \mbox{\hyperlink{screen__main__app_8c_source}{screen\+\_\+main\+\_\+app.\+c}}.
+
+\Hypertarget{screen__main__app_8c_a91227bcfccad8cddea765dca99b23842}\label{screen__main__app_8c_a91227bcfccad8cddea765dca99b23842} 
+\index{screen\_main\_app.c@{screen\_main\_app.c}!AppControlGrid\_Refresh@{AppControlGrid\_Refresh}}
+\index{AppControlGrid\_Refresh@{AppControlGrid\_Refresh}!screen\_main\_app.c@{screen\_main\_app.c}}
+\doxysubsubsection{\texorpdfstring{AppControlGrid\_Refresh()}{AppControlGrid\_Refresh()}}
+{\footnotesize\ttfamily void App\+Control\+Grid\+\_\+\+Refresh (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Refreshes the application dependent area of the main screen. 
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8c_source_l00360}{360}} of file \mbox{\hyperlink{screen__main__app_8c_source}{screen\+\_\+main\+\_\+app.\+c}}.
+
+\Hypertarget{screen__main__app_8c_ae39bc54927882a0f2b454546973cb1de}\label{screen__main__app_8c_ae39bc54927882a0f2b454546973cb1de} 
+\index{screen\_main\_app.c@{screen\_main\_app.c}!AppControlGrid\_TouchDetect@{AppControlGrid\_TouchDetect}}
+\index{AppControlGrid\_TouchDetect@{AppControlGrid\_TouchDetect}!screen\_main\_app.c@{screen\_main\_app.c}}
+\doxysubsubsection{\texorpdfstring{AppControlGrid\_TouchDetect()}{AppControlGrid\_TouchDetect()}}
+{\footnotesize\ttfamily screen\+\_\+type\+\_\+t App\+Control\+Grid\+\_\+\+Touch\+Detect (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Touch detection of the application dependent area of the screen. 
+
+\begin{DoxyReturn}{Returns}
+A new screen type if screen needs to be changed based upon the touch response. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8c_source_l00426}{426}} of file \mbox{\hyperlink{screen__main__app_8c_source}{screen\+\_\+main\+\_\+app.\+c}}.
+
+\Hypertarget{screen__main__app_8c_a3f0d68bbeb285bf12c74f76240f7d310}\label{screen__main__app_8c_a3f0d68bbeb285bf12c74f76240f7d310} 
+\index{screen\_main\_app.c@{screen\_main\_app.c}!ConfigScreen\_LoadParam@{ConfigScreen\_LoadParam}}
+\index{ConfigScreen\_LoadParam@{ConfigScreen\_LoadParam}!screen\_main\_app.c@{screen\_main\_app.c}}
+\doxysubsubsection{\texorpdfstring{ConfigScreen\_LoadParam()}{ConfigScreen\_LoadParam()}}
+{\footnotesize\ttfamily void Config\+Screen\+\_\+\+Load\+Param (\begin{DoxyParamCaption}\item[{data\+\_\+param\+\_\+info\+\_\+t \texorpdfstring{$\ast$}{*}}]{\+\_\+param\+Conf,  }\item[{char \texorpdfstring{$\ast$}{*}}]{val }\end{DoxyParamCaption})}
+

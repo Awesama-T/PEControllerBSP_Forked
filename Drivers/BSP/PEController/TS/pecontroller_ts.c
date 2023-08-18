@@ -108,9 +108,6 @@ static uint8_t TS_Read(uint8_t addr, uint16_t reg)
 static uint16_t TS_ReadMultiple(uint8_t addr, uint16_t reg, uint8_t *buffer, uint16_t len)
 {
 	HAL_StatusTypeDef status = HAL_OK;
-	uint16_t wait_ms = len;// / 4;
-	if (wait_ms == 0)
-		wait_ms = 1;
 	int retry_count = 2;
 	do
 	{
@@ -125,6 +122,9 @@ static uint16_t TS_ReadMultiple(uint8_t addr, uint16_t reg, uint8_t *buffer, uin
 static void TS_Delay(uint32_t delay)
 {
 	HAL_Delay(delay);
+	//osDelay(delay);
+
+
 }
 /**
  * @brief Configure relevant clocks
@@ -247,22 +247,13 @@ uint8_t BSP_TS_Init(uint16_t ts_SizeX, uint16_t ts_SizeY)
 	ts_bsp_drv.Delay = TS_Delay;
 
 	TS_Init();
-	TS_Reset(); //mxT336T has power-on reset feature built-in
+	TS_Reset();
 	if(MXTDrivers_Init(800, 480) == HAL_OK)
 	{
 		initComplete = true;
 		return TS_OK;
 	}
 	return TS_DEVICE_NOT_FOUND;
-}
-
-/**
- * @brief  Returns status and positions of the touch screen.
- * @return  TS_State: Pointer to touch screen state structure
- */
-TS_StateTypeDef* BSP_TS_GetState(void)
-{
-	return &tsState;
 }
 
 /**
@@ -277,12 +268,19 @@ void BSP_TS_Poll(void)
 		tsState.touchY = 0;
 		return;
 	}
-	uint16_t x;
-	uint16_t y;
-	tsState.touchDetected = MXTDrivers_GetState(&x, &y);
-	tsState.touchX = x;
-	tsState.touchY = y;
+	tsState.touchDetected = MXTDrivers_GetState(&(tsState.touchX), &(tsState.touchY));
+
 	return;
 }
+
+/**
+ * @brief  Returns status and positions of the touch screen.
+ * @return  TS_State: Pointer to touch screen state structure
+ */
+TS_StateTypeDef* BSP_TS_GetState(void)
+{
+	return &tsState;
+}
+
 
 /* EOF */

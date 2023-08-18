@@ -1,0 +1,523 @@
+\doxysection{main.\+c}
+\hypertarget{main_8c_source}{}\label{main_8c_source}\index{C:/TarazServer/work\_directory/00\_Osama\_Tahir/BSP/PEControllerBSP\_Forked/Projects/PEController/Applications/PWMGenerator/CM4/Core/Src/main.c@{C:/TarazServer/work\_directory/00\_Osama\_Tahir/BSP/PEControllerBSP\_Forked/Projects/PEController/Applications/PWMGenerator/CM4/Core/Src/main.c}}
+\mbox{\hyperlink{main_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00001}00001\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ Header\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00019}00019\ \textcolor{comment}{/*\ USER\ CODE\ END\ Header\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00020}00020\ \textcolor{comment}{/*\ Includes\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00021}00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{main_8h}{main.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00022}00022\ \textcolor{preprocessor}{\#include\ "{}cmsis\_os.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00024}00024\ \textcolor{comment}{/*\ Private\ includes\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00025}00025\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ Includes\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}user\_config.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00027}00027\ \textcolor{preprocessor}{\#if\ ENABLE\_INTELLISENS}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}pecontroller\_intelliSENS.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00029}00029\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}shared\_memory.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}state\_storage\_lib.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}pecontroller\_adc.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}lvgl.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00037}00037\ \textcolor{preprocessor}{\#include\ "{}pecontroller\_display.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00038}00038\ \textcolor{preprocessor}{\#include\ "{}pecontroller\_ts.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00039}00039\ \textcolor{preprocessor}{\#include\ "{}screen\_data.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00040}00040\ \textcolor{comment}{/*\ USER\ CODE\ END\ Includes\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00042}00042\ \textcolor{comment}{/*\ Private\ typedef\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00043}00043\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ PTD\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00045}00045\ \textcolor{comment}{/*\ USER\ CODE\ END\ PTD\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00047}00047\ \textcolor{comment}{/*\ Private\ define\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00048}00048\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ PD\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00050}00050\ \textcolor{preprocessor}{\#ifndef\ HSEM\_ID\_0}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00051}\mbox{\hyperlink{main_8c_a66761607ebca2d7b18eb6adfbd0891a7}{00051}}\ \textcolor{preprocessor}{\#define\ HSEM\_ID\_0\ (0U)\ }\textcolor{comment}{/*\ HW\ semaphore\ 0*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00052}00052\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00053}00053\ \textcolor{comment}{/*\ USER\ CODE\ END\ PD\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00055}00055\ \textcolor{comment}{/*\ Private\ macro\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00056}00056\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ PM\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00058}00058\ \textcolor{comment}{/*\ USER\ CODE\ END\ PM\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00060}00060\ \textcolor{comment}{/*\ Private\ variables\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00062}\mbox{\hyperlink{main_8c_a51c6d0c070f8c00f33ee08b4f1eb6e90}{00062}}\ TIM\_HandleTypeDef\ \mbox{\hyperlink{main_8c_a51c6d0c070f8c00f33ee08b4f1eb6e90}{htim17}};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00064}00064\ \textcolor{comment}{/*\ Definitions\ for\ storageTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00065}\mbox{\hyperlink{main_8c_a00ad472d1d4e9675398ad3aee50f71a2}{00065}}\ osThreadId\_t\ \mbox{\hyperlink{main_8c_a00ad472d1d4e9675398ad3aee50f71a2}{storageTaskHandle}};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00066}\mbox{\hyperlink{main_8c_a46bd7793c8d73fcf6eab5d479b5b546a}{00066}}\ \textcolor{keyword}{const}\ osThreadAttr\_t\ \mbox{\hyperlink{main_8c_a46bd7793c8d73fcf6eab5d479b5b546a}{storageTask\_attributes}}\ =\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00067}00067\ \ \ .name\ =\ \textcolor{stringliteral}{"{}storageTask"{}},}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00068}00068\ \ \ .stack\_size\ =\ 128\ *\ 4,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00069}00069\ \ \ .priority\ =\ (osPriority\_t)\ osPriorityLow,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00070}00070\ \};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00071}00071\ \textcolor{comment}{/*\ Definitions\ for\ statsTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00072}\mbox{\hyperlink{main_8c_a395f6d5e1bfe994577ea0770f8603225}{00072}}\ osThreadId\_t\ \mbox{\hyperlink{main_8c_a395f6d5e1bfe994577ea0770f8603225}{statsTaskHandle}};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00073}\mbox{\hyperlink{main_8c_ab4503fe54edd397f785fb4ec64abfb91}{00073}}\ \textcolor{keyword}{const}\ osThreadAttr\_t\ \mbox{\hyperlink{main_8c_ab4503fe54edd397f785fb4ec64abfb91}{statsTask\_attributes}}\ =\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00074}00074\ \ \ .name\ =\ \textcolor{stringliteral}{"{}statsTask"{}},}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00075}00075\ \ \ .stack\_size\ =\ 1024\ *\ 4,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00076}00076\ \ \ .priority\ =\ (osPriority\_t)\ osPriorityLow,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00077}00077\ \};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00078}00078\ \textcolor{comment}{/*\ Definitions\ for\ displayTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00079}\mbox{\hyperlink{main_8c_a6013a6bbac926c4b3a6fb7abdd447fa9}{00079}}\ osThreadId\_t\ \mbox{\hyperlink{main_8c_a6013a6bbac926c4b3a6fb7abdd447fa9}{displayTaskHandle}};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00080}\mbox{\hyperlink{main_8c_a88d68d44af7f1ea7f17c7d4a78cb9127}{00080}}\ \textcolor{keyword}{const}\ osThreadAttr\_t\ \mbox{\hyperlink{main_8c_a88d68d44af7f1ea7f17c7d4a78cb9127}{displayTask\_attributes}}\ =\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00081}00081\ \ \ .name\ =\ \textcolor{stringliteral}{"{}displayTask"{}},}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00082}00082\ \ \ .stack\_size\ =\ 512\ *\ 4,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00083}00083\ \ \ .priority\ =\ (osPriority\_t)\ osPriorityHigh,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00084}00084\ \};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00085}00085\ \textcolor{comment}{/*\ Definitions\ for\ touchTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00086}\mbox{\hyperlink{main_8c_a22d27addf2055dd4c32991acea85a300}{00086}}\ osThreadId\_t\ \mbox{\hyperlink{main_8c_a22d27addf2055dd4c32991acea85a300}{touchTaskHandle}};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00087}\mbox{\hyperlink{main_8c_a5a19f0f8f5bca84b5ad89d7f57285847}{00087}}\ \textcolor{keyword}{const}\ osThreadAttr\_t\ \mbox{\hyperlink{main_8c_a5a19f0f8f5bca84b5ad89d7f57285847}{touchTask\_attributes}}\ =\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00088}00088\ \ \ .name\ =\ \textcolor{stringliteral}{"{}touchTask"{}},}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00089}00089\ \ \ .stack\_size\ =\ 256\ *\ 4,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00090}00090\ \ \ .priority\ =\ (osPriority\_t)\ osPriorityRealtime,}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00091}00091\ \};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00092}00092\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ PV\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00093}\mbox{\hyperlink{main_8c_a606a8c7391bbfe39b0e0bf6d3531bbbd}{00093}}\ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{main_8c_a606a8c7391bbfe39b0e0bf6d3531bbbd}{isDispInitialized}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00094}00094\ \textcolor{comment}{/*\ USER\ CODE\ END\ PV\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00096}00096\ \textcolor{comment}{/*\ Private\ function\ prototypes\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00097}00097\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ MX\_GPIO\_Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00098}00098\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ MX\_TIM17\_Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00099}00099\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8c_ad66d50f7f11e10b46ad18659a894e609}{StartStorageTask}}(\textcolor{keywordtype}{void}\ *argument);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00100}00100\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8c_a14b80805fa4e7fad1526d62ae6a7eb2c}{StartStatsTask}}(\textcolor{keywordtype}{void}\ *argument);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00101}00101\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8c_a64af7b05aa5e6301555807da75cd4456}{StartDisplayTask}}(\textcolor{keywordtype}{void}\ *argument);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00102}00102\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8c_a068b610ac1b4e7b2fe5fdef4d02ede01}{StartTouchTask}}(\textcolor{keywordtype}{void}\ *argument);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00104}00104\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ PFP\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00105}\mbox{\hyperlink{main_8c_a1cc10467d085bcc2785c1f4afc953bb9}{00105}}\ uint32\_t\ \mbox{\hyperlink{main_8c_a1cc10467d085bcc2785c1f4afc953bb9}{CTP\_INT}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00106}\mbox{\hyperlink{main_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}{00106}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}{HAL\_GPIO\_EXTI\_Callback}}(uint16\_t\ GPIO\_Pin)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00107}00107\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00108}00108\ \ \ \ \ \textcolor{keywordflow}{if}\ (GPIO\_Pin\ ==\ GPIO\_PIN\_2)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00109}00109\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00110}00110\ \ \ \ \ \ \ \ \ osThreadFlagsSet(\mbox{\hyperlink{main_8c_a22d27addf2055dd4c32991acea85a300}{touchTaskHandle}},\ \mbox{\hyperlink{main_8c_a1cc10467d085bcc2785c1f4afc953bb9}{CTP\_INT}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{comment}{//osSignalSet(touchTaskHandle,\ CTP\_INT);}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00113}00113\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00114}00114\ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00115}00115\ \textcolor{comment}{/*\ USER\ CODE\ END\ PFP\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00117}00117\ \textcolor{comment}{/*\ Private\ user\ code\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00118}00118\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ 0\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00120}00120\ \textcolor{comment}{/*\ USER\ CODE\ END\ 0\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00126}\mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{00126}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00127}00127\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00128}00128\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ 1\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00129}00129\ \ \ \ \ SharedMemory\_Init();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00130}00130\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ 1\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00132}00132\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ Boot\_Mode\_Sequence\_1\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00133}00133\ \ \ \ \ \textcolor{comment}{/*HW\ semaphore\ Clock\ enable*/}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00134}00134\ \ \ \ \ \_\_HAL\_RCC\_HSEM\_CLK\_ENABLE();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00135}00135\ \ \ \ \ \textcolor{comment}{/*\ Activate\ HSEM\ notification\ for\ Cortex-\/M4*/}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00136}00136\ \ \ \ \ HAL\_HSEM\_ActivateNotification(\_\_HAL\_HSEM\_SEMID\_TO\_MASK(\mbox{\hyperlink{main_8c_a66761607ebca2d7b18eb6adfbd0891a7}{HSEM\_ID\_0}}));}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00137}00137\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00138}00138\ \textcolor{comment}{\ \ Domain\ D2\ goes\ to\ STOP\ mode\ (Cortex-\/M4\ in\ deep-\/sleep)\ waiting\ for\ Cortex-\/M7\ to}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00139}00139\ \textcolor{comment}{\ \ perform\ system\ initialization\ (system\ clock\ config,\ external\ memory\ configuration..\ )}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00140}00140\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00141}00141\ \ \ \ \ HAL\_PWREx\_ClearPendingEvent();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00142}00142\ \ \ \ \ HAL\_PWREx\_EnterSTOPMode(PWR\_MAINREGULATOR\_ON,\ PWR\_STOPENTRY\_WFE,\ PWR\_D2\_DOMAIN);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00143}00143\ \ \ \ \ \textcolor{comment}{/*\ Clear\ HSEM\ flag\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00144}00144\ \ \ \ \ \_\_HAL\_HSEM\_CLEAR\_FLAG(\_\_HAL\_HSEM\_SEMID\_TO\_MASK(\mbox{\hyperlink{main_8c_a66761607ebca2d7b18eb6adfbd0891a7}{HSEM\_ID\_0}}));}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00146}00146\ \textcolor{comment}{/*\ USER\ CODE\ END\ Boot\_Mode\_Sequence\_1\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00147}00147\ \ \ \textcolor{comment}{/*\ MCU\ Configuration-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00149}00149\ \ \ \textcolor{comment}{/*\ Reset\ of\ all\ peripherals,\ Initializes\ the\ Flash\ interface\ and\ the\ Systick.\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00150}00150\ \ \ HAL\_Init();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00152}00152\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ Init\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00153}00153\ \ \ \ \ HAL\_FLASH\_Unlock();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00154}00154\ \ \ \ \ \textcolor{keyword}{static}\ state\_storage\_config\_t\ storageConfig\ =\ \{0\};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00155}00155\ \ \ \ \ \textcolor{comment}{//\ Initialize\ the\ sectors}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00156}00156\ \ \ \ \ storageConfig.sectors[0].sectorNo\ =\ FLASH\_SECTOR\_TOTAL\ -\/\ 2;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00157}00157\ \ \ \ \ storageConfig.sectors[1].sectorNo\ =\ FLASH\_SECTOR\_TOTAL\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00158}00158\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 2;\ i++)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00159}00159\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00160}00160\ \ \ \ \ \ \ \ \ storageConfig.sectors[i].bank\ =\ FLASH\_BANK\_1;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00161}00161\ \ \ \ \ \ \ \ \ storageConfig.sectors[i].byteCount\ =\ FLASH\_SECTOR\_SIZE;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00162}00162\ \ \ \ \ \ \ \ \ storageConfig.sectors[i].addr\ =\ \ (uint32\_t*)(FLASH\_BANK1\_BASE\ +\ (storageConfig.sectors[i].sectorNo\ *\ FLASH\_SECTOR\_SIZE));}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00163}00163\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00164}00164\ \ \ \ \ \textcolor{comment}{//\ Initialize\ the\ clients}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00165}00165\ \ \ \ \ \textcolor{keyword}{static}\ state\_storage\_client\_t\ storageClients[3];}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00166}00166\ \ \ \ \ storageConfig.clientCount\ =\ 3;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00167}00167\ \ \ \ \ storageConfig.clients\ =\ storageClients;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00168}00168\ \ \ \ \ storageClients[0].arg\ =\ (\textcolor{keywordtype}{void}*)\&PROCESSED\_ADC\_DATA;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00169}00169\ \ \ \ \ BSP\_ADC\_ConfigStorage(\&storageClients[0]);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00170}00170\ \ \ \ \ ScreenData\_ConfigStorage(\&storageClients[1]);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00171}00171\ \ \ \ \ BSP\_InterProcessorMsgs\_ConfigStorage(\&storageClients[2]);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00172}00172\ \ \ \ \ StateStorage\_Init(\&storageConfig);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00173}00173\ \ \ \ \ sharedData-\/>isStateStorageInitialized\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00174}00174\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ Init\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00176}00176\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ SysInit\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00178}00178\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ SysInit\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00180}00180\ \ \ \textcolor{comment}{/*\ Initialize\ all\ configured\ peripherals\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00181}00181\ \ \ MX\_GPIO\_Init();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00182}00182\ \ \ MX\_TIM17\_Init();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00183}00183\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ 2\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00184}00184\ \textcolor{preprocessor}{\#if\ ENABLE\_INTELLISENS}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00185}00185\ \ \ \ \ uint16\_t*\ intelliSENSDataStore\ =\ (uint16\_t*)RAW\_ADC\_DATA.dataRecord;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00186}00186\ \ \ \ \ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{int}*\ wrIndex\ =\ \&RAW\_ADC\_DATA.recordIndex;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00187}00187\ \ \ \ \ intelliSENS\_Init(NULL,\ NULL,\ intelliSENSDataStore,\ RAW\_MEASURE\_SAVE\_COUNT,\ (1000000.f\ *\ MAX11046\_CLK\_Us)\ /\ MONITORING\_FREQUENCY\_Hz,\ wrIndex);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00188}00188\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00189}00189\ \ \ \ \ BSP\_Display\_Init();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00190}00190\ \ \ \ \ \mbox{\hyperlink{main_8c_a606a8c7391bbfe39b0e0bf6d3531bbbd}{isDispInitialized}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00191}00191\ \ \ \ \ \textcolor{comment}{//\ Set\ LED\ brightness}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00192}00192\ \ \ \ \ HAL\_TIM\_PWM\_Start(\&\mbox{\hyperlink{main_8c_a51c6d0c070f8c00f33ee08b4f1eb6e90}{htim17}},TIM\_CHANNEL\_1);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00193}00193\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ 2\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00195}00195\ \ \ \textcolor{comment}{/*\ Init\ scheduler\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00196}00196\ \ \ osKernelInitialize();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00198}00198\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ RTOS\_MUTEX\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00199}00199\ \ \ \ \ \textcolor{comment}{/*\ add\ mutexes,\ ...\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00200}00200\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ RTOS\_MUTEX\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00202}00202\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ RTOS\_SEMAPHORES\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00203}00203\ \ \ \ \ \textcolor{comment}{/*\ add\ semaphores,\ ...\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00204}00204\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ RTOS\_SEMAPHORES\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00206}00206\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ RTOS\_TIMERS\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00207}00207\ \ \ \ \ \textcolor{comment}{/*\ start\ timers,\ add\ new\ ones,\ ...\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00208}00208\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ RTOS\_TIMERS\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00210}00210\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ RTOS\_QUEUES\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00211}00211\ \ \ \ \ \textcolor{comment}{/*\ add\ queues,\ ...\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00212}00212\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ RTOS\_QUEUES\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00214}00214\ \ \ \textcolor{comment}{/*\ Create\ the\ thread(s)\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00215}00215\ \ \ \textcolor{comment}{/*\ creation\ of\ storageTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00216}00216\ \ \ \mbox{\hyperlink{main_8c_a00ad472d1d4e9675398ad3aee50f71a2}{storageTaskHandle}}\ =\ osThreadNew(\mbox{\hyperlink{main_8c_ad66d50f7f11e10b46ad18659a894e609}{StartStorageTask}},\ NULL,\ \&\mbox{\hyperlink{main_8c_a46bd7793c8d73fcf6eab5d479b5b546a}{storageTask\_attributes}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00218}00218\ \ \ \textcolor{comment}{/*\ creation\ of\ statsTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00219}00219\ \ \ \mbox{\hyperlink{main_8c_a395f6d5e1bfe994577ea0770f8603225}{statsTaskHandle}}\ =\ osThreadNew(\mbox{\hyperlink{main_8c_a14b80805fa4e7fad1526d62ae6a7eb2c}{StartStatsTask}},\ NULL,\ \&\mbox{\hyperlink{main_8c_ab4503fe54edd397f785fb4ec64abfb91}{statsTask\_attributes}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00221}00221\ \ \ \textcolor{comment}{/*\ creation\ of\ displayTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00222}00222\ \ \ \mbox{\hyperlink{main_8c_a6013a6bbac926c4b3a6fb7abdd447fa9}{displayTaskHandle}}\ =\ osThreadNew(\mbox{\hyperlink{main_8c_a64af7b05aa5e6301555807da75cd4456}{StartDisplayTask}},\ NULL,\ \&\mbox{\hyperlink{main_8c_a88d68d44af7f1ea7f17c7d4a78cb9127}{displayTask\_attributes}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00224}00224\ \ \ \textcolor{comment}{/*\ creation\ of\ touchTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00225}00225\ \ \ \mbox{\hyperlink{main_8c_a22d27addf2055dd4c32991acea85a300}{touchTaskHandle}}\ =\ osThreadNew(\mbox{\hyperlink{main_8c_a068b610ac1b4e7b2fe5fdef4d02ede01}{StartTouchTask}},\ NULL,\ \&\mbox{\hyperlink{main_8c_a5a19f0f8f5bca84b5ad89d7f57285847}{touchTask\_attributes}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00227}00227\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ RTOS\_THREADS\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00228}00228\ \ \ \ \ \textcolor{comment}{/*\ add\ threads,\ ...\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00229}00229\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ RTOS\_THREADS\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00231}00231\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ RTOS\_EVENTS\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00232}00232\ \ \ \ \ \textcolor{comment}{/*\ add\ events,\ ...\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00233}00233\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ RTOS\_EVENTS\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00235}00235\ \ \ \textcolor{comment}{/*\ Start\ scheduler\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00236}00236\ \ \ osKernelStart();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00237}00237\ \ \ \textcolor{comment}{/*\ We\ should\ never\ get\ here\ as\ control\ is\ now\ taken\ by\ the\ scheduler\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00238}00238\ \ \ \textcolor{comment}{/*\ Infinite\ loop\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00239}00239\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ WHILE\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00240}00240\ \ \ \ \ \textcolor{keywordflow}{while}\ (1)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00241}00241\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00242}00242\ \ \ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ WHILE\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00244}00244\ \ \ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ 3\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00245}00245\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00246}00246\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ 3\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00247}00247\ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00254}00254\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ MX\_TIM17\_Init(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00255}00255\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00257}00257\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ TIM17\_Init\ 0\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00258}00258\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00259}00259\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ TIM17\_Init\ 0\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00261}00261\ \ \ TIM\_OC\_InitTypeDef\ sConfigOC\ =\ \{0\};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00262}00262\ \ \ TIM\_BreakDeadTimeConfigTypeDef\ sBreakDeadTimeConfig\ =\ \{0\};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00264}00264\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ TIM17\_Init\ 1\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00266}00266\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ TIM17\_Init\ 1\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00267}00267\ \ \ \mbox{\hyperlink{main_8c_a51c6d0c070f8c00f33ee08b4f1eb6e90}{htim17}}.Instance\ =\ TIM17;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00268}00268\ \ \ \mbox{\hyperlink{main_8c_a51c6d0c070f8c00f33ee08b4f1eb6e90}{htim17}}.Init.Prescaler\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00269}00269\ \ \ \mbox{\hyperlink{main_8c_a51c6d0c070f8c00f33ee08b4f1eb6e90}{htim17}}.Init.CounterMode\ =\ TIM\_COUNTERMODE\_UP;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00270}00270\ \ \ \mbox{\hyperlink{main_8c_a51c6d0c070f8c00f33ee08b4f1eb6e90}{htim17}}.Init.Period\ =\ 960;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00271}00271\ \ \ \mbox{\hyperlink{main_8c_a51c6d0c070f8c00f33ee08b4f1eb6e90}{htim17}}.Init.ClockDivision\ =\ TIM\_CLOCKDIVISION\_DIV1;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00272}00272\ \ \ \mbox{\hyperlink{main_8c_a51c6d0c070f8c00f33ee08b4f1eb6e90}{htim17}}.Init.RepetitionCounter\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00273}00273\ \ \ \mbox{\hyperlink{main_8c_a51c6d0c070f8c00f33ee08b4f1eb6e90}{htim17}}.Init.AutoReloadPreload\ =\ TIM\_AUTORELOAD\_PRELOAD\_ENABLE;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00274}00274\ \ \ \textcolor{keywordflow}{if}\ (HAL\_TIM\_Base\_Init(\&\mbox{\hyperlink{main_8c_a51c6d0c070f8c00f33ee08b4f1eb6e90}{htim17}})\ !=\ HAL\_OK)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00275}00275\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00276}00276\ \ \ \ \ \mbox{\hyperlink{main_8c_a1730ffe1e560465665eb47d9264826f9}{Error\_Handler}}();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00277}00277\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00278}00278\ \ \ \textcolor{keywordflow}{if}\ (HAL\_TIM\_PWM\_Init(\&\mbox{\hyperlink{main_8c_a51c6d0c070f8c00f33ee08b4f1eb6e90}{htim17}})\ !=\ HAL\_OK)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00279}00279\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00280}00280\ \ \ \ \ \mbox{\hyperlink{main_8c_a1730ffe1e560465665eb47d9264826f9}{Error\_Handler}}();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00281}00281\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00282}00282\ \ \ sConfigOC.OCMode\ =\ TIM\_OCMODE\_PWM1;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00283}00283\ \ \ sConfigOC.Pulse\ =\ 950;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00284}00284\ \ \ sConfigOC.OCPolarity\ =\ TIM\_OCPOLARITY\_HIGH;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00285}00285\ \ \ sConfigOC.OCNPolarity\ =\ TIM\_OCNPOLARITY\_HIGH;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00286}00286\ \ \ sConfigOC.OCFastMode\ =\ TIM\_OCFAST\_DISABLE;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00287}00287\ \ \ sConfigOC.OCIdleState\ =\ TIM\_OCIDLESTATE\_RESET;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00288}00288\ \ \ sConfigOC.OCNIdleState\ =\ TIM\_OCNIDLESTATE\_RESET;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00289}00289\ \ \ \textcolor{keywordflow}{if}\ (HAL\_TIM\_PWM\_ConfigChannel(\&\mbox{\hyperlink{main_8c_a51c6d0c070f8c00f33ee08b4f1eb6e90}{htim17}},\ \&sConfigOC,\ TIM\_CHANNEL\_1)\ !=\ HAL\_OK)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00290}00290\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00291}00291\ \ \ \ \ \mbox{\hyperlink{main_8c_a1730ffe1e560465665eb47d9264826f9}{Error\_Handler}}();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00292}00292\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00293}00293\ \ \ sBreakDeadTimeConfig.OffStateRunMode\ =\ TIM\_OSSR\_DISABLE;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00294}00294\ \ \ sBreakDeadTimeConfig.OffStateIDLEMode\ =\ TIM\_OSSI\_DISABLE;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00295}00295\ \ \ sBreakDeadTimeConfig.LockLevel\ =\ TIM\_LOCKLEVEL\_OFF;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00296}00296\ \ \ sBreakDeadTimeConfig.DeadTime\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00297}00297\ \ \ sBreakDeadTimeConfig.BreakState\ =\ TIM\_BREAK\_DISABLE;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00298}00298\ \ \ sBreakDeadTimeConfig.BreakPolarity\ =\ TIM\_BREAKPOLARITY\_HIGH;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00299}00299\ \ \ sBreakDeadTimeConfig.BreakFilter\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00300}00300\ \ \ sBreakDeadTimeConfig.AutomaticOutput\ =\ TIM\_AUTOMATICOUTPUT\_DISABLE;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00301}00301\ \ \ \textcolor{keywordflow}{if}\ (HAL\_TIMEx\_ConfigBreakDeadTime(\&\mbox{\hyperlink{main_8c_a51c6d0c070f8c00f33ee08b4f1eb6e90}{htim17}},\ \&sBreakDeadTimeConfig)\ !=\ HAL\_OK)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00302}00302\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00303}00303\ \ \ \ \ \mbox{\hyperlink{main_8c_a1730ffe1e560465665eb47d9264826f9}{Error\_Handler}}();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00304}00304\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00305}00305\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ TIM17\_Init\ 2\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00306}00306\ \ \ \ \ sConfigOC.Pulse\ =\ (\mbox{\hyperlink{main_8c_a51c6d0c070f8c00f33ee08b4f1eb6e90}{htim17}}.Init.Prescaler\ -\/\ 1)\ *\ LCD\_BRIGHTNESS;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00307}00307\ \ \ \ \ \textcolor{keywordflow}{if}\ (HAL\_TIM\_PWM\_ConfigChannel(\&\mbox{\hyperlink{main_8c_a51c6d0c070f8c00f33ee08b4f1eb6e90}{htim17}},\ \&sConfigOC,\ TIM\_CHANNEL\_1)\ !=\ HAL\_OK)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00308}00308\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8c_a1730ffe1e560465665eb47d9264826f9}{Error\_Handler}}();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00309}00309\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ TIM17\_Init\ 2\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00310}00310\ \ \ \mbox{\hyperlink{main_8h_ae70bce6c39d0b570a7523b86738cec4b}{HAL\_TIM\_MspPostInit}}(\&\mbox{\hyperlink{main_8c_a51c6d0c070f8c00f33ee08b4f1eb6e90}{htim17}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00312}00312\ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00319}00319\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ MX\_GPIO\_Init(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00320}00320\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00321}00321\ \ \ GPIO\_InitTypeDef\ GPIO\_InitStruct\ =\ \{0\};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00322}00322\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ MX\_GPIO\_Init\_1\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00323}00323\ \textcolor{comment}{/*\ USER\ CODE\ END\ MX\_GPIO\_Init\_1\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00324}00324\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00325}00325\ \ \ \textcolor{comment}{/*\ GPIO\ Ports\ Clock\ Enable\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00326}00326\ \ \ \_\_HAL\_RCC\_GPIOE\_CLK\_ENABLE();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00327}00327\ \ \ \_\_HAL\_RCC\_GPIOI\_CLK\_ENABLE();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00328}00328\ \ \ \_\_HAL\_RCC\_GPIOC\_CLK\_ENABLE();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00329}00329\ \ \ \_\_HAL\_RCC\_GPIOF\_CLK\_ENABLE();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00330}00330\ \ \ \_\_HAL\_RCC\_GPIOH\_CLK\_ENABLE();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00331}00331\ \ \ \_\_HAL\_RCC\_GPIOB\_CLK\_ENABLE();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00332}00332\ \ \ \_\_HAL\_RCC\_GPIOD\_CLK\_ENABLE();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00333}00333\ \ \ \_\_HAL\_RCC\_GPIOK\_CLK\_ENABLE();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00334}00334\ \ \ \_\_HAL\_RCC\_GPIOG\_CLK\_ENABLE();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00335}00335\ \ \ \_\_HAL\_RCC\_GPIOA\_CLK\_ENABLE();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00337}00337\ \ \ \textcolor{comment}{/*Configure\ GPIO\ pin\ Output\ Level\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00338}00338\ \ \ HAL\_GPIO\_WritePin(GPIOE,\ \mbox{\hyperlink{main_8h_a8c8daa4d45d68cd8e47b75b21391ee8b}{maxCS1\_Pin}}|\mbox{\hyperlink{main_8h_a6f7ea6232ae64c782b12095f8f3cc769}{maxCS2\_Pin}},\ GPIO\_PIN\_SET);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00339}00339\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00340}00340\ \ \ \textcolor{comment}{/*Configure\ GPIO\ pin\ Output\ Level\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00341}00341\ \ \ HAL\_GPIO\_WritePin(GPIOI,\ \mbox{\hyperlink{main_8h_ad1c1042233556a09a3ac4dc5fba02b2b}{maxWrite\_Pin}}|\mbox{\hyperlink{main_8h_a8eeed15b218e57296feba7010ac3cb61}{LCD\_Disp\_Pin}},\ GPIO\_PIN\_SET);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00342}00342\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00343}00343\ \ \ \textcolor{comment}{/*Configure\ GPIO\ pin\ Output\ Level\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00344}00344\ \ \ HAL\_GPIO\_WritePin(\mbox{\hyperlink{main_8h_a13026d36edb1ec2839bb3a05611d3720}{maxRead\_GPIO\_Port}},\ \mbox{\hyperlink{main_8h_a21c5098a4bc22618035aa1a5b9610b3a}{maxRead\_Pin}},\ GPIO\_PIN\_SET);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00345}00345\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00346}00346\ \ \ \textcolor{comment}{/*Configure\ GPIO\ pin\ Output\ Level\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00347}00347\ \ \ HAL\_GPIO\_WritePin(\mbox{\hyperlink{main_8h_a1e83b46134fb6d43fccccb89dba6df03}{CS1\_GPIO\_Port}},\ \mbox{\hyperlink{main_8h_aed25018a81245a86545a76838b8b8a9b}{CS1\_Pin}},\ GPIO\_PIN\_SET);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00349}00349\ \ \ \textcolor{comment}{/*Configure\ GPIO\ pin\ Output\ Level\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00350}00350\ \ \ HAL\_GPIO\_WritePin(\mbox{\hyperlink{main_8h_a4144026a410e18467958b643160d1f28}{CS2\_GPIO\_Port}},\ \mbox{\hyperlink{main_8h_ac5d897b5a1de3f51ea4c61bf60a09aa9}{CS2\_Pin}},\ GPIO\_PIN\_SET);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00351}00351\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00352}00352\ \ \ \textcolor{comment}{/*Configure\ GPIO\ pin\ Output\ Level\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00353}00353\ \ \ HAL\_GPIO\_WritePin(GPIOC,\ \mbox{\hyperlink{main_8h_af04dd00241dd93e4d9b35d37972ce4db}{RD\_Pin}}|\mbox{\hyperlink{main_8h_aa06fa56ff5440763653830e810156460}{VAL\_Pin}},\ GPIO\_PIN\_RESET);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00354}00354\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00355}00355\ \ \ \textcolor{comment}{/*Configure\ GPIO\ pins\ :\ maxCS1\_Pin\ maxCS2\_Pin\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00356}00356\ \ \ GPIO\_InitStruct.Pin\ =\ \mbox{\hyperlink{main_8h_a8c8daa4d45d68cd8e47b75b21391ee8b}{maxCS1\_Pin}}|\mbox{\hyperlink{main_8h_a6f7ea6232ae64c782b12095f8f3cc769}{maxCS2\_Pin}};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00357}00357\ \ \ GPIO\_InitStruct.Mode\ =\ GPIO\_MODE\_OUTPUT\_PP;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00358}00358\ \ \ GPIO\_InitStruct.Pull\ =\ GPIO\_NOPULL;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00359}00359\ \ \ GPIO\_InitStruct.Speed\ =\ GPIO\_SPEED\_FREQ\_HIGH;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00360}00360\ \ \ HAL\_GPIO\_Init(GPIOE,\ \&GPIO\_InitStruct);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00361}00361\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00362}00362\ \ \ \textcolor{comment}{/*Configure\ GPIO\ pins\ :\ maxWrite\_Pin\ LCD\_Disp\_Pin\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00363}00363\ \ \ GPIO\_InitStruct.Pin\ =\ \mbox{\hyperlink{main_8h_ad1c1042233556a09a3ac4dc5fba02b2b}{maxWrite\_Pin}}|\mbox{\hyperlink{main_8h_a8eeed15b218e57296feba7010ac3cb61}{LCD\_Disp\_Pin}};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00364}00364\ \ \ GPIO\_InitStruct.Mode\ =\ GPIO\_MODE\_OUTPUT\_PP;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00365}00365\ \ \ GPIO\_InitStruct.Pull\ =\ GPIO\_NOPULL;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00366}00366\ \ \ GPIO\_InitStruct.Speed\ =\ GPIO\_SPEED\_FREQ\_LOW;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00367}00367\ \ \ HAL\_GPIO\_Init(GPIOI,\ \&GPIO\_InitStruct);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00368}00368\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00369}00369\ \ \ \textcolor{comment}{/*Configure\ GPIO\ pin\ :\ maxRead\_Pin\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00370}00370\ \ \ GPIO\_InitStruct.Pin\ =\ \mbox{\hyperlink{main_8h_a21c5098a4bc22618035aa1a5b9610b3a}{maxRead\_Pin}};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00371}00371\ \ \ GPIO\_InitStruct.Mode\ =\ GPIO\_MODE\_OUTPUT\_PP;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00372}00372\ \ \ GPIO\_InitStruct.Pull\ =\ GPIO\_NOPULL;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00373}00373\ \ \ GPIO\_InitStruct.Speed\ =\ GPIO\_SPEED\_FREQ\_LOW;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00374}00374\ \ \ HAL\_GPIO\_Init(\mbox{\hyperlink{main_8h_a13026d36edb1ec2839bb3a05611d3720}{maxRead\_GPIO\_Port}},\ \&GPIO\_InitStruct);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00375}00375\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00376}00376\ \ \ \textcolor{comment}{/*Configure\ GPIO\ pins\ :\ maxD0\_Pin\ maxD1\_Pin\ maxD2\_Pin\ maxD3\_Pin}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00377}00377\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ maxD4\_Pin\ maxD5\_Pin\ maxD6\_Pin\ maxD7\_Pin}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00378}00378\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ maxD8\_Pin\ maxD9\_Pin\ maxD10\_Pin\ maxD11\_Pin}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00379}00379\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ maxD12\_Pin\ maxD13\_Pin\ maxD14\_Pin\ maxD15\_Pin\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00380}00380\ \ \ GPIO\_InitStruct.Pin\ =\ \mbox{\hyperlink{main_8h_aaa83ab10ad1fb735325df818b1d055a7}{maxD0\_Pin}}|\mbox{\hyperlink{main_8h_a36ced98a0c10e5f704c9386d3f433a83}{maxD1\_Pin}}|\mbox{\hyperlink{main_8h_a88a2c3dc4ebed46032e8d9eee7073896}{maxD2\_Pin}}|\mbox{\hyperlink{main_8h_a81a882a901d64ad744957e3aa1e1e17a}{maxD3\_Pin}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\mbox{\hyperlink{main_8h_a4e1d6d08e648b581cd9b030d6154adc4}{maxD4\_Pin}}|\mbox{\hyperlink{main_8h_a51560f6d0b9590841a680d449d8c267e}{maxD5\_Pin}}|\mbox{\hyperlink{main_8h_a3affeb9cb38c216369980ee9823db807}{maxD6\_Pin}}|\mbox{\hyperlink{main_8h_a77efe3e6dd65415a12c81c7e10848401}{maxD7\_Pin}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00382}00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\mbox{\hyperlink{main_8h_ad35a62bc948fee0fd2b00bafce4794c9}{maxD8\_Pin}}|\mbox{\hyperlink{main_8h_a462153f1a3e75e0b5f4a4b09ef3825db}{maxD9\_Pin}}|\mbox{\hyperlink{main_8h_a31729738270ead10065aa050e4ca17da}{maxD10\_Pin}}|\mbox{\hyperlink{main_8h_af726128fc16ee41f60bd52af0a365f2e}{maxD11\_Pin}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\mbox{\hyperlink{main_8h_a88ceff704e67983f22738f9090528924}{maxD12\_Pin}}|\mbox{\hyperlink{main_8h_afe2b3aaace08be0067eb0cbfe9935c92}{maxD13\_Pin}}|\mbox{\hyperlink{main_8h_adfef915dc0e1eb7d2bf062952b568d78}{maxD14\_Pin}}|\mbox{\hyperlink{main_8h_a84dbeafca20d15ba6723908505f49f53}{maxD15\_Pin}};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00384}00384\ \ \ GPIO\_InitStruct.Mode\ =\ GPIO\_MODE\_INPUT;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00385}00385\ \ \ GPIO\_InitStruct.Pull\ =\ GPIO\_NOPULL;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00386}00386\ \ \ HAL\_GPIO\_Init(GPIOF,\ \&GPIO\_InitStruct);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00387}00387\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00388}00388\ \ \ \textcolor{comment}{/*Configure\ GPIO\ pin\ :\ CS1\_Pin\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00389}00389\ \ \ GPIO\_InitStruct.Pin\ =\ \mbox{\hyperlink{main_8h_aed25018a81245a86545a76838b8b8a9b}{CS1\_Pin}};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00390}00390\ \ \ GPIO\_InitStruct.Mode\ =\ GPIO\_MODE\_OUTPUT\_PP;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00391}00391\ \ \ GPIO\_InitStruct.Pull\ =\ GPIO\_NOPULL;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00392}00392\ \ \ GPIO\_InitStruct.Speed\ =\ GPIO\_SPEED\_FREQ\_HIGH;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00393}00393\ \ \ HAL\_GPIO\_Init(\mbox{\hyperlink{main_8h_a1e83b46134fb6d43fccccb89dba6df03}{CS1\_GPIO\_Port}},\ \&GPIO\_InitStruct);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00394}00394\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00395}00395\ \ \ \textcolor{comment}{/*Configure\ GPIO\ pin\ :\ CTP\_INT\_Pin\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00396}00396\ \ \ GPIO\_InitStruct.Pin\ =\ \mbox{\hyperlink{main_8h_a80b0f8f1111e2e4cf4814b0b93bc1120}{CTP\_INT\_Pin}};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00397}00397\ \ \ GPIO\_InitStruct.Mode\ =\ GPIO\_MODE\_IT\_FALLING;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00398}00398\ \ \ GPIO\_InitStruct.Pull\ =\ GPIO\_NOPULL;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00399}00399\ \ \ HAL\_GPIO\_Init(\mbox{\hyperlink{main_8h_a5f41cd4ea93d87ca99f20d9d34f5d9b8}{CTP\_INT\_GPIO\_Port}},\ \&GPIO\_InitStruct);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00400}00400\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00401}00401\ \ \ \textcolor{comment}{/*Configure\ GPIO\ pin\ :\ CS2\_Pin\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00402}00402\ \ \ GPIO\_InitStruct.Pin\ =\ \mbox{\hyperlink{main_8h_ac5d897b5a1de3f51ea4c61bf60a09aa9}{CS2\_Pin}};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00403}00403\ \ \ GPIO\_InitStruct.Mode\ =\ GPIO\_MODE\_OUTPUT\_PP;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00404}00404\ \ \ GPIO\_InitStruct.Pull\ =\ GPIO\_NOPULL;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00405}00405\ \ \ GPIO\_InitStruct.Speed\ =\ GPIO\_SPEED\_FREQ\_HIGH;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00406}00406\ \ \ HAL\_GPIO\_Init(\mbox{\hyperlink{main_8h_a4144026a410e18467958b643160d1f28}{CS2\_GPIO\_Port}},\ \&GPIO\_InitStruct);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00407}00407\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00408}00408\ \ \ \textcolor{comment}{/*Configure\ GPIO\ pins\ :\ RD\_Pin\ VAL\_Pin\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00409}00409\ \ \ GPIO\_InitStruct.Pin\ =\ \mbox{\hyperlink{main_8h_af04dd00241dd93e4d9b35d37972ce4db}{RD\_Pin}}|\mbox{\hyperlink{main_8h_aa06fa56ff5440763653830e810156460}{VAL\_Pin}};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00410}00410\ \ \ GPIO\_InitStruct.Mode\ =\ GPIO\_MODE\_OUTPUT\_PP;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00411}00411\ \ \ GPIO\_InitStruct.Pull\ =\ GPIO\_NOPULL;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00412}00412\ \ \ GPIO\_InitStruct.Speed\ =\ GPIO\_SPEED\_FREQ\_VERY\_HIGH;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00413}00413\ \ \ HAL\_GPIO\_Init(GPIOC,\ \&GPIO\_InitStruct);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00414}00414\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00415}00415\ \ \ \textcolor{comment}{/*\ EXTI\ interrupt\ init*/}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00416}00416\ \ \ HAL\_NVIC\_SetPriority(EXTI2\_IRQn,\ 5,\ 0);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00417}00417\ \ \ HAL\_NVIC\_EnableIRQ(EXTI2\_IRQn);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00418}00418\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00419}00419\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ MX\_GPIO\_Init\_2\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00420}00420\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00421}00421\ \textcolor{comment}{/*\ USER\ CODE\ END\ MX\_GPIO\_Init\_2\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00422}00422\ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00423}00423\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00424}00424\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ 4\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00425}00425\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00426}00426\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00427}00427\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00428}00428\ \textcolor{comment}{/*\ USER\ CODE\ END\ 4\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00429}00429\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00430}00430\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ Header\_StartStorageTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00436}00436\ \textcolor{comment}{/*\ USER\ CODE\ END\ Header\_StartStorageTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00437}\mbox{\hyperlink{main_8c_ad66d50f7f11e10b46ad18659a894e609}{00437}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8c_ad66d50f7f11e10b46ad18659a894e609}{StartStorageTask}}(\textcolor{keywordtype}{void}\ *argument)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00438}00438\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00439}00439\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ 5\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00440}00440\ \ \ \ \ \textcolor{comment}{/*\ Infinite\ loop\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00441}00441\ \ \ \ \ \textcolor{keywordflow}{for}(;;)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00442}00442\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00443}00443\ \ \ \ \ \ \ \ \ StateStorage\_Refresh();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00444}00444\ \ \ \ \ \ \ \ \ osDelay(2000);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00445}00445\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00446}00446\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ 5\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00447}00447\ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00448}00448\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00449}00449\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ Header\_StartStatsTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00455}00455\ \textcolor{comment}{/*\ USER\ CODE\ END\ Header\_StartStatsTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00456}\mbox{\hyperlink{main_8c_a14b80805fa4e7fad1526d62ae6a7eb2c}{00456}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8c_a14b80805fa4e7fad1526d62ae6a7eb2c}{StartStatsTask}}(\textcolor{keywordtype}{void}\ *argument)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00457}00457\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00458}00458\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ StartStatsTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00459}00459\ \ \ \ \ \textcolor{comment}{/*\ Infinite\ loop\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00460}00460\ \ \ \ \ \textcolor{keywordflow}{for}(;;)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00461}00461\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00462}00462\ \ \ \ \ \ \ \ \ BSP\_ADC\_ComputeStatsInBulk((adc\_processed\_data\_t*)\&PROCESSED\_ADC\_DATA,\ (\textcolor{keywordtype}{float})ADC\_INFO.fs);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00463}00463\ \ \ \ \ \ \ \ \ osDelay(1);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00464}00464\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00465}00465\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ StartStatsTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00466}00466\ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00467}00467\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00468}00468\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ Header\_StartDisplayTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00474}00474\ \textcolor{comment}{/*\ USER\ CODE\ END\ Header\_StartDisplayTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00475}\mbox{\hyperlink{main_8c_a64af7b05aa5e6301555807da75cd4456}{00475}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8c_a64af7b05aa5e6301555807da75cd4456}{StartDisplayTask}}(\textcolor{keywordtype}{void}\ *argument)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00476}00476\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00477}00477\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ StartDisplayTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00478}00478\ \ \ \ \ \textcolor{comment}{/*\ Infinite\ loop\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00479}00479\ \ \ \ \ \textcolor{keywordtype}{int}\ i\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00480}00480\ \ \ \ \ \textcolor{keywordflow}{for}(;;)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00481}00481\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00482}00482\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (++i\ >\ 2)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00483}00483\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ ScreenManager\_Refresh();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00485}00485\ \ \ \ \ \ \ \ \ \ \ \ \ i\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00486}00486\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00487}00487\ \ \ \ \ \ \ \ \ \textcolor{comment}{//To\ handle\ the\ tasks\ of\ LVGL\ you\ need\ to\ call\ lv\_timer\_handler()\ periodically}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00488}00488\ \ \ \ \ \ \ \ \ lv\_timer\_handler();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00489}00489\ \ \ \ \ \ \ \ \ osDelay(1);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00490}00490\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00491}00491\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ StartDisplayTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00492}00492\ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00493}00493\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00494}00494\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ Header\_StartTouchTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00500}00500\ \textcolor{comment}{/*\ USER\ CODE\ END\ Header\_StartTouchTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00501}\mbox{\hyperlink{main_8c_a068b610ac1b4e7b2fe5fdef4d02ede01}{00501}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8c_a068b610ac1b4e7b2fe5fdef4d02ede01}{StartTouchTask}}(\textcolor{keywordtype}{void}\ *argument)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00502}00502\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00503}00503\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ StartTouchTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (BSP\_TS\_Init(800,\ 480)!=\ TS\_OK)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00506}00506\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ osDelay(100);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//BSP\_TS\_Poll();}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00508}00508\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00509}00509\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (;;)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00510}00510\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00511}00511\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//osSignalWait(CTP\_INT,\ osWaitForever);}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00512}00512\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//osThreadFlagsWait(CTP\_INT,osFlagsWaitAny,osWaitForever);//it\ clears\ the\ flag\ after\ processing\ it}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00513}00513\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00514}00514\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BSP\_TS\_Poll();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00515}00515\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ osDelay(10);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00516}00516\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//osSignalClear(touchTaskHandle,\ CTP\_INT);}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00517}00517\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//osThreadFlagsClear(CTP\_INT);}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00518}00518\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00519}00519\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00520}00520\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//vTaskSuspend(NULL);//suspend\ itself}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00521}00521\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Infinite\ loop\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00522}00522\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00523}00523\ \ \ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ StartTouchTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00524}00524\ \ \ \ \ \textcolor{comment}{//while(BSP\_TS\_Init(800,\ 480)\ !=\ TS\_OK)}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00525}00525\ \ \ \ \ \ \ \ \ \textcolor{comment}{//osDelay(100);}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00526}00526\ \ \ \ \ \textcolor{comment}{/*\ Infinite\ loop\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00527}00527\ \ \ \ \ \textcolor{comment}{//for(;;)}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00528}00528\ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00529}00529\ \ \ \ \ \ \ \ \ \textcolor{comment}{//BSP\_TS\_Poll();}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00530}00530\ \ \ \ \ \ \ \ \ \textcolor{comment}{//osDelay(10);}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00531}00531\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00532}00532\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ StartTouchTask\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00533}00533\ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00534}00534\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00543}\mbox{\hyperlink{main_8c_a8a3b0ad512a6e6c6157440b68d395eac}{00543}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8c_a8a3b0ad512a6e6c6157440b68d395eac}{HAL\_TIM\_PeriodElapsedCallback}}(TIM\_HandleTypeDef\ *htim)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00544}00544\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00545}00545\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ Callback\ 0\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00546}00546\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00547}00547\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ Callback\ 0\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00548}00548\ \ \ \textcolor{keywordflow}{if}\ (htim-\/>Instance\ ==\ TIM7)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00549}00549\ \ \ \ \ HAL\_IncTick();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00550}00550\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00551}00551\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ Callback\ 1\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00552}00552\ \ \ \ \ \textcolor{keywordflow}{if}\ (htim-\/>Instance\ ==\ TIM7\ \&\&\ \mbox{\hyperlink{main_8c_a606a8c7391bbfe39b0e0bf6d3531bbbd}{isDispInitialized}})}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00553}00553\ \ \ \ \ \ \ \ \ lv\_tick\_inc(1);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00554}00554\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ Callback\ 1\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00555}00555\ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00556}00556\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00561}\mbox{\hyperlink{main_8h_a1730ffe1e560465665eb47d9264826f9}{00561}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{main_8c_a1730ffe1e560465665eb47d9264826f9}{Error\_Handler}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00562}00562\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00563}00563\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ Error\_Handler\_Debug\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00564}00564\ \ \ \ \ \textcolor{comment}{/*\ User\ can\ add\ his\ own\ implementation\ to\ report\ the\ HAL\ error\ return\ state\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00565}00565\ \ \ \ \ \_\_disable\_irq();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00566}00566\ \ \ \ \ \textcolor{keywordflow}{while}\ (1)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00567}00567\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00568}00568\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00569}00569\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ Error\_Handler\_Debug\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00570}00570\ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00571}00571\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00572}00572\ \textcolor{preprocessor}{\#ifdef\ \ USE\_FULL\_ASSERT}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00580}00580\ \textcolor{keywordtype}{void}\ assert\_failed(uint8\_t\ *file,\ uint32\_t\ line)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00581}00581\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00582}00582\ \ \ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ 6\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00583}00583\ \ \ \ \ \textcolor{comment}{/*\ User\ can\ add\ his\ own\ implementation\ to\ report\ the\ file\ name\ and\ line\ number,}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00584}00584\ \textcolor{comment}{\ \ \ \ \ ex:\ printf("{}Wrong\ parameters\ value:\ file\ \%s\ on\ line\ \%d\(\backslash\)r\(\backslash\)n"{},\ file,\ line)\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00585}00585\ \ \ \textcolor{comment}{/*\ USER\ CODE\ END\ 6\ */}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00586}00586\ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00587}00587\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ USE\_FULL\_ASSERT\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

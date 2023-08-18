@@ -1,0 +1,757 @@
+\doxysection{C\+:/\+Taraz\+Server/work\+\_\+directory/00\+\_\+\+Osama\+\_\+\+Tahir/\+BSP/\+PEController\+BSP\+\_\+\+Forked/\+Projects/\+PEController/\+Applications/\+PWMGenerator/\+CM4/\+Core/\+Inc/main.h File Reference}
+\hypertarget{main_8h}{}\label{main_8h}\index{C:/TarazServer/work\_directory/00\_Osama\_Tahir/BSP/PEControllerBSP\_Forked/Projects/PEController/Applications/PWMGenerator/CM4/Core/Inc/main.h@{C:/TarazServer/work\_directory/00\_Osama\_Tahir/BSP/PEControllerBSP\_Forked/Projects/PEController/Applications/PWMGenerator/CM4/Core/Inc/main.h}}
+
+
+\+: Header for \doxylink{main_8c}{main.\+c} file. This file contains the common defines of the application.  
+
+
+{\ttfamily \#include \"{}stm32h7xx\+\_\+hal.\+h\"{}}\newline
+Include dependency graph for main.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{main_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8h_a8c8daa4d45d68cd8e47b75b21391ee8b}{max\+CS1\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+2
+\item 
+\#define \mbox{\hyperlink{main_8h_a19e4a25bc3b59a173707c6fae570320e}{max\+CS1\+\_\+\+GPIO\+\_\+\+Port}}~GPIOE
+\item 
+\#define \mbox{\hyperlink{main_8h_a6f7ea6232ae64c782b12095f8f3cc769}{max\+CS2\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+3
+\item 
+\#define \mbox{\hyperlink{main_8h_a02a665c46bb0a69ec4608b66b5b34bc9}{max\+CS2\+\_\+\+GPIO\+\_\+\+Port}}~GPIOE
+\item 
+\#define \mbox{\hyperlink{main_8h_ad1c1042233556a09a3ac4dc5fba02b2b}{max\+Write\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+8
+\item 
+\#define \mbox{\hyperlink{main_8h_ad3e00af6a392767c1e2f90236d2cb738}{max\+Write\+\_\+\+GPIO\+\_\+\+Port}}~GPIOI
+\item 
+\#define \mbox{\hyperlink{main_8h_a21c5098a4bc22618035aa1a5b9610b3a}{max\+Read\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+13
+\item 
+\#define \mbox{\hyperlink{main_8h_a13026d36edb1ec2839bb3a05611d3720}{max\+Read\+\_\+\+GPIO\+\_\+\+Port}}~GPIOC
+\item 
+\#define \mbox{\hyperlink{main_8h_aaa83ab10ad1fb735325df818b1d055a7}{max\+D0\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+0
+\item 
+\#define \mbox{\hyperlink{main_8h_a534554472d3a7b55f054336b28f27b8d}{max\+D0\+\_\+\+GPIO\+\_\+\+Port}}~GPIOF
+\item 
+\#define \mbox{\hyperlink{main_8h_a36ced98a0c10e5f704c9386d3f433a83}{max\+D1\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+1
+\item 
+\#define \mbox{\hyperlink{main_8h_ab4206a96f71498a4b286e5d2b336eaca}{max\+D1\+\_\+\+GPIO\+\_\+\+Port}}~GPIOF
+\item 
+\#define \mbox{\hyperlink{main_8h_a88a2c3dc4ebed46032e8d9eee7073896}{max\+D2\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+2
+\item 
+\#define \mbox{\hyperlink{main_8h_afba2051c870d2f2c507413b167e95568}{max\+D2\+\_\+\+GPIO\+\_\+\+Port}}~GPIOF
+\item 
+\#define \mbox{\hyperlink{main_8h_a81a882a901d64ad744957e3aa1e1e17a}{max\+D3\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+3
+\item 
+\#define \mbox{\hyperlink{main_8h_afc20767c50debc37760ddb3ff2eea202}{max\+D3\+\_\+\+GPIO\+\_\+\+Port}}~GPIOF
+\item 
+\#define \mbox{\hyperlink{main_8h_a4e1d6d08e648b581cd9b030d6154adc4}{max\+D4\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+4
+\item 
+\#define \mbox{\hyperlink{main_8h_a5f0b9287e14dd8d539091188d1683b02}{max\+D4\+\_\+\+GPIO\+\_\+\+Port}}~GPIOF
+\item 
+\#define \mbox{\hyperlink{main_8h_a51560f6d0b9590841a680d449d8c267e}{max\+D5\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+5
+\item 
+\#define \mbox{\hyperlink{main_8h_a3915f475a33a851b0d4664ef6b146514}{max\+D5\+\_\+\+GPIO\+\_\+\+Port}}~GPIOF
+\item 
+\#define \mbox{\hyperlink{main_8h_a3affeb9cb38c216369980ee9823db807}{max\+D6\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+6
+\item 
+\#define \mbox{\hyperlink{main_8h_ac7adbc63425cd70ec600fe51dc41b258}{max\+D6\+\_\+\+GPIO\+\_\+\+Port}}~GPIOF
+\item 
+\#define \mbox{\hyperlink{main_8h_a77efe3e6dd65415a12c81c7e10848401}{max\+D7\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+7
+\item 
+\#define \mbox{\hyperlink{main_8h_a6921ad85669cedf8feda6aff2b2b5034}{max\+D7\+\_\+\+GPIO\+\_\+\+Port}}~GPIOF
+\item 
+\#define \mbox{\hyperlink{main_8h_ad35a62bc948fee0fd2b00bafce4794c9}{max\+D8\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+8
+\item 
+\#define \mbox{\hyperlink{main_8h_ae0bff25fb0dc5a18de990b535458b1e7}{max\+D8\+\_\+\+GPIO\+\_\+\+Port}}~GPIOF
+\item 
+\#define \mbox{\hyperlink{main_8h_a462153f1a3e75e0b5f4a4b09ef3825db}{max\+D9\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+9
+\item 
+\#define \mbox{\hyperlink{main_8h_ae7a808d34d8f63372cfaad1d12b0e75b}{max\+D9\+\_\+\+GPIO\+\_\+\+Port}}~GPIOF
+\item 
+\#define \mbox{\hyperlink{main_8h_a31729738270ead10065aa050e4ca17da}{max\+D10\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+10
+\item 
+\#define \mbox{\hyperlink{main_8h_ac41cd99d0ba8a0a6cdcfb141b7929c2f}{max\+D10\+\_\+\+GPIO\+\_\+\+Port}}~GPIOF
+\item 
+\#define \mbox{\hyperlink{main_8h_a45192cf901714355865b5046739ed4fb}{CTP\+\_\+\+I2\+C\+\_\+\+SCL\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+4
+\item 
+\#define \mbox{\hyperlink{main_8h_a3cff7b38a024ab783ebb6aff380e8a35}{CTP\+\_\+\+I2\+C\+\_\+\+SCL\+\_\+\+GPIO\+\_\+\+Port}}~GPIOH
+\item 
+\#define \mbox{\hyperlink{main_8h_ad07ca90faf10b8394ffd2fa21d6b641c}{CTP\+\_\+\+I2\+C\+\_\+\+SDA\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+5
+\item 
+\#define \mbox{\hyperlink{main_8h_a990682fd805192cdffa78816a507219b}{CTP\+\_\+\+I2\+C\+\_\+\+SDA\+\_\+\+GPIO\+\_\+\+Port}}~GPIOH
+\item 
+\#define \mbox{\hyperlink{main_8h_aed25018a81245a86545a76838b8b8a9b}{CS1\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+2
+\item 
+\#define \mbox{\hyperlink{main_8h_a1e83b46134fb6d43fccccb89dba6df03}{CS1\+\_\+\+GPIO\+\_\+\+Port}}~GPIOB
+\item 
+\#define \mbox{\hyperlink{main_8h_af726128fc16ee41f60bd52af0a365f2e}{max\+D11\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+11
+\item 
+\#define \mbox{\hyperlink{main_8h_a4b27ef4c9a8aa3ef758aa86f10ee3ef8}{max\+D11\+\_\+\+GPIO\+\_\+\+Port}}~GPIOF
+\item 
+\#define \mbox{\hyperlink{main_8h_a88ceff704e67983f22738f9090528924}{max\+D12\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+12
+\item 
+\#define \mbox{\hyperlink{main_8h_af5056ff070244955f868beacbcaf59fb}{max\+D12\+\_\+\+GPIO\+\_\+\+Port}}~GPIOF
+\item 
+\#define \mbox{\hyperlink{main_8h_afe2b3aaace08be0067eb0cbfe9935c92}{max\+D13\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+13
+\item 
+\#define \mbox{\hyperlink{main_8h_ac238ebaa1941eeee066a6bd0f7510c6f}{max\+D13\+\_\+\+GPIO\+\_\+\+Port}}~GPIOF
+\item 
+\#define \mbox{\hyperlink{main_8h_adfef915dc0e1eb7d2bf062952b568d78}{max\+D14\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+14
+\item 
+\#define \mbox{\hyperlink{main_8h_aceb14d2010dad85dd94693d03539c5d4}{max\+D14\+\_\+\+GPIO\+\_\+\+Port}}~GPIOF
+\item 
+\#define \mbox{\hyperlink{main_8h_a84dbeafca20d15ba6723908505f49f53}{max\+D15\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+15
+\item 
+\#define \mbox{\hyperlink{main_8h_a7863ae4f48b486dafb01aeb08430db7b}{max\+D15\+\_\+\+GPIO\+\_\+\+Port}}~GPIOF
+\item 
+\#define \mbox{\hyperlink{main_8h_a80b0f8f1111e2e4cf4814b0b93bc1120}{CTP\+\_\+\+INT\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+2
+\item 
+\#define \mbox{\hyperlink{main_8h_a5f41cd4ea93d87ca99f20d9d34f5d9b8}{CTP\+\_\+\+INT\+\_\+\+GPIO\+\_\+\+Port}}~GPIOG
+\item 
+\#define \mbox{\hyperlink{main_8h_a8eeed15b218e57296feba7010ac3cb61}{LCD\+\_\+\+Disp\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+2
+\item 
+\#define \mbox{\hyperlink{main_8h_acdd2bf5dbb8147a099c8fd401fa7ccfc}{LCD\+\_\+\+Disp\+\_\+\+GPIO\+\_\+\+Port}}~GPIOI
+\item 
+\#define \mbox{\hyperlink{main_8h_ac5d897b5a1de3f51ea4c61bf60a09aa9}{CS2\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+15
+\item 
+\#define \mbox{\hyperlink{main_8h_a4144026a410e18467958b643160d1f28}{CS2\+\_\+\+GPIO\+\_\+\+Port}}~GPIOA
+\item 
+\#define \mbox{\hyperlink{main_8h_af04dd00241dd93e4d9b35d37972ce4db}{RD\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+10
+\item 
+\#define \mbox{\hyperlink{main_8h_a7f5fab4b400a23b73084a8754f2d2208}{RD\+\_\+\+GPIO\+\_\+\+Port}}~GPIOC
+\item 
+\#define \mbox{\hyperlink{main_8h_aa06fa56ff5440763653830e810156460}{VAL\+\_\+\+Pin}}~GPIO\+\_\+\+PIN\+\_\+11
+\item 
+\#define \mbox{\hyperlink{main_8h_a002e2162e6ad87b7e1c6caf70a4c0c15}{VAL\+\_\+\+GPIO\+\_\+\+Port}}~GPIOC
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8h_ae70bce6c39d0b570a7523b86738cec4b}{HAL\+\_\+\+TIM\+\_\+\+Msp\+Post\+Init}} (TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}htim)
+\item 
+void \mbox{\hyperlink{main_8h_a1730ffe1e560465665eb47d9264826f9}{Error\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\+: Header for \doxylink{main_8c}{main.\+c} file. This file contains the common defines of the application. 
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2021 STMicroelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under BSD 3-\/Clause license, the \"{}\+License\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: opensource.\+org/licenses/\+BSD-\/3-\/\+Clause 
+
+Definition in file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{main_8h_a1e83b46134fb6d43fccccb89dba6df03}\label{main_8h_a1e83b46134fb6d43fccccb89dba6df03} 
+\index{main.h@{main.h}!CS1\_GPIO\_Port@{CS1\_GPIO\_Port}}
+\index{CS1\_GPIO\_Port@{CS1\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{CS1\_GPIO\_Port}{CS1\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define CS1\+\_\+\+GPIO\+\_\+\+Port~GPIOB}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00098}{98}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_aed25018a81245a86545a76838b8b8a9b}\label{main_8h_aed25018a81245a86545a76838b8b8a9b} 
+\index{main.h@{main.h}!CS1\_Pin@{CS1\_Pin}}
+\index{CS1\_Pin@{CS1\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{CS1\_Pin}{CS1\_Pin}}
+{\footnotesize\ttfamily \#define CS1\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+2}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00097}{97}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a4144026a410e18467958b643160d1f28}\label{main_8h_a4144026a410e18467958b643160d1f28} 
+\index{main.h@{main.h}!CS2\_GPIO\_Port@{CS2\_GPIO\_Port}}
+\index{CS2\_GPIO\_Port@{CS2\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{CS2\_GPIO\_Port}{CS2\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define CS2\+\_\+\+GPIO\+\_\+\+Port~GPIOA}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00114}{114}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_ac5d897b5a1de3f51ea4c61bf60a09aa9}\label{main_8h_ac5d897b5a1de3f51ea4c61bf60a09aa9} 
+\index{main.h@{main.h}!CS2\_Pin@{CS2\_Pin}}
+\index{CS2\_Pin@{CS2\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{CS2\_Pin}{CS2\_Pin}}
+{\footnotesize\ttfamily \#define CS2\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+15}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00113}{113}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a3cff7b38a024ab783ebb6aff380e8a35}\label{main_8h_a3cff7b38a024ab783ebb6aff380e8a35} 
+\index{main.h@{main.h}!CTP\_I2C\_SCL\_GPIO\_Port@{CTP\_I2C\_SCL\_GPIO\_Port}}
+\index{CTP\_I2C\_SCL\_GPIO\_Port@{CTP\_I2C\_SCL\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{CTP\_I2C\_SCL\_GPIO\_Port}{CTP\_I2C\_SCL\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define CTP\+\_\+\+I2\+C\+\_\+\+SCL\+\_\+\+GPIO\+\_\+\+Port~GPIOH}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00094}{94}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a45192cf901714355865b5046739ed4fb}\label{main_8h_a45192cf901714355865b5046739ed4fb} 
+\index{main.h@{main.h}!CTP\_I2C\_SCL\_Pin@{CTP\_I2C\_SCL\_Pin}}
+\index{CTP\_I2C\_SCL\_Pin@{CTP\_I2C\_SCL\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{CTP\_I2C\_SCL\_Pin}{CTP\_I2C\_SCL\_Pin}}
+{\footnotesize\ttfamily \#define CTP\+\_\+\+I2\+C\+\_\+\+SCL\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+4}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00093}{93}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a990682fd805192cdffa78816a507219b}\label{main_8h_a990682fd805192cdffa78816a507219b} 
+\index{main.h@{main.h}!CTP\_I2C\_SDA\_GPIO\_Port@{CTP\_I2C\_SDA\_GPIO\_Port}}
+\index{CTP\_I2C\_SDA\_GPIO\_Port@{CTP\_I2C\_SDA\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{CTP\_I2C\_SDA\_GPIO\_Port}{CTP\_I2C\_SDA\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define CTP\+\_\+\+I2\+C\+\_\+\+SDA\+\_\+\+GPIO\+\_\+\+Port~GPIOH}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00096}{96}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_ad07ca90faf10b8394ffd2fa21d6b641c}\label{main_8h_ad07ca90faf10b8394ffd2fa21d6b641c} 
+\index{main.h@{main.h}!CTP\_I2C\_SDA\_Pin@{CTP\_I2C\_SDA\_Pin}}
+\index{CTP\_I2C\_SDA\_Pin@{CTP\_I2C\_SDA\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{CTP\_I2C\_SDA\_Pin}{CTP\_I2C\_SDA\_Pin}}
+{\footnotesize\ttfamily \#define CTP\+\_\+\+I2\+C\+\_\+\+SDA\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+5}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00095}{95}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a5f41cd4ea93d87ca99f20d9d34f5d9b8}\label{main_8h_a5f41cd4ea93d87ca99f20d9d34f5d9b8} 
+\index{main.h@{main.h}!CTP\_INT\_GPIO\_Port@{CTP\_INT\_GPIO\_Port}}
+\index{CTP\_INT\_GPIO\_Port@{CTP\_INT\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{CTP\_INT\_GPIO\_Port}{CTP\_INT\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define CTP\+\_\+\+INT\+\_\+\+GPIO\+\_\+\+Port~GPIOG}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00110}{110}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a80b0f8f1111e2e4cf4814b0b93bc1120}\label{main_8h_a80b0f8f1111e2e4cf4814b0b93bc1120} 
+\index{main.h@{main.h}!CTP\_INT\_Pin@{CTP\_INT\_Pin}}
+\index{CTP\_INT\_Pin@{CTP\_INT\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{CTP\_INT\_Pin}{CTP\_INT\_Pin}}
+{\footnotesize\ttfamily \#define CTP\+\_\+\+INT\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+2}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00109}{109}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_acdd2bf5dbb8147a099c8fd401fa7ccfc}\label{main_8h_acdd2bf5dbb8147a099c8fd401fa7ccfc} 
+\index{main.h@{main.h}!LCD\_Disp\_GPIO\_Port@{LCD\_Disp\_GPIO\_Port}}
+\index{LCD\_Disp\_GPIO\_Port@{LCD\_Disp\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_Disp\_GPIO\_Port}{LCD\_Disp\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+Disp\+\_\+\+GPIO\+\_\+\+Port~GPIOI}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00112}{112}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a8eeed15b218e57296feba7010ac3cb61}\label{main_8h_a8eeed15b218e57296feba7010ac3cb61} 
+\index{main.h@{main.h}!LCD\_Disp\_Pin@{LCD\_Disp\_Pin}}
+\index{LCD\_Disp\_Pin@{LCD\_Disp\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{LCD\_Disp\_Pin}{LCD\_Disp\_Pin}}
+{\footnotesize\ttfamily \#define LCD\+\_\+\+Disp\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+2}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00111}{111}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a19e4a25bc3b59a173707c6fae570320e}\label{main_8h_a19e4a25bc3b59a173707c6fae570320e} 
+\index{main.h@{main.h}!maxCS1\_GPIO\_Port@{maxCS1\_GPIO\_Port}}
+\index{maxCS1\_GPIO\_Port@{maxCS1\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxCS1\_GPIO\_Port}{maxCS1\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+CS1\+\_\+\+GPIO\+\_\+\+Port~GPIOE}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00064}{64}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a8c8daa4d45d68cd8e47b75b21391ee8b}\label{main_8h_a8c8daa4d45d68cd8e47b75b21391ee8b} 
+\index{main.h@{main.h}!maxCS1\_Pin@{maxCS1\_Pin}}
+\index{maxCS1\_Pin@{maxCS1\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxCS1\_Pin}{maxCS1\_Pin}}
+{\footnotesize\ttfamily \#define max\+CS1\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+2}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00063}{63}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a02a665c46bb0a69ec4608b66b5b34bc9}\label{main_8h_a02a665c46bb0a69ec4608b66b5b34bc9} 
+\index{main.h@{main.h}!maxCS2\_GPIO\_Port@{maxCS2\_GPIO\_Port}}
+\index{maxCS2\_GPIO\_Port@{maxCS2\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxCS2\_GPIO\_Port}{maxCS2\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+CS2\+\_\+\+GPIO\+\_\+\+Port~GPIOE}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00066}{66}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a6f7ea6232ae64c782b12095f8f3cc769}\label{main_8h_a6f7ea6232ae64c782b12095f8f3cc769} 
+\index{main.h@{main.h}!maxCS2\_Pin@{maxCS2\_Pin}}
+\index{maxCS2\_Pin@{maxCS2\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxCS2\_Pin}{maxCS2\_Pin}}
+{\footnotesize\ttfamily \#define max\+CS2\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+3}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00065}{65}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a534554472d3a7b55f054336b28f27b8d}\label{main_8h_a534554472d3a7b55f054336b28f27b8d} 
+\index{main.h@{main.h}!maxD0\_GPIO\_Port@{maxD0\_GPIO\_Port}}
+\index{maxD0\_GPIO\_Port@{maxD0\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD0\_GPIO\_Port}{maxD0\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+D0\+\_\+\+GPIO\+\_\+\+Port~GPIOF}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00072}{72}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_aaa83ab10ad1fb735325df818b1d055a7}\label{main_8h_aaa83ab10ad1fb735325df818b1d055a7} 
+\index{main.h@{main.h}!maxD0\_Pin@{maxD0\_Pin}}
+\index{maxD0\_Pin@{maxD0\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD0\_Pin}{maxD0\_Pin}}
+{\footnotesize\ttfamily \#define max\+D0\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+0}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00071}{71}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_ac41cd99d0ba8a0a6cdcfb141b7929c2f}\label{main_8h_ac41cd99d0ba8a0a6cdcfb141b7929c2f} 
+\index{main.h@{main.h}!maxD10\_GPIO\_Port@{maxD10\_GPIO\_Port}}
+\index{maxD10\_GPIO\_Port@{maxD10\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD10\_GPIO\_Port}{maxD10\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+D10\+\_\+\+GPIO\+\_\+\+Port~GPIOF}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00092}{92}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a31729738270ead10065aa050e4ca17da}\label{main_8h_a31729738270ead10065aa050e4ca17da} 
+\index{main.h@{main.h}!maxD10\_Pin@{maxD10\_Pin}}
+\index{maxD10\_Pin@{maxD10\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD10\_Pin}{maxD10\_Pin}}
+{\footnotesize\ttfamily \#define max\+D10\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+10}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00091}{91}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a4b27ef4c9a8aa3ef758aa86f10ee3ef8}\label{main_8h_a4b27ef4c9a8aa3ef758aa86f10ee3ef8} 
+\index{main.h@{main.h}!maxD11\_GPIO\_Port@{maxD11\_GPIO\_Port}}
+\index{maxD11\_GPIO\_Port@{maxD11\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD11\_GPIO\_Port}{maxD11\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+D11\+\_\+\+GPIO\+\_\+\+Port~GPIOF}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00100}{100}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_af726128fc16ee41f60bd52af0a365f2e}\label{main_8h_af726128fc16ee41f60bd52af0a365f2e} 
+\index{main.h@{main.h}!maxD11\_Pin@{maxD11\_Pin}}
+\index{maxD11\_Pin@{maxD11\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD11\_Pin}{maxD11\_Pin}}
+{\footnotesize\ttfamily \#define max\+D11\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+11}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00099}{99}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_af5056ff070244955f868beacbcaf59fb}\label{main_8h_af5056ff070244955f868beacbcaf59fb} 
+\index{main.h@{main.h}!maxD12\_GPIO\_Port@{maxD12\_GPIO\_Port}}
+\index{maxD12\_GPIO\_Port@{maxD12\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD12\_GPIO\_Port}{maxD12\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+D12\+\_\+\+GPIO\+\_\+\+Port~GPIOF}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00102}{102}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a88ceff704e67983f22738f9090528924}\label{main_8h_a88ceff704e67983f22738f9090528924} 
+\index{main.h@{main.h}!maxD12\_Pin@{maxD12\_Pin}}
+\index{maxD12\_Pin@{maxD12\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD12\_Pin}{maxD12\_Pin}}
+{\footnotesize\ttfamily \#define max\+D12\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+12}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00101}{101}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_ac238ebaa1941eeee066a6bd0f7510c6f}\label{main_8h_ac238ebaa1941eeee066a6bd0f7510c6f} 
+\index{main.h@{main.h}!maxD13\_GPIO\_Port@{maxD13\_GPIO\_Port}}
+\index{maxD13\_GPIO\_Port@{maxD13\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD13\_GPIO\_Port}{maxD13\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+D13\+\_\+\+GPIO\+\_\+\+Port~GPIOF}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00104}{104}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_afe2b3aaace08be0067eb0cbfe9935c92}\label{main_8h_afe2b3aaace08be0067eb0cbfe9935c92} 
+\index{main.h@{main.h}!maxD13\_Pin@{maxD13\_Pin}}
+\index{maxD13\_Pin@{maxD13\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD13\_Pin}{maxD13\_Pin}}
+{\footnotesize\ttfamily \#define max\+D13\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+13}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00103}{103}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_aceb14d2010dad85dd94693d03539c5d4}\label{main_8h_aceb14d2010dad85dd94693d03539c5d4} 
+\index{main.h@{main.h}!maxD14\_GPIO\_Port@{maxD14\_GPIO\_Port}}
+\index{maxD14\_GPIO\_Port@{maxD14\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD14\_GPIO\_Port}{maxD14\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+D14\+\_\+\+GPIO\+\_\+\+Port~GPIOF}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00106}{106}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_adfef915dc0e1eb7d2bf062952b568d78}\label{main_8h_adfef915dc0e1eb7d2bf062952b568d78} 
+\index{main.h@{main.h}!maxD14\_Pin@{maxD14\_Pin}}
+\index{maxD14\_Pin@{maxD14\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD14\_Pin}{maxD14\_Pin}}
+{\footnotesize\ttfamily \#define max\+D14\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+14}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00105}{105}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a7863ae4f48b486dafb01aeb08430db7b}\label{main_8h_a7863ae4f48b486dafb01aeb08430db7b} 
+\index{main.h@{main.h}!maxD15\_GPIO\_Port@{maxD15\_GPIO\_Port}}
+\index{maxD15\_GPIO\_Port@{maxD15\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD15\_GPIO\_Port}{maxD15\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+D15\+\_\+\+GPIO\+\_\+\+Port~GPIOF}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00108}{108}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a84dbeafca20d15ba6723908505f49f53}\label{main_8h_a84dbeafca20d15ba6723908505f49f53} 
+\index{main.h@{main.h}!maxD15\_Pin@{maxD15\_Pin}}
+\index{maxD15\_Pin@{maxD15\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD15\_Pin}{maxD15\_Pin}}
+{\footnotesize\ttfamily \#define max\+D15\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+15}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00107}{107}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_ab4206a96f71498a4b286e5d2b336eaca}\label{main_8h_ab4206a96f71498a4b286e5d2b336eaca} 
+\index{main.h@{main.h}!maxD1\_GPIO\_Port@{maxD1\_GPIO\_Port}}
+\index{maxD1\_GPIO\_Port@{maxD1\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD1\_GPIO\_Port}{maxD1\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+D1\+\_\+\+GPIO\+\_\+\+Port~GPIOF}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00074}{74}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a36ced98a0c10e5f704c9386d3f433a83}\label{main_8h_a36ced98a0c10e5f704c9386d3f433a83} 
+\index{main.h@{main.h}!maxD1\_Pin@{maxD1\_Pin}}
+\index{maxD1\_Pin@{maxD1\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD1\_Pin}{maxD1\_Pin}}
+{\footnotesize\ttfamily \#define max\+D1\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+1}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00073}{73}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_afba2051c870d2f2c507413b167e95568}\label{main_8h_afba2051c870d2f2c507413b167e95568} 
+\index{main.h@{main.h}!maxD2\_GPIO\_Port@{maxD2\_GPIO\_Port}}
+\index{maxD2\_GPIO\_Port@{maxD2\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD2\_GPIO\_Port}{maxD2\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+D2\+\_\+\+GPIO\+\_\+\+Port~GPIOF}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00076}{76}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a88a2c3dc4ebed46032e8d9eee7073896}\label{main_8h_a88a2c3dc4ebed46032e8d9eee7073896} 
+\index{main.h@{main.h}!maxD2\_Pin@{maxD2\_Pin}}
+\index{maxD2\_Pin@{maxD2\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD2\_Pin}{maxD2\_Pin}}
+{\footnotesize\ttfamily \#define max\+D2\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+2}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00075}{75}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_afc20767c50debc37760ddb3ff2eea202}\label{main_8h_afc20767c50debc37760ddb3ff2eea202} 
+\index{main.h@{main.h}!maxD3\_GPIO\_Port@{maxD3\_GPIO\_Port}}
+\index{maxD3\_GPIO\_Port@{maxD3\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD3\_GPIO\_Port}{maxD3\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+D3\+\_\+\+GPIO\+\_\+\+Port~GPIOF}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00078}{78}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a81a882a901d64ad744957e3aa1e1e17a}\label{main_8h_a81a882a901d64ad744957e3aa1e1e17a} 
+\index{main.h@{main.h}!maxD3\_Pin@{maxD3\_Pin}}
+\index{maxD3\_Pin@{maxD3\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD3\_Pin}{maxD3\_Pin}}
+{\footnotesize\ttfamily \#define max\+D3\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+3}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00077}{77}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a5f0b9287e14dd8d539091188d1683b02}\label{main_8h_a5f0b9287e14dd8d539091188d1683b02} 
+\index{main.h@{main.h}!maxD4\_GPIO\_Port@{maxD4\_GPIO\_Port}}
+\index{maxD4\_GPIO\_Port@{maxD4\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD4\_GPIO\_Port}{maxD4\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+D4\+\_\+\+GPIO\+\_\+\+Port~GPIOF}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00080}{80}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a4e1d6d08e648b581cd9b030d6154adc4}\label{main_8h_a4e1d6d08e648b581cd9b030d6154adc4} 
+\index{main.h@{main.h}!maxD4\_Pin@{maxD4\_Pin}}
+\index{maxD4\_Pin@{maxD4\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD4\_Pin}{maxD4\_Pin}}
+{\footnotesize\ttfamily \#define max\+D4\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+4}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00079}{79}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a3915f475a33a851b0d4664ef6b146514}\label{main_8h_a3915f475a33a851b0d4664ef6b146514} 
+\index{main.h@{main.h}!maxD5\_GPIO\_Port@{maxD5\_GPIO\_Port}}
+\index{maxD5\_GPIO\_Port@{maxD5\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD5\_GPIO\_Port}{maxD5\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+D5\+\_\+\+GPIO\+\_\+\+Port~GPIOF}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00082}{82}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a51560f6d0b9590841a680d449d8c267e}\label{main_8h_a51560f6d0b9590841a680d449d8c267e} 
+\index{main.h@{main.h}!maxD5\_Pin@{maxD5\_Pin}}
+\index{maxD5\_Pin@{maxD5\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD5\_Pin}{maxD5\_Pin}}
+{\footnotesize\ttfamily \#define max\+D5\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+5}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00081}{81}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_ac7adbc63425cd70ec600fe51dc41b258}\label{main_8h_ac7adbc63425cd70ec600fe51dc41b258} 
+\index{main.h@{main.h}!maxD6\_GPIO\_Port@{maxD6\_GPIO\_Port}}
+\index{maxD6\_GPIO\_Port@{maxD6\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD6\_GPIO\_Port}{maxD6\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+D6\+\_\+\+GPIO\+\_\+\+Port~GPIOF}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00084}{84}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a3affeb9cb38c216369980ee9823db807}\label{main_8h_a3affeb9cb38c216369980ee9823db807} 
+\index{main.h@{main.h}!maxD6\_Pin@{maxD6\_Pin}}
+\index{maxD6\_Pin@{maxD6\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD6\_Pin}{maxD6\_Pin}}
+{\footnotesize\ttfamily \#define max\+D6\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+6}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00083}{83}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a6921ad85669cedf8feda6aff2b2b5034}\label{main_8h_a6921ad85669cedf8feda6aff2b2b5034} 
+\index{main.h@{main.h}!maxD7\_GPIO\_Port@{maxD7\_GPIO\_Port}}
+\index{maxD7\_GPIO\_Port@{maxD7\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD7\_GPIO\_Port}{maxD7\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+D7\+\_\+\+GPIO\+\_\+\+Port~GPIOF}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00086}{86}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a77efe3e6dd65415a12c81c7e10848401}\label{main_8h_a77efe3e6dd65415a12c81c7e10848401} 
+\index{main.h@{main.h}!maxD7\_Pin@{maxD7\_Pin}}
+\index{maxD7\_Pin@{maxD7\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD7\_Pin}{maxD7\_Pin}}
+{\footnotesize\ttfamily \#define max\+D7\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+7}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00085}{85}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_ae0bff25fb0dc5a18de990b535458b1e7}\label{main_8h_ae0bff25fb0dc5a18de990b535458b1e7} 
+\index{main.h@{main.h}!maxD8\_GPIO\_Port@{maxD8\_GPIO\_Port}}
+\index{maxD8\_GPIO\_Port@{maxD8\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD8\_GPIO\_Port}{maxD8\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+D8\+\_\+\+GPIO\+\_\+\+Port~GPIOF}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00088}{88}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_ad35a62bc948fee0fd2b00bafce4794c9}\label{main_8h_ad35a62bc948fee0fd2b00bafce4794c9} 
+\index{main.h@{main.h}!maxD8\_Pin@{maxD8\_Pin}}
+\index{maxD8\_Pin@{maxD8\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD8\_Pin}{maxD8\_Pin}}
+{\footnotesize\ttfamily \#define max\+D8\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+8}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00087}{87}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_ae7a808d34d8f63372cfaad1d12b0e75b}\label{main_8h_ae7a808d34d8f63372cfaad1d12b0e75b} 
+\index{main.h@{main.h}!maxD9\_GPIO\_Port@{maxD9\_GPIO\_Port}}
+\index{maxD9\_GPIO\_Port@{maxD9\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD9\_GPIO\_Port}{maxD9\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+D9\+\_\+\+GPIO\+\_\+\+Port~GPIOF}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00090}{90}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a462153f1a3e75e0b5f4a4b09ef3825db}\label{main_8h_a462153f1a3e75e0b5f4a4b09ef3825db} 
+\index{main.h@{main.h}!maxD9\_Pin@{maxD9\_Pin}}
+\index{maxD9\_Pin@{maxD9\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxD9\_Pin}{maxD9\_Pin}}
+{\footnotesize\ttfamily \#define max\+D9\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+9}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00089}{89}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a13026d36edb1ec2839bb3a05611d3720}\label{main_8h_a13026d36edb1ec2839bb3a05611d3720} 
+\index{main.h@{main.h}!maxRead\_GPIO\_Port@{maxRead\_GPIO\_Port}}
+\index{maxRead\_GPIO\_Port@{maxRead\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxRead\_GPIO\_Port}{maxRead\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+Read\+\_\+\+GPIO\+\_\+\+Port~GPIOC}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00070}{70}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a21c5098a4bc22618035aa1a5b9610b3a}\label{main_8h_a21c5098a4bc22618035aa1a5b9610b3a} 
+\index{main.h@{main.h}!maxRead\_Pin@{maxRead\_Pin}}
+\index{maxRead\_Pin@{maxRead\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxRead\_Pin}{maxRead\_Pin}}
+{\footnotesize\ttfamily \#define max\+Read\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+13}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00069}{69}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_ad3e00af6a392767c1e2f90236d2cb738}\label{main_8h_ad3e00af6a392767c1e2f90236d2cb738} 
+\index{main.h@{main.h}!maxWrite\_GPIO\_Port@{maxWrite\_GPIO\_Port}}
+\index{maxWrite\_GPIO\_Port@{maxWrite\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxWrite\_GPIO\_Port}{maxWrite\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define max\+Write\+\_\+\+GPIO\+\_\+\+Port~GPIOI}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00068}{68}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_ad1c1042233556a09a3ac4dc5fba02b2b}\label{main_8h_ad1c1042233556a09a3ac4dc5fba02b2b} 
+\index{main.h@{main.h}!maxWrite\_Pin@{maxWrite\_Pin}}
+\index{maxWrite\_Pin@{maxWrite\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{maxWrite\_Pin}{maxWrite\_Pin}}
+{\footnotesize\ttfamily \#define max\+Write\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+8}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00067}{67}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a7f5fab4b400a23b73084a8754f2d2208}\label{main_8h_a7f5fab4b400a23b73084a8754f2d2208} 
+\index{main.h@{main.h}!RD\_GPIO\_Port@{RD\_GPIO\_Port}}
+\index{RD\_GPIO\_Port@{RD\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{RD\_GPIO\_Port}{RD\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define RD\+\_\+\+GPIO\+\_\+\+Port~GPIOC}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00116}{116}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_af04dd00241dd93e4d9b35d37972ce4db}\label{main_8h_af04dd00241dd93e4d9b35d37972ce4db} 
+\index{main.h@{main.h}!RD\_Pin@{RD\_Pin}}
+\index{RD\_Pin@{RD\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{RD\_Pin}{RD\_Pin}}
+{\footnotesize\ttfamily \#define RD\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+10}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00115}{115}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a002e2162e6ad87b7e1c6caf70a4c0c15}\label{main_8h_a002e2162e6ad87b7e1c6caf70a4c0c15} 
+\index{main.h@{main.h}!VAL\_GPIO\_Port@{VAL\_GPIO\_Port}}
+\index{VAL\_GPIO\_Port@{VAL\_GPIO\_Port}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{VAL\_GPIO\_Port}{VAL\_GPIO\_Port}}
+{\footnotesize\ttfamily \#define VAL\+\_\+\+GPIO\+\_\+\+Port~GPIOC}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00118}{118}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_aa06fa56ff5440763653830e810156460}\label{main_8h_aa06fa56ff5440763653830e810156460} 
+\index{main.h@{main.h}!VAL\_Pin@{VAL\_Pin}}
+\index{VAL\_Pin@{VAL\_Pin}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{VAL\_Pin}{VAL\_Pin}}
+{\footnotesize\ttfamily \#define VAL\+\_\+\+Pin~GPIO\+\_\+\+PIN\+\_\+11}
+
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00117}{117}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8h_a1730ffe1e560465665eb47d9264826f9}\label{main_8h_a1730ffe1e560465665eb47d9264826f9} 
+\index{main.h@{main.h}!Error\_Handler@{Error\_Handler}}
+\index{Error\_Handler@{Error\_Handler}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{Error\_Handler()}{Error\_Handler()}}
+{\footnotesize\ttfamily void Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{main_8c_source_l00561}{561}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8h_ae70bce6c39d0b570a7523b86738cec4b}\label{main_8h_ae70bce6c39d0b570a7523b86738cec4b} 
+\index{main.h@{main.h}!HAL\_TIM\_MspPostInit@{HAL\_TIM\_MspPostInit}}
+\index{HAL\_TIM\_MspPostInit@{HAL\_TIM\_MspPostInit}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{HAL\_TIM\_MspPostInit()}{HAL\_TIM\_MspPostInit()}}
+{\footnotesize\ttfamily void HAL\+\_\+\+TIM\+\_\+\+Msp\+Post\+Init (\begin{DoxyParamCaption}\item[{TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{htim }\end{DoxyParamCaption})}
+
+TIM17 GPIO Configuration PB9 -\/-\/-\/---\texorpdfstring{$>$}{>} TIM17\+\_\+\+CH1
+
+TIM17 GPIO Configuration PB9 -\/-\/-\/---\texorpdfstring{$>$}{>} TIM17\+\_\+\+CH1
+
+Definition at line \mbox{\hyperlink{stm32h7xx__hal__msp_8c_source_l00105}{105}} of file \mbox{\hyperlink{stm32h7xx__hal__msp_8c_source}{stm32h7xx\+\_\+hal\+\_\+msp.\+c}}.
+

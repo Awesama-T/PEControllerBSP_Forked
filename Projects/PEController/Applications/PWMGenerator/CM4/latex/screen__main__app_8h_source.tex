@@ -1,0 +1,73 @@
+\doxysection{screen\+\_\+main\+\_\+app.\+h}
+\hypertarget{screen__main__app_8h_source}{}\label{screen__main__app_8h_source}\index{C:/TarazServer/work\_directory/00\_Osama\_Tahir/BSP/PEControllerBSP\_Forked/Projects/PEController/Applications/PWMGenerator/CM4/BSP/Display/screen\_main\_app.h@{C:/TarazServer/work\_directory/00\_Osama\_Tahir/BSP/PEControllerBSP\_Forked/Projects/PEController/Applications/PWMGenerator/CM4/BSP/Display/screen\_main\_app.h}}
+\mbox{\hyperlink{screen__main__app_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00022}00022\ \textcolor{preprocessor}{\#ifndef\ SCREEN\_MAIN\_APP\_H\_}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00023}00023\ \textcolor{preprocessor}{\#define\ SCREEN\_MAIN\_APP\_H\_}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00025}00025\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00026}00026\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00027}00027\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00029}00029\ \textcolor{comment}{/********************************************************************************}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00030}00030\ \textcolor{comment}{\ *\ Includes}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00031}00031\ \textcolor{comment}{\ *******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}general\_header.h"{}}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}screen\_base.h"{}}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}stdlib.h"{}}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}utility\_lib.h"{}}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}interprocessor\_comms.h"{}}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00037}00037\ \textcolor{comment}{/********************************************************************************}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00038}00038\ \textcolor{comment}{\ *\ Defines}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00039}00039\ \textcolor{comment}{\ *******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00043}\mbox{\hyperlink{screen__main__app_8h_a6be23b12dfc4530ca10e05cfe9785e41}{00043}}\ \textcolor{preprocessor}{\#define\ CONTROL\_CONFS\_COUNT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (1)}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00047}\mbox{\hyperlink{screen__main__app_8h_ac309e48e220e1fd5ab5dccbc895be6f5}{00047}}\ \textcolor{preprocessor}{\#define\ MONITOR\_CONFS\_COUNT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0)}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00052}\mbox{\hyperlink{screen__main__app_8h_ab822f3208019115f34e26b92ae3922c7}{00052}}\ \textcolor{preprocessor}{\#define\ CONTROL\_COL\_COUNT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (1)}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00056}\mbox{\hyperlink{screen__main__app_8h_a90efbd8c59cc25dc576ba28b7a8e143b}{00056}}\ \textcolor{preprocessor}{\#define\ MONITOR\_COL\_COUNT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (1)}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00058}00058\ \textcolor{comment}{//\ Use\ only\ if\ forcing\ layout,\ otherwise\ these\ will\ be\ auto-\/computed.}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00059}00059\ \textcolor{preprocessor}{\#if\ 0}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00063}00063\ \textcolor{preprocessor}{\#define\ CONTROL\_ROW\_COUNT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (2)}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00067}00067\ \textcolor{preprocessor}{\#define\ MONITOR\_ROW\_COUNT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (2)}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00068}00068\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00072}\mbox{\hyperlink{screen__main__app_8h_a5310e2150069b5713f323bb49e3e5f29}{00072}}\ \textcolor{preprocessor}{\#define\ CONTROL\_AREA\_RATIO\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (3)}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00076}\mbox{\hyperlink{screen__main__app_8h_aa74228de29a702f1a8ac7926fc6c2063}{00076}}\ \textcolor{preprocessor}{\#define\ MONITOR\_AREA\_RATIO\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (1)}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00080}\mbox{\hyperlink{screen__main__app_8h_a2c4e6c3c3da4550e7094824b53fe4bbf}{00080}}\ \textcolor{preprocessor}{\#define\ MEASUREMENT\_AREA\_RATIO\ \ \ \ \ \ \ \ \ \ \ \ \ \ (5)}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00084}\mbox{\hyperlink{screen__main__app_8h_ab9c095d6c9613d9548006fe79e794189}{00084}}\ \textcolor{preprocessor}{\#define\ APP\_AREA\_RATIO\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (3)}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00089}\mbox{\hyperlink{screen__main__app_8h_aea6aaeeb9f0551f86eb1f9f6088f51ab}{00089}}\ \textcolor{preprocessor}{\#define\ MEASUREMENT\_VALUE\_FONT\ \ \ \ \ \ \ \ \ \ \ \ \ \ (lv\_font\_montserrat\_22)}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00093}\mbox{\hyperlink{screen__main__app_8h_ad04cd3d278269633802069962a4053c7}{00093}}\ \textcolor{preprocessor}{\#define\ CONTROL\_VALUE\_FONT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (lv\_font\_montserrat\_40)}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00097}\mbox{\hyperlink{screen__main__app_8h_ac6ea29779352e4ab7833f5eec1d87718}{00097}}\ \textcolor{preprocessor}{\#define\ MONITOR\_VALUE\_FONT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (lv\_font\_montserrat\_18)}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00098}00098\ \textcolor{comment}{/********************************************************************************}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00099}00099\ \textcolor{comment}{\ *\ Typedefs}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00100}00100\ \textcolor{comment}{\ *******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00102}00102\ \textcolor{comment}{/********************************************************************************}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00103}00103\ \textcolor{comment}{\ *\ Structures}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00104}00104\ \textcolor{comment}{\ *******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00106}00106\ \textcolor{comment}{/********************************************************************************}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00107}00107\ \textcolor{comment}{\ *\ Exported\ Variables}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00108}00108\ \textcolor{comment}{\ *******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00110}00110\ \textcolor{comment}{/********************************************************************************}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00111}00111\ \textcolor{comment}{\ *\ Global\ Function\ Prototypes}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00112}00112\ \textcolor{comment}{\ *******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00119}00119\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{screen__main__app_8h_a3c6b6915d76e05da1702b2138b4ed45f}{AppControlGrid\_Create}}(lv\_obj\_t*\ parent,\ \textcolor{keywordtype}{int}\ row,\ \textcolor{keywordtype}{int}\ col);}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00123}00123\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{screen__main__app_8h_a91227bcfccad8cddea765dca99b23842}{AppControlGrid\_Refresh}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00128}00128\ \textcolor{keyword}{extern}\ screen\_type\_t\ \mbox{\hyperlink{screen__main__app_8h_ae39bc54927882a0f2b454546973cb1de}{AppControlGrid\_TouchDetect}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00129}00129\ \textcolor{comment}{/********************************************************************************}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00130}00130\ \textcolor{comment}{\ *\ Code}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00131}00131\ \textcolor{comment}{\ *******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00134}00134\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00135}00135\ \}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00136}00136\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00138}00138\ \textcolor{preprocessor}{\#endif\ }}
+\DoxyCodeLine{\Hypertarget{screen__main__app_8h_source_l00139}00139\ \textcolor{comment}{/*\ EOF\ */}}
+
+\end{DoxyCode}

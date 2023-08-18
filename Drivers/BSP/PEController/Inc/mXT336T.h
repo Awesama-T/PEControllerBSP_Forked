@@ -111,7 +111,7 @@ typedef struct
 #define MXT336T_I2C_INITIALIZED          1
 
   /* Max detectable simultaneous touches */
-#define MXT336T_MAX_DETECTABLE_TOUCH     10
+#define MXT336T_MAX_DETECTABLE_TOUCH     5
 
   /**
    * @brief : Definitions for MXT336T I2C register addresses on 8 bit

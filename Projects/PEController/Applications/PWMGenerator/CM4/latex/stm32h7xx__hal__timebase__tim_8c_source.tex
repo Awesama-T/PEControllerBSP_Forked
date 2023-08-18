@@ -1,0 +1,100 @@
+\doxysection{stm32h7xx\+\_\+hal\+\_\+timebase\+\_\+tim.\+c}
+\hypertarget{stm32h7xx__hal__timebase__tim_8c_source}{}\label{stm32h7xx__hal__timebase__tim_8c_source}\index{C:/TarazServer/work\_directory/00\_Osama\_Tahir/BSP/PEControllerBSP\_Forked/Projects/PEController/Applications/PWMGenerator/CM4/Core/Src/stm32h7xx\_hal\_timebase\_tim.c@{C:/TarazServer/work\_directory/00\_Osama\_Tahir/BSP/PEControllerBSP\_Forked/Projects/PEController/Applications/PWMGenerator/CM4/Core/Src/stm32h7xx\_hal\_timebase\_tim.c}}
+\mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00001}00001\ \textcolor{comment}{/*\ USER\ CODE\ BEGIN\ Header\ */}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00018}00018\ \textcolor{comment}{/*\ USER\ CODE\ END\ Header\ */}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00020}00020\ \textcolor{comment}{/*\ Includes\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00021}00021\ \textcolor{preprocessor}{\#include\ "{}stm32h7xx\_hal.h"{}}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00022}00022\ \textcolor{preprocessor}{\#include\ "{}stm32h7xx\_hal\_tim.h"{}}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00024}00024\ \textcolor{comment}{/*\ Private\ typedef\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00025}00025\ \textcolor{comment}{/*\ Private\ define\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00026}00026\ \textcolor{comment}{/*\ Private\ macro\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00027}00027\ \textcolor{comment}{/*\ Private\ variables\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00028}\mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c_abb71bf3ee68e2a051fbeec6c3ab3012d}{00028}}\ TIM\_HandleTypeDef\ \ \ \ \ \ \ \ \mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c_abb71bf3ee68e2a051fbeec6c3ab3012d}{htim7}};}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00029}00029\ \textcolor{comment}{/*\ Private\ function\ prototypes\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00030}00030\ \textcolor{comment}{/*\ Private\ functions\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00041}\mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c_a879cdb21ef051eb81ec51c18147397d5}{00041}}\ HAL\_StatusTypeDef\ \mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c_a879cdb21ef051eb81ec51c18147397d5}{HAL\_InitTick}}(uint32\_t\ TickPriority)}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00043}00043\ \ \ RCC\_ClkInitTypeDef\ \ \ \ clkconfig;}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00044}00044\ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ uwTimclock,\ uwAPB1Prescaler;}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00046}00046\ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ uwPrescalerValue;}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00047}00047\ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ pFLatency;}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00048}00048\ \textcolor{comment}{/*Configure\ the\ TIM7\ IRQ\ priority\ */}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00049}00049\ \ \ \textcolor{keywordflow}{if}\ (TickPriority\ <\ (1UL\ <<\ \_\_NVIC\_PRIO\_BITS))}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00050}00050\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00051}00051\ \ \ HAL\_NVIC\_SetPriority(TIM7\_IRQn,\ TickPriority\ ,0U);}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00053}00053\ \ \ \textcolor{comment}{/*\ Enable\ the\ TIM7\ global\ Interrupt\ */}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00054}00054\ \ \ HAL\_NVIC\_EnableIRQ(TIM7\_IRQn);}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00055}00055\ \ \ \ \ uwTickPrio\ =\ TickPriority;}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00057}00057\ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00058}00058\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{return}\ HAL\_ERROR;}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00060}00060\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00062}00062\ \ \ \textcolor{comment}{/*\ Enable\ TIM7\ clock\ */}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00063}00063\ \ \ \_\_HAL\_RCC\_TIM7\_CLK\_ENABLE();}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00065}00065\ \ \ \textcolor{comment}{/*\ Get\ clock\ configuration\ */}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00066}00066\ \ \ HAL\_RCC\_GetClockConfig(\&clkconfig,\ \&pFLatency);}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00068}00068\ \ \ \textcolor{comment}{/*\ Get\ APB1\ prescaler\ */}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00069}00069\ \ \ uwAPB1Prescaler\ =\ clkconfig.APB1CLKDivider;}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00070}00070\ \ \ \textcolor{comment}{/*\ Compute\ TIM7\ clock\ */}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00071}00071\ \ \ \textcolor{keywordflow}{if}\ (uwAPB1Prescaler\ ==\ RCC\_HCLK\_DIV1)}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00072}00072\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00073}00073\ \ \ \ \ uwTimclock\ =\ HAL\_RCC\_GetPCLK1Freq();}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00074}00074\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00075}00075\ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00076}00076\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00077}00077\ \ \ \ \ uwTimclock\ =\ 2UL\ *\ HAL\_RCC\_GetPCLK1Freq();}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00078}00078\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00080}00080\ \ \ \textcolor{comment}{/*\ Compute\ the\ prescaler\ value\ to\ have\ TIM7\ counter\ clock\ equal\ to\ 1MHz\ */}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00081}00081\ \ \ uwPrescalerValue\ =\ (uint32\_t)\ ((uwTimclock\ /\ 1000000U)\ -\/\ 1U);}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00083}00083\ \ \ \textcolor{comment}{/*\ Initialize\ TIM7\ */}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00084}00084\ \ \ \mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c_abb71bf3ee68e2a051fbeec6c3ab3012d}{htim7}}.Instance\ =\ TIM7;}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00086}00086\ \ \ \textcolor{comment}{/*\ Initialize\ TIMx\ peripheral\ as\ follow:}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00087}00087\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00088}00088\ \textcolor{comment}{\ \ +\ Period\ =\ [(TIM7CLK/1000)\ -\/\ 1].\ to\ have\ a\ (1/1000)\ s\ time\ base.}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00089}00089\ \textcolor{comment}{\ \ +\ Prescaler\ =\ (uwTimclock/1000000\ -\/\ 1)\ to\ have\ a\ 1MHz\ counter\ clock.}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00090}00090\ \textcolor{comment}{\ \ +\ ClockDivision\ =\ 0}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00091}00091\ \textcolor{comment}{\ \ +\ Counter\ direction\ =\ Up}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00092}00092\ \textcolor{comment}{\ \ */}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00093}00093\ \ \ \mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c_abb71bf3ee68e2a051fbeec6c3ab3012d}{htim7}}.Init.Period\ =\ (1000000U\ /\ 1000U)\ -\/\ 1U;}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00094}00094\ \ \ \mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c_abb71bf3ee68e2a051fbeec6c3ab3012d}{htim7}}.Init.Prescaler\ =\ uwPrescalerValue;}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00095}00095\ \ \ \mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c_abb71bf3ee68e2a051fbeec6c3ab3012d}{htim7}}.Init.ClockDivision\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00096}00096\ \ \ \mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c_abb71bf3ee68e2a051fbeec6c3ab3012d}{htim7}}.Init.CounterMode\ =\ TIM\_COUNTERMODE\_UP;}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00098}00098\ \ \ \textcolor{keywordflow}{if}(HAL\_TIM\_Base\_Init(\&\mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c_abb71bf3ee68e2a051fbeec6c3ab3012d}{htim7}})\ ==\ HAL\_OK)}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00099}00099\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00100}00100\ \ \ \ \ \textcolor{comment}{/*\ Start\ the\ TIM\ time\ Base\ generation\ in\ interrupt\ mode\ */}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{return}\ HAL\_TIM\_Base\_Start\_IT(\&\mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c_abb71bf3ee68e2a051fbeec6c3ab3012d}{htim7}});}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00102}00102\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00104}00104\ \ \ \textcolor{comment}{/*\ Return\ function\ status\ */}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00105}00105\ \ \ \textcolor{keywordflow}{return}\ HAL\_ERROR;}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00106}00106\ \}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00114}\mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c_aaf651af2afe688a991c657f64f8fa5f9}{00114}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c_aaf651af2afe688a991c657f64f8fa5f9}{HAL\_SuspendTick}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00115}00115\ \{}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00116}00116\ \ \ \textcolor{comment}{/*\ Disable\ TIM7\ update\ Interrupt\ */}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00117}00117\ \ \ \_\_HAL\_TIM\_DISABLE\_IT(\&\mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c_abb71bf3ee68e2a051fbeec6c3ab3012d}{htim7}},\ TIM\_IT\_UPDATE);}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00118}00118\ \}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00126}\mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c_a24e0ee9dae1ec0f9d19200f5575ff790}{00126}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c_a24e0ee9dae1ec0f9d19200f5575ff790}{HAL\_ResumeTick}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00127}00127\ \{}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00128}00128\ \ \ \textcolor{comment}{/*\ Enable\ TIM7\ Update\ interrupt\ */}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00129}00129\ \ \ \_\_HAL\_TIM\_ENABLE\_IT(\&\mbox{\hyperlink{stm32h7xx__hal__timebase__tim_8c_abb71bf3ee68e2a051fbeec6c3ab3012d}{htim7}},\ TIM\_IT\_UPDATE);}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00130}00130\ \}}
+\DoxyCodeLine{\Hypertarget{stm32h7xx__hal__timebase__tim_8c_source_l00131}00131\ }
+
+\end{DoxyCode}

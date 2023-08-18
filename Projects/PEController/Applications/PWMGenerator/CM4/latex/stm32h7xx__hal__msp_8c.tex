@@ -1,0 +1,112 @@
+\doxysection{C\+:/\+Taraz\+Server/work\+\_\+directory/00\+\_\+\+Osama\+\_\+\+Tahir/\+BSP/\+PEController\+BSP\+\_\+\+Forked/\+Projects/\+PEController/\+Applications/\+PWMGenerator/\+CM4/\+Core/\+Src/stm32h7xx\+\_\+hal\+\_\+msp.c File Reference}
+\hypertarget{stm32h7xx__hal__msp_8c}{}\label{stm32h7xx__hal__msp_8c}\index{C:/TarazServer/work\_directory/00\_Osama\_Tahir/BSP/PEControllerBSP\_Forked/Projects/PEController/Applications/PWMGenerator/CM4/Core/Src/stm32h7xx\_hal\_msp.c@{C:/TarazServer/work\_directory/00\_Osama\_Tahir/BSP/PEControllerBSP\_Forked/Projects/PEController/Applications/PWMGenerator/CM4/Core/Src/stm32h7xx\_hal\_msp.c}}
+
+
+This file provides code for the MSP Initialization and de-\/\+Initialization codes.  
+
+
+{\ttfamily \#include \"{}main.\+h\"{}}\newline
+Include dependency graph for stm32h7xx\+\_\+hal\+\_\+msp.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{stm32h7xx__hal__msp_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{stm32h7xx__hal__msp_8c_ae70bce6c39d0b570a7523b86738cec4b}{HAL\+\_\+\+TIM\+\_\+\+Msp\+Post\+Init}} (TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}htim)
+\item 
+void \mbox{\hyperlink{stm32h7xx__hal__msp_8c_ae4fb8e66865c87d0ebab74a726a6891f}{HAL\+\_\+\+Msp\+Init}} (void)
+\item 
+void \mbox{\hyperlink{stm32h7xx__hal__msp_8c_abb25ade2f7e3f7aae167bd52270c2b86}{HAL\+\_\+\+TIM\+\_\+\+Base\+\_\+\+Msp\+Init}} (TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}htim\+\_\+base)
+\begin{DoxyCompactList}\small\item\em TIM\+\_\+\+Base MSP Initialization This function configures the hardware resources used in this example. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32h7xx__hal__msp_8c_a555b8a2d3c7a07341f8cb1255318fa2b}{HAL\+\_\+\+TIM\+\_\+\+Base\+\_\+\+Msp\+De\+Init}} (TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}htim\+\_\+base)
+\begin{DoxyCompactList}\small\item\em TIM\+\_\+\+Base MSP De-\/\+Initialization This function freeze the hardware resources used in this example. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file provides code for the MSP Initialization and de-\/\+Initialization codes. 
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2021 STMicroelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under BSD 3-\/Clause license, the \"{}\+License\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: opensource.\+org/licenses/\+BSD-\/3-\/\+Clause 
+
+Definition in file \mbox{\hyperlink{stm32h7xx__hal__msp_8c_source}{stm32h7xx\+\_\+hal\+\_\+msp.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{stm32h7xx__hal__msp_8c_ae4fb8e66865c87d0ebab74a726a6891f}\label{stm32h7xx__hal__msp_8c_ae4fb8e66865c87d0ebab74a726a6891f} 
+\index{stm32h7xx\_hal\_msp.c@{stm32h7xx\_hal\_msp.c}!HAL\_MspInit@{HAL\_MspInit}}
+\index{HAL\_MspInit@{HAL\_MspInit}!stm32h7xx\_hal\_msp.c@{stm32h7xx\_hal\_msp.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_MspInit()}{HAL\_MspInit()}}
+{\footnotesize\ttfamily void HAL\+\_\+\+Msp\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Initializes the Global MSP. 
+
+Definition at line \mbox{\hyperlink{stm32h7xx__hal__msp_8c_source_l00066}{66}} of file \mbox{\hyperlink{stm32h7xx__hal__msp_8c_source}{stm32h7xx\+\_\+hal\+\_\+msp.\+c}}.
+
+\Hypertarget{stm32h7xx__hal__msp_8c_a555b8a2d3c7a07341f8cb1255318fa2b}\label{stm32h7xx__hal__msp_8c_a555b8a2d3c7a07341f8cb1255318fa2b} 
+\index{stm32h7xx\_hal\_msp.c@{stm32h7xx\_hal\_msp.c}!HAL\_TIM\_Base\_MspDeInit@{HAL\_TIM\_Base\_MspDeInit}}
+\index{HAL\_TIM\_Base\_MspDeInit@{HAL\_TIM\_Base\_MspDeInit}!stm32h7xx\_hal\_msp.c@{stm32h7xx\_hal\_msp.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_TIM\_Base\_MspDeInit()}{HAL\_TIM\_Base\_MspDeInit()}}
+{\footnotesize\ttfamily void HAL\+\_\+\+TIM\+\_\+\+Base\+\_\+\+Msp\+De\+Init (\begin{DoxyParamCaption}\item[{TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{htim\+\_\+base }\end{DoxyParamCaption})}
+
+
+
+TIM\+\_\+\+Base MSP De-\/\+Initialization This function freeze the hardware resources used in this example. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em htim\+\_\+base} & TIM\+\_\+\+Base handle pointer \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{stm32h7xx__hal__msp_8c_source_l00137}{137}} of file \mbox{\hyperlink{stm32h7xx__hal__msp_8c_source}{stm32h7xx\+\_\+hal\+\_\+msp.\+c}}.
+
+\Hypertarget{stm32h7xx__hal__msp_8c_abb25ade2f7e3f7aae167bd52270c2b86}\label{stm32h7xx__hal__msp_8c_abb25ade2f7e3f7aae167bd52270c2b86} 
+\index{stm32h7xx\_hal\_msp.c@{stm32h7xx\_hal\_msp.c}!HAL\_TIM\_Base\_MspInit@{HAL\_TIM\_Base\_MspInit}}
+\index{HAL\_TIM\_Base\_MspInit@{HAL\_TIM\_Base\_MspInit}!stm32h7xx\_hal\_msp.c@{stm32h7xx\_hal\_msp.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_TIM\_Base\_MspInit()}{HAL\_TIM\_Base\_MspInit()}}
+{\footnotesize\ttfamily void HAL\+\_\+\+TIM\+\_\+\+Base\+\_\+\+Msp\+Init (\begin{DoxyParamCaption}\item[{TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{htim\+\_\+base }\end{DoxyParamCaption})}
+
+
+
+TIM\+\_\+\+Base MSP Initialization This function configures the hardware resources used in this example. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em htim\+\_\+base} & TIM\+\_\+\+Base handle pointer \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{stm32h7xx__hal__msp_8c_source_l00089}{89}} of file \mbox{\hyperlink{stm32h7xx__hal__msp_8c_source}{stm32h7xx\+\_\+hal\+\_\+msp.\+c}}.
+
+\Hypertarget{stm32h7xx__hal__msp_8c_ae70bce6c39d0b570a7523b86738cec4b}\label{stm32h7xx__hal__msp_8c_ae70bce6c39d0b570a7523b86738cec4b} 
+\index{stm32h7xx\_hal\_msp.c@{stm32h7xx\_hal\_msp.c}!HAL\_TIM\_MspPostInit@{HAL\_TIM\_MspPostInit}}
+\index{HAL\_TIM\_MspPostInit@{HAL\_TIM\_MspPostInit}!stm32h7xx\_hal\_msp.c@{stm32h7xx\_hal\_msp.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_TIM\_MspPostInit()}{HAL\_TIM\_MspPostInit()}}
+{\footnotesize\ttfamily void HAL\+\_\+\+TIM\+\_\+\+Msp\+Post\+Init (\begin{DoxyParamCaption}\item[{TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{htim }\end{DoxyParamCaption})}
+
+TIM17 GPIO Configuration PB9 -\/-\/-\/---\texorpdfstring{$>$}{>} TIM17\+\_\+\+CH1
+
+Definition at line \mbox{\hyperlink{stm32h7xx__hal__msp_8c_source_l00105}{105}} of file \mbox{\hyperlink{stm32h7xx__hal__msp_8c_source}{stm32h7xx\+\_\+hal\+\_\+msp.\+c}}.
+

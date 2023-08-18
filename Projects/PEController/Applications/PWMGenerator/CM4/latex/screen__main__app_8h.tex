@@ -1,0 +1,302 @@
+\doxysection{C\+:/\+Taraz\+Server/work\+\_\+directory/00\+\_\+\+Osama\+\_\+\+Tahir/\+BSP/\+PEController\+BSP\+\_\+\+Forked/\+Projects/\+PEController/\+Applications/\+PWMGenerator/\+CM4/\+BSP/\+Display/screen\+\_\+main\+\_\+app.h File Reference}
+\hypertarget{screen__main__app_8h}{}\label{screen__main__app_8h}\index{C:/TarazServer/work\_directory/00\_Osama\_Tahir/BSP/PEControllerBSP\_Forked/Projects/PEController/Applications/PWMGenerator/CM4/BSP/Display/screen\_main\_app.h@{C:/TarazServer/work\_directory/00\_Osama\_Tahir/BSP/PEControllerBSP\_Forked/Projects/PEController/Applications/PWMGenerator/CM4/BSP/Display/screen\_main\_app.h}}
+
+
+~\newline
+  
+
+
+{\ttfamily \#include \"{}general\+\_\+header.\+h\"{}}\newline
+{\ttfamily \#include \"{}screen\+\_\+base.\+h\"{}}\newline
+{\ttfamily \#include \"{}stdlib.\+h\"{}}\newline
+{\ttfamily \#include \"{}utility\+\_\+lib.\+h\"{}}\newline
+{\ttfamily \#include \"{}interprocessor\+\_\+comms.\+h\"{}}\newline
+Include dependency graph for screen\+\_\+main\+\_\+app.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{screen__main__app_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{screen__main__app_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{screen__main__app_8h_a6be23b12dfc4530ca10e05cfe9785e41}{CONTROL\+\_\+\+CONFS\+\_\+\+COUNT}}~(1)
+\begin{DoxyCompactList}\small\item\em Number of configurations used for displaying the control parameters. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{screen__main__app_8h_ac309e48e220e1fd5ab5dccbc895be6f5}{MONITOR\+\_\+\+CONFS\+\_\+\+COUNT}}~(0)
+\begin{DoxyCompactList}\small\item\em Number of configurations used for displaying the monitoring parameters. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{screen__main__app_8h_ab822f3208019115f34e26b92ae3922c7}{CONTROL\+\_\+\+COL\+\_\+\+COUNT}}~(1)
+\begin{DoxyCompactList}\small\item\em Number of columns in controls view. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{screen__main__app_8h_a90efbd8c59cc25dc576ba28b7a8e143b}{MONITOR\+\_\+\+COL\+\_\+\+COUNT}}~(1)
+\begin{DoxyCompactList}\small\item\em Number of columns in monitoring view. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{screen__main__app_8h_a5310e2150069b5713f323bb49e3e5f29}{CONTROL\+\_\+\+AREA\+\_\+\+RATIO}}~(3)
+\begin{DoxyCompactList}\small\item\em Ratio of control area. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{screen__main__app_8h_aa74228de29a702f1a8ac7926fc6c2063}{MONITOR\+\_\+\+AREA\+\_\+\+RATIO}}~(1)
+\begin{DoxyCompactList}\small\item\em Ratio of monitoring area. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{screen__main__app_8h_a2c4e6c3c3da4550e7094824b53fe4bbf}{MEASUREMENT\+\_\+\+AREA\+\_\+\+RATIO}}~(5)
+\begin{DoxyCompactList}\small\item\em Ratio of measurement area on the main screen. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{screen__main__app_8h_ab9c095d6c9613d9548006fe79e794189}{APP\+\_\+\+AREA\+\_\+\+RATIO}}~(3)
+\begin{DoxyCompactList}\small\item\em Ratio of application specific area on the main screen. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{screen__main__app_8h_aea6aaeeb9f0551f86eb1f9f6088f51ab}{MEASUREMENT\+\_\+\+VALUE\+\_\+\+FONT}}~(lv\+\_\+font\+\_\+montserrat\+\_\+22)
+\begin{DoxyCompactList}\small\item\em Font used by the displayed measurement value. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{screen__main__app_8h_ad04cd3d278269633802069962a4053c7}{CONTROL\+\_\+\+VALUE\+\_\+\+FONT}}~(lv\+\_\+font\+\_\+montserrat\+\_\+40)
+\begin{DoxyCompactList}\small\item\em Font used by the displayed control parameters. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{screen__main__app_8h_ac6ea29779352e4ab7833f5eec1d87718}{MONITOR\+\_\+\+VALUE\+\_\+\+FONT}}~(lv\+\_\+font\+\_\+montserrat\+\_\+18)
+\begin{DoxyCompactList}\small\item\em Font used by the displayed monitoring parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{screen__main__app_8h_a3c6b6915d76e05da1702b2138b4ed45f}{App\+Control\+Grid\+\_\+\+Create}} (lv\+\_\+obj\+\_\+t \texorpdfstring{$\ast$}{*}parent, int row, int col)
+\begin{DoxyCompactList}\small\item\em Creates the application dependent area of the main screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{screen__main__app_8h_a91227bcfccad8cddea765dca99b23842}{App\+Control\+Grid\+\_\+\+Refresh}} (void)
+\begin{DoxyCompactList}\small\item\em Refreshes the application dependent area of the main screen. \end{DoxyCompactList}\item 
+screen\+\_\+type\+\_\+t \mbox{\hyperlink{screen__main__app_8h_ae39bc54927882a0f2b454546973cb1de}{App\+Control\+Grid\+\_\+\+Touch\+Detect}} (void)
+\begin{DoxyCompactList}\small\item\em Touch detection of the application dependent area of the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+~\newline
+ 
+
+\begin{DoxyAuthor}{Author}
+Waqas Ehsan Butt 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+May 23, 2023
+\end{DoxyDate}
+
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2021 Taraz Technologies Pvt. Ltd.\end{center} }
+
+\doxysubsubsubsection*{\begin{center}All rights reserved.\end{center} }
+
+\begin{center}This software component is licensed by Taraz Technologies under BSD 3-\/Clause license, the \"{}\+License\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: www.\+opensource.\+org/licenses/\+BSD-\/3-\/\+Clause\end{center}  
+
+Definition in file \mbox{\hyperlink{screen__main__app_8h_source}{screen\+\_\+main\+\_\+app.\+h}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{screen__main__app_8h_ab9c095d6c9613d9548006fe79e794189}\label{screen__main__app_8h_ab9c095d6c9613d9548006fe79e794189} 
+\index{screen\_main\_app.h@{screen\_main\_app.h}!APP\_AREA\_RATIO@{APP\_AREA\_RATIO}}
+\index{APP\_AREA\_RATIO@{APP\_AREA\_RATIO}!screen\_main\_app.h@{screen\_main\_app.h}}
+\doxysubsubsection{\texorpdfstring{APP\_AREA\_RATIO}{APP\_AREA\_RATIO}}
+{\footnotesize\ttfamily \#define APP\+\_\+\+AREA\+\_\+\+RATIO~(3)}
+
+
+
+Ratio of application specific area on the main screen. 
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8h_source_l00084}{84}} of file \mbox{\hyperlink{screen__main__app_8h_source}{screen\+\_\+main\+\_\+app.\+h}}.
+
+\Hypertarget{screen__main__app_8h_a5310e2150069b5713f323bb49e3e5f29}\label{screen__main__app_8h_a5310e2150069b5713f323bb49e3e5f29} 
+\index{screen\_main\_app.h@{screen\_main\_app.h}!CONTROL\_AREA\_RATIO@{CONTROL\_AREA\_RATIO}}
+\index{CONTROL\_AREA\_RATIO@{CONTROL\_AREA\_RATIO}!screen\_main\_app.h@{screen\_main\_app.h}}
+\doxysubsubsection{\texorpdfstring{CONTROL\_AREA\_RATIO}{CONTROL\_AREA\_RATIO}}
+{\footnotesize\ttfamily \#define CONTROL\+\_\+\+AREA\+\_\+\+RATIO~(3)}
+
+
+
+Ratio of control area. 
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8h_source_l00072}{72}} of file \mbox{\hyperlink{screen__main__app_8h_source}{screen\+\_\+main\+\_\+app.\+h}}.
+
+\Hypertarget{screen__main__app_8h_ab822f3208019115f34e26b92ae3922c7}\label{screen__main__app_8h_ab822f3208019115f34e26b92ae3922c7} 
+\index{screen\_main\_app.h@{screen\_main\_app.h}!CONTROL\_COL\_COUNT@{CONTROL\_COL\_COUNT}}
+\index{CONTROL\_COL\_COUNT@{CONTROL\_COL\_COUNT}!screen\_main\_app.h@{screen\_main\_app.h}}
+\doxysubsubsection{\texorpdfstring{CONTROL\_COL\_COUNT}{CONTROL\_COL\_COUNT}}
+{\footnotesize\ttfamily \#define CONTROL\+\_\+\+COL\+\_\+\+COUNT~(1)}
+
+
+
+Number of columns in controls view. 
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8h_source_l00052}{52}} of file \mbox{\hyperlink{screen__main__app_8h_source}{screen\+\_\+main\+\_\+app.\+h}}.
+
+\Hypertarget{screen__main__app_8h_a6be23b12dfc4530ca10e05cfe9785e41}\label{screen__main__app_8h_a6be23b12dfc4530ca10e05cfe9785e41} 
+\index{screen\_main\_app.h@{screen\_main\_app.h}!CONTROL\_CONFS\_COUNT@{CONTROL\_CONFS\_COUNT}}
+\index{CONTROL\_CONFS\_COUNT@{CONTROL\_CONFS\_COUNT}!screen\_main\_app.h@{screen\_main\_app.h}}
+\doxysubsubsection{\texorpdfstring{CONTROL\_CONFS\_COUNT}{CONTROL\_CONFS\_COUNT}}
+{\footnotesize\ttfamily \#define CONTROL\+\_\+\+CONFS\+\_\+\+COUNT~(1)}
+
+
+
+Number of configurations used for displaying the control parameters. 
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8h_source_l00043}{43}} of file \mbox{\hyperlink{screen__main__app_8h_source}{screen\+\_\+main\+\_\+app.\+h}}.
+
+\Hypertarget{screen__main__app_8h_ad04cd3d278269633802069962a4053c7}\label{screen__main__app_8h_ad04cd3d278269633802069962a4053c7} 
+\index{screen\_main\_app.h@{screen\_main\_app.h}!CONTROL\_VALUE\_FONT@{CONTROL\_VALUE\_FONT}}
+\index{CONTROL\_VALUE\_FONT@{CONTROL\_VALUE\_FONT}!screen\_main\_app.h@{screen\_main\_app.h}}
+\doxysubsubsection{\texorpdfstring{CONTROL\_VALUE\_FONT}{CONTROL\_VALUE\_FONT}}
+{\footnotesize\ttfamily \#define CONTROL\+\_\+\+VALUE\+\_\+\+FONT~(lv\+\_\+font\+\_\+montserrat\+\_\+40)}
+
+
+
+Font used by the displayed control parameters. 
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8h_source_l00093}{93}} of file \mbox{\hyperlink{screen__main__app_8h_source}{screen\+\_\+main\+\_\+app.\+h}}.
+
+\Hypertarget{screen__main__app_8h_a2c4e6c3c3da4550e7094824b53fe4bbf}\label{screen__main__app_8h_a2c4e6c3c3da4550e7094824b53fe4bbf} 
+\index{screen\_main\_app.h@{screen\_main\_app.h}!MEASUREMENT\_AREA\_RATIO@{MEASUREMENT\_AREA\_RATIO}}
+\index{MEASUREMENT\_AREA\_RATIO@{MEASUREMENT\_AREA\_RATIO}!screen\_main\_app.h@{screen\_main\_app.h}}
+\doxysubsubsection{\texorpdfstring{MEASUREMENT\_AREA\_RATIO}{MEASUREMENT\_AREA\_RATIO}}
+{\footnotesize\ttfamily \#define MEASUREMENT\+\_\+\+AREA\+\_\+\+RATIO~(5)}
+
+
+
+Ratio of measurement area on the main screen. 
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8h_source_l00080}{80}} of file \mbox{\hyperlink{screen__main__app_8h_source}{screen\+\_\+main\+\_\+app.\+h}}.
+
+\Hypertarget{screen__main__app_8h_aea6aaeeb9f0551f86eb1f9f6088f51ab}\label{screen__main__app_8h_aea6aaeeb9f0551f86eb1f9f6088f51ab} 
+\index{screen\_main\_app.h@{screen\_main\_app.h}!MEASUREMENT\_VALUE\_FONT@{MEASUREMENT\_VALUE\_FONT}}
+\index{MEASUREMENT\_VALUE\_FONT@{MEASUREMENT\_VALUE\_FONT}!screen\_main\_app.h@{screen\_main\_app.h}}
+\doxysubsubsection{\texorpdfstring{MEASUREMENT\_VALUE\_FONT}{MEASUREMENT\_VALUE\_FONT}}
+{\footnotesize\ttfamily \#define MEASUREMENT\+\_\+\+VALUE\+\_\+\+FONT~(lv\+\_\+font\+\_\+montserrat\+\_\+22)}
+
+
+
+Font used by the displayed measurement value. 
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8h_source_l00089}{89}} of file \mbox{\hyperlink{screen__main__app_8h_source}{screen\+\_\+main\+\_\+app.\+h}}.
+
+\Hypertarget{screen__main__app_8h_aa74228de29a702f1a8ac7926fc6c2063}\label{screen__main__app_8h_aa74228de29a702f1a8ac7926fc6c2063} 
+\index{screen\_main\_app.h@{screen\_main\_app.h}!MONITOR\_AREA\_RATIO@{MONITOR\_AREA\_RATIO}}
+\index{MONITOR\_AREA\_RATIO@{MONITOR\_AREA\_RATIO}!screen\_main\_app.h@{screen\_main\_app.h}}
+\doxysubsubsection{\texorpdfstring{MONITOR\_AREA\_RATIO}{MONITOR\_AREA\_RATIO}}
+{\footnotesize\ttfamily \#define MONITOR\+\_\+\+AREA\+\_\+\+RATIO~(1)}
+
+
+
+Ratio of monitoring area. 
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8h_source_l00076}{76}} of file \mbox{\hyperlink{screen__main__app_8h_source}{screen\+\_\+main\+\_\+app.\+h}}.
+
+\Hypertarget{screen__main__app_8h_a90efbd8c59cc25dc576ba28b7a8e143b}\label{screen__main__app_8h_a90efbd8c59cc25dc576ba28b7a8e143b} 
+\index{screen\_main\_app.h@{screen\_main\_app.h}!MONITOR\_COL\_COUNT@{MONITOR\_COL\_COUNT}}
+\index{MONITOR\_COL\_COUNT@{MONITOR\_COL\_COUNT}!screen\_main\_app.h@{screen\_main\_app.h}}
+\doxysubsubsection{\texorpdfstring{MONITOR\_COL\_COUNT}{MONITOR\_COL\_COUNT}}
+{\footnotesize\ttfamily \#define MONITOR\+\_\+\+COL\+\_\+\+COUNT~(1)}
+
+
+
+Number of columns in monitoring view. 
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8h_source_l00056}{56}} of file \mbox{\hyperlink{screen__main__app_8h_source}{screen\+\_\+main\+\_\+app.\+h}}.
+
+\Hypertarget{screen__main__app_8h_ac309e48e220e1fd5ab5dccbc895be6f5}\label{screen__main__app_8h_ac309e48e220e1fd5ab5dccbc895be6f5} 
+\index{screen\_main\_app.h@{screen\_main\_app.h}!MONITOR\_CONFS\_COUNT@{MONITOR\_CONFS\_COUNT}}
+\index{MONITOR\_CONFS\_COUNT@{MONITOR\_CONFS\_COUNT}!screen\_main\_app.h@{screen\_main\_app.h}}
+\doxysubsubsection{\texorpdfstring{MONITOR\_CONFS\_COUNT}{MONITOR\_CONFS\_COUNT}}
+{\footnotesize\ttfamily \#define MONITOR\+\_\+\+CONFS\+\_\+\+COUNT~(0)}
+
+
+
+Number of configurations used for displaying the monitoring parameters. 
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8h_source_l00047}{47}} of file \mbox{\hyperlink{screen__main__app_8h_source}{screen\+\_\+main\+\_\+app.\+h}}.
+
+\Hypertarget{screen__main__app_8h_ac6ea29779352e4ab7833f5eec1d87718}\label{screen__main__app_8h_ac6ea29779352e4ab7833f5eec1d87718} 
+\index{screen\_main\_app.h@{screen\_main\_app.h}!MONITOR\_VALUE\_FONT@{MONITOR\_VALUE\_FONT}}
+\index{MONITOR\_VALUE\_FONT@{MONITOR\_VALUE\_FONT}!screen\_main\_app.h@{screen\_main\_app.h}}
+\doxysubsubsection{\texorpdfstring{MONITOR\_VALUE\_FONT}{MONITOR\_VALUE\_FONT}}
+{\footnotesize\ttfamily \#define MONITOR\+\_\+\+VALUE\+\_\+\+FONT~(lv\+\_\+font\+\_\+montserrat\+\_\+18)}
+
+
+
+Font used by the displayed monitoring parameters. 
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8h_source_l00097}{97}} of file \mbox{\hyperlink{screen__main__app_8h_source}{screen\+\_\+main\+\_\+app.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{screen__main__app_8h_a3c6b6915d76e05da1702b2138b4ed45f}\label{screen__main__app_8h_a3c6b6915d76e05da1702b2138b4ed45f} 
+\index{screen\_main\_app.h@{screen\_main\_app.h}!AppControlGrid\_Create@{AppControlGrid\_Create}}
+\index{AppControlGrid\_Create@{AppControlGrid\_Create}!screen\_main\_app.h@{screen\_main\_app.h}}
+\doxysubsubsection{\texorpdfstring{AppControlGrid\_Create()}{AppControlGrid\_Create()}}
+{\footnotesize\ttfamily void App\+Control\+Grid\+\_\+\+Create (\begin{DoxyParamCaption}\item[{lv\+\_\+obj\+\_\+t \texorpdfstring{$\ast$}{*}}]{parent,  }\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+Creates the application dependent area of the main screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & Parent lv\+\_\+obj\+\_\+t of the device. \\
+\hline
+{\em row} & Row index for the item. \\
+\hline
+{\em col} & Column index for the item. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8c_source_l00319}{319}} of file \mbox{\hyperlink{screen__main__app_8c_source}{screen\+\_\+main\+\_\+app.\+c}}.
+
+\Hypertarget{screen__main__app_8h_a91227bcfccad8cddea765dca99b23842}\label{screen__main__app_8h_a91227bcfccad8cddea765dca99b23842} 
+\index{screen\_main\_app.h@{screen\_main\_app.h}!AppControlGrid\_Refresh@{AppControlGrid\_Refresh}}
+\index{AppControlGrid\_Refresh@{AppControlGrid\_Refresh}!screen\_main\_app.h@{screen\_main\_app.h}}
+\doxysubsubsection{\texorpdfstring{AppControlGrid\_Refresh()}{AppControlGrid\_Refresh()}}
+{\footnotesize\ttfamily void App\+Control\+Grid\+\_\+\+Refresh (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Refreshes the application dependent area of the main screen. 
+
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8c_source_l00360}{360}} of file \mbox{\hyperlink{screen__main__app_8c_source}{screen\+\_\+main\+\_\+app.\+c}}.
+
+\Hypertarget{screen__main__app_8h_ae39bc54927882a0f2b454546973cb1de}\label{screen__main__app_8h_ae39bc54927882a0f2b454546973cb1de} 
+\index{screen\_main\_app.h@{screen\_main\_app.h}!AppControlGrid\_TouchDetect@{AppControlGrid\_TouchDetect}}
+\index{AppControlGrid\_TouchDetect@{AppControlGrid\_TouchDetect}!screen\_main\_app.h@{screen\_main\_app.h}}
+\doxysubsubsection{\texorpdfstring{AppControlGrid\_TouchDetect()}{AppControlGrid\_TouchDetect()}}
+{\footnotesize\ttfamily screen\+\_\+type\+\_\+t App\+Control\+Grid\+\_\+\+Touch\+Detect (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Touch detection of the application dependent area of the screen. 
+
+\begin{DoxyReturn}{Returns}
+A new screen type if screen needs to be changed based upon the touch response. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{screen__main__app_8c_source_l00426}{426}} of file \mbox{\hyperlink{screen__main__app_8c_source}{screen\+\_\+main\+\_\+app.\+c}}.
+

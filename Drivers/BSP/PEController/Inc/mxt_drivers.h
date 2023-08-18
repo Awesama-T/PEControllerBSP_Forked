@@ -98,6 +98,7 @@ extern "C" {
 #define MXT_SPT_MESSAGECOUNT_T44	44
 #define MXT_SPT_CTECONFIG_T46		46
 #define MXT_SPT_NOISESUPPRESSION_T48    48
+#define MXT_SPT_SHIELDLESS_T56	56
 #define MXT_SPT_TIMER_T61		61
 #define MXT_PROCI_LENSBENDING_T65	65
 #define MXT_SPT_GOLDENREF_T66		66
@@ -114,6 +115,7 @@ extern "C" {
 #define MXT_SPT_TOUCHSCREENHOVER_T101	101
 #define MXT_PROCG_NOISESUPSELFCAP_T108	108
 #define MXT_SPT_SELFCAPGLOBALCONFIG_T109	109
+#define MXT_SPT_captuning_T110 110
 #define MXT_SPT_AUXTOUCHCONFIG_T104	104
 #define MXT_TOUCH_KEYARRAY_T97		97
 
@@ -131,6 +133,9 @@ extern "C" {
 #define MXT_POWER_IDLEACQINT	0
 #define MXT_POWER_ACTVACQINT	1
 #define MXT_POWER_ACTV2IDLETO	2
+#define MXT_POWER_CFG 3
+#define MXT_POWER_CFG2 4
+
 
 #define MXT_POWER_CFG_RUN		0
 #define MXT_POWER_CFG_DEEPSLEEP		1
@@ -144,7 +149,13 @@ extern "C" {
 #define MXT_ACQUIRE_SYNC	5
 #define MXT_ACQUIRE_ATCHCALST	6
 #define MXT_ACQUIRE_ATCHCALSTHR	7
+#define MXT_ACQUIRE_ATCHFRCCALTHR 8
+#define MXT_ACQUIRE_ATCHFRCCALRATIO 9
 #define MXT_ACQUIRE_MEASALLOW	10
+#define MXT_ACQUIRE_MEASIDLEDEF 11
+#define MXT_ACQUIRE_MEASACTVDEF 12
+#define MXT_ACQUIRE_REFMODE 13
+#define MXT_ACQUIRE_CFG 14
 
 /* MXT_TOUCH_MULTI_T9 field */
 #define MXT_TOUCH_CTRL		0
@@ -560,14 +571,16 @@ typedef struct {
 
 typedef struct {
 	uint8_t type;
-	uint16_t start_address;
-	uint16_t size;
-	uint16_t instances;
+	//uint16_t start_address;
+	uint8_t start_address_LSB;
+	uint8_t start_address_MSB;
+	uint8_t size;
+	uint8_t instances;
 	uint8_t num_report_ids;
 
 	/* to map object and message */
-	uint8_t min_reportid;
-	uint8_t max_reportid;
+//	uint8_t min_reportid;
+//	uint8_t max_reportid;
 }mxt_object_t;
 
 /* Each client has this additional data */
@@ -635,10 +648,21 @@ typedef struct {
 	/* Cached parameters from object table */
 	uint16_t T5_address;
 	uint8_t T5_msg_size;
-	uint8_t T6_reportid;
-	uint16_t T7_address;
+
+			uint16_t T6_address;
+			uint8_t T6_msg_size;
+			uint8_t T6_reportid;
+
+			uint16_t T7_address;
+			uint8_t T7_msg_size;
+			uint8_t T7_reportid;
+
+			uint16_t T8_address;
+			uint8_t T8_msg_size;
+
 	uint8_t T9_reportid_min;
 	uint8_t T9_reportid_max;
+	uint16_t T15_address;
 	uint8_t T15_reportid_min;
 	uint8_t T15_reportid_max;
 	uint8_t T19_reportid_min;
@@ -648,11 +672,24 @@ typedef struct {
 	uint16_t T37_address;
 	uint8_t T42_reportid_min;
 	uint8_t T42_reportid_max;
-	uint16_t T44_address;
+	uint16_t T42_address;
+	uint8_t T42_msg_size;
+			uint16_t T44_address;
+			uint8_t T44_msg_size;
 	uint8_t T48_reportid;
+
+			uint16_t T56_address;
+			uint8_t T56_msg_size;
+			uint8_t T56_reportid;
+
 	uint8_t T63_reportid_min;
 	uint8_t T63_reportid_max;
 	uint8_t T66_reportid;
+
+			uint16_t T72_address;
+			uint8_t T72_msg_size;
+			uint8_t T72_reportid;
+
 	uint8_t T81_reportid_min;
 	uint8_t T81_reportid_max;
 	uint8_t T92_reportid_min;
@@ -662,6 +699,11 @@ typedef struct {
 	uint8_t T100_reportid_min;
 	uint8_t T100_reportid_max;
 	uint8_t T109_reportid;
+
+			uint8_t T110_reportid_max;
+			uint8_t T110_reportid_min;
+			uint8_t T110_instances;
+
 	uint8_t T97_reportid_min;
 	uint8_t T97_reportid_max;
 

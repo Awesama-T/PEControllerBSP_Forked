@@ -50,7 +50,9 @@ static uint16_t xPress, yPress;
 /********************************************************************************
  * Global Variables
  *******************************************************************************/
-mxt_data_t mxtData = { .shiftedAddress = (0x4A << 1U) };
+//If LSB = 1, then read
+//There is no need to manually set the LSB to 1 as HAL does it while reading data from a i2c address
+mxt_data_t mxtData = { .shiftedAddress = (0x4A << 1U) };//| 00000001};
 /********************************************************************************
  * Function Prototypes
  *******************************************************************************/
@@ -94,7 +96,7 @@ static int mxt_read_object(mxt_data_t *data, uint8_t type, uint8_t offset, uint8
 
 	reg = object->start_address;
 	return ts_bsp_drv.ReadMultiple(data->shiftedAddress, reg + offset, val, 1);
-	//mxt_read_reg(data->client, reg + offset, 1, val);
+	mxt_read_reg(data->client, reg + offset, 1, val);
 }
 /*!
  * @brief write the object to touch display
@@ -409,16 +411,20 @@ static void SetResolution(mxt_data_t *data, uint16_t x, uint16_t y)
 
 }
 // gets the object table
+
 static uint16_t mxt_get_object_table(mxt_data_t *data)
 {
 	uint16_t error;
 	int i;
-	uint16_t end_address;
+	//uint16_t end_address;
 	uint8_t reportid = 0;
-	int add_num = 0;
-	//	data->mem_size = 0;
+	//int add_num = 0;
+	data->info.object_num = ts_bsp_drv.Read(data->shiftedAddress, MXT_OBJECT_NUM);
+	data->object_table = (mxt_object_t*)malloc(sizeof(mxt_object_t) * data->info.object_num);
+	error = ts_bsp_drv.ReadMultiple(data->shiftedAddress, MXT_OBJECT_START, (uint8_t*)(data->object_table), MXT_OBJECT_SIZE*(data->info.object_num));
+	for(i=0; i<data->info.object_num; i++){
 
-	error = ts_bsp_drv.ReadMultiple(data->shiftedAddress, MXT_OBJECT_START, (uint8_t*)objectTable, sizeof(objectTable));
+	/*	error = ts_bsp_drv.ReadMultiple(data->shiftedAddress, MXT_OBJECT_START, (uint8_t*)objectTable, sizeof(objectTable));
 	if (error != HAL_OK)
 		return error;
 
@@ -432,10 +438,12 @@ static uint16_t mxt_get_object_table(mxt_data_t *data)
 
 
 		object->type = objectTable[i][0];
-		if (object->type == 35) {
-			object->type = 150 + add_num;
-			add_num ++;
-		}
+
+		//if (object->type == 35) {
+		//	object->type = 150 + add_num;
+		//	add_num ++;
+		//}
+
 		object->start_address = (objectTable[i][2] << 8) | objectTable[i][1];
 		object->size = objectTable[i][3] + 1;
 		object->instances = objectTable[i][4] + 1;
@@ -444,39 +452,51 @@ static uint16_t mxt_get_object_table(mxt_data_t *data)
 		if (object->num_report_ids) {
 			reportid += object->num_report_ids * object->instances;
 			object->max_reportid = reportid;
-			object->min_reportid = object->max_reportid - object->instances * object->num_report_ids + 1;
+			object->min_reportid = object->max_reportid - (object->instances * object->num_report_ids) + 1;
 		}
 
-		end_address = object->start_address + object->size * object->instances - 1;
+		//end_address = object->start_address + object->size * object->instances - 1;
 
 		//		if (end_address >= data->mem_size)
 		//			data->mem_size = end_address + 1;
-
-		/* save data for objects used when processing interrupts */
-		switch (object->type) {
-		case MXT_TOUCH_MULTI_T9:
-			data->T9_reportid_max = object->max_reportid;
-			data->T9_reportid_min = object->min_reportid;
-			data->num_touchids = object->num_report_ids * object->instances;
+*/
+		// save data for objects used when processing interrupts //
+		//switch (object->type) {
+		switch (((data->object_table)+i)->type) {
+		//No such object, so osama commented it
+		//case MXT_TOUCH_MULTI_T9:
+		//	data->T9_reportid_max = object->max_reportid;
+		//	data->T9_reportid_min = object->min_reportid;
+		//	data->num_touchids = object->num_report_ids * object->instances;
+		//	break;
+		/*
+		case MXT_GEN_MESSAGE_T5:
+					//if (data->info.family_id == 0x80) {
+						// On mXT224 must read and discard CRC byte
+						 // otherwise DMA reads are misaligned //
+						//data->T5_msg_size = object->size;
+					//} else {
+						// CRC not enabled, therefore don't read last byte //
+			data->T5_msg_size = object->size;
+					//}
+			data->T5_address = object->start_address;
 			break;
 		case MXT_GEN_COMMAND_T6:
+			data->T6_address = object->start_address;
+			data->T6_msg_size = object->size;
 			data->T6_reportid = object->max_reportid;
-			break;
-		case MXT_GEN_MESSAGE_T5:
-			if (data->info.family_id == 0x80) {
-				/* On mXT224 must read and discard CRC byte
-				 * otherwise DMA reads are misaligned */
-				data->T5_msg_size = object->size;
-			} else {
-				/* CRC not enabled, therefore don't read last byte */
-				data->T5_msg_size = object->size - 1;
-			}
-			data->T5_address = object->start_address;
 			break;
 		case MXT_GEN_POWER_T7:
 			data->T7_address = object->start_address;
+			data->T7_msg_size = object->size;
+			data->T7_reportid = object->max_reportid;
+			break;
+		case MXT_GEN_ACQUIRE_T8:
+			data->T8_address = object->start_address;
+			data->T8_msg_size = object->size;
 			break;
 		case MXT_TOUCH_KEYARRAY_T15:
+			data->T15_address = object->start_address;
 			data->T15_reportid_max = object->max_reportid;
 			data->T15_reportid_min = object->min_reportid;
 			break;
@@ -492,23 +512,34 @@ static uint16_t mxt_get_object_table(mxt_data_t *data)
 			data->T37_address = object->start_address;
 			break;
 		case MXT_PROCI_TOUCHSUPPRESSION_T42:
-			data->T42_reportid_max = object->max_reportid;
-			data->T42_reportid_min = object->min_reportid;
+			data->T42_address = object->start_address;
+			data->T42_msg_size = object->size;
 			break;
 		case MXT_SPT_MESSAGECOUNT_T44:
 			data->T44_address = object->start_address;
+			data->T44_msg_size = object->size;
 			break;
 		case MXT_SPT_NOISESUPPRESSION_T48:
 			data->T48_reportid = object->max_reportid;
+			break;
+		case MXT_SPT_SHIELDLESS_T56:
+			data->T56_address = object->start_address;
+			data->T56_msg_size = object->size;
+			data->T56_reportid = object->max_reportid;
 			break;
 		case MXT_PROCI_ACTIVE_STYLUS_T63:
 			data->T63_reportid_max = object->max_reportid;
 			data->T63_reportid_min = object->min_reportid;
 			data->num_stylusids =
-					object->num_report_ids * object->instances;
+			object->num_report_ids * object->instances;
 			break;
 		case MXT_SPT_GOLDENREF_T66:
 			data->T66_reportid = object->max_reportid;
+			break;
+		case MXT_PROCG_NOISESUPPRESSION_T72:
+			data->T72_address = object->start_address;
+			data->T72_msg_size = object->size;
+			data->T72_reportid = object->max_reportid;
 			break;
 		case MXT_TOUCH_MORE_GESTURE_T81:
 			data->T81_reportid_min = object->min_reportid;
@@ -527,6 +558,7 @@ static uint16_t mxt_get_object_table(mxt_data_t *data)
 			data->T100_reportid_min = object->min_reportid;
 			data->num_touchids = object->num_report_ids * object->instances;
 			break;
+
 		case MXT_SPT_SELFCAPGLOBALCONFIG_T109:
 			data->T109_reportid = object->max_reportid;
 			break;
@@ -534,47 +566,41 @@ static uint16_t mxt_get_object_table(mxt_data_t *data)
 			data->T97_reportid_max = object->max_reportid;
 			data->T97_reportid_min = object->min_reportid;
 			break;
+			*/
+		case MXT_SPT_captuning_T110:
+					data->T110_instances = (((data->object_table)+i)->instances)+1;
+					break;
 		default:
 			break;
 		}
 	}
 
-	/* Store maximum reportid */
-	data->max_reportid = reportid;
-
-	/* If T44 exists, T9 position has to be directly after */
-	if (data->T44_address && (data->T5_address != data->T44_address + 1)) {
-		return HAL_ERROR;
-	}
-
+	// Store maximum reportid //
+	//data->max_reportid = reportid;
 	data->msg_buf = (uint8_t*)msgBuffer;
-	//	/* Allocate message buffer */
-	//	data->msg_buf = kcalloc(data->max_reportid, data->T5_msg_size, GFP_KERNEL);
-	//	if (!data->msg_buf) {
-	//		return 0;
-	//	}
 
 	return 0;
 }
 
 // initialize the mxt object
+/*
 static uint16_t mxt_initialize(mxt_data_t *data, uint16_t ts_SizeX, uint16_t ts_SizeY)
 {
 	mxt_info_t *info = &data->info;
 	uint16_t error = HAL_OK;
 	uint8_t retry_count = 0;
 
-	/* Read info block */
+	// Read info block
 	while ((error != HAL_OK || info->family_id == 0) && retry_count++ < 100)
 	{
 		error = ts_bsp_drv.ReadMultiple(data->shiftedAddress, MXT_FAMILY_ID, (uint8_t*)info, MXT_OBJECT_NUM - MXT_FAMILY_ID + 1);
 	}
 
-	/* If error occurs in reading register, do not download firmware */
+	 //If error occurs in reading register, do not download firmware
 	if (error != HAL_OK) {
 		//		error = mxt_probe_bootloader(data);
 		//		if (error) {
-		//			/* Chip is not in appmode or bootloader mode */
+		//			/* Chip is not in appmode or bootloader mode
 		//			return error;
 		//		} else {
 		//			if (++retry_count > 10) {
@@ -582,7 +608,7 @@ static uint16_t mxt_initialize(mxt_data_t *data, uint16_t ts_SizeX, uint16_t ts_
 		//			}
 
 		//			/* Tell bootloader to enter app mode. Ignore errors
-		//			 * since we're in a retry loop */
+		//			 * since we're in a retry loop
 		//			mxt_send_bootloader_cmd(data, false);
 		//			msleep(MXT_FWRESET_TIME);
 		//			goto retry_probe;
@@ -591,7 +617,7 @@ static uint16_t mxt_initialize(mxt_data_t *data, uint16_t ts_SizeX, uint16_t ts_
 	}
 	//	data->state = APPMODE;
 
-	/* Get object table information */
+	// Get object table information
 	error = mxt_get_object_table(data);
 	if (error != HAL_OK)
 		return error;
@@ -602,7 +628,7 @@ static uint16_t mxt_initialize(mxt_data_t *data, uint16_t ts_SizeX, uint16_t ts_
 	//		return error;
 	//	}
 
-	//	/* Read information block CRC */
+	//	/* Read information block CRC
 	//	error = mxt_read_info_block_crc(data);
 	//	if (error) {
 	//		dev_err(&client->dev, "Error %d reading info block CRC\n", error);
@@ -614,7 +640,7 @@ static uint16_t mxt_initialize(mxt_data_t *data, uint16_t ts_SizeX, uint16_t ts_
 	//		return error;
 	//	}
 
-	/* Check register init values */
+	// Check register init values
 	//	error = mxt_check_reg_init(data);
 	//	if (error) {
 	//		dev_err(&client->dev, "Failed to initialize config\n");
@@ -640,7 +666,30 @@ static uint16_t mxt_initialize(mxt_data_t *data, uint16_t ts_SizeX, uint16_t ts_
 	mxt_write_object(data, MXT_SPT_COMMSCONFIG_T18, MXT_COMMS_CTRL, init_val);
 	init_val = 1;
 	mxt_write_object(data, MXT_SPT_COMMSCONFIG_T18, MXT_COMMS_CMD, init_val);
+	//Now verify if init _val has the same value as written before
+	mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_CFG1, &init_val);
 
+
+
+	mxt_read_object(data, MXT_GEN_ACQUIRE_T8, MXT_ACQUIRE_MEASALLOW, &init_val);
+	init_val = init_val & (0b11111101);
+    mxt_write_object(data, MXT_GEN_ACQUIRE_T8, MXT_ACQUIRE_MEASALLOW, init_val);
+    //////////////////////////////////////////////////
+    mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHDIDOWN, &init_val);
+	init_val = init_val & (0b11011110);
+	mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHDIDOWN, init_val);
+	 //////////////////////////////////////////////////
+	    mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHDIUP, &init_val);
+		init_val = init_val & (0b11011110);
+		mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHDIUP, init_val);
+		 //////////////////////////////////////////////////
+		    mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_NEXTTCHDI, &init_val);
+			init_val = init_val & (0b11011110);
+			mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_NEXTTCHDI, init_val);
+
+		    mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHHYST, &init_val);
+			init_val = init_val & (0b11000111);
+			mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHHYST, init_val);
 
 	//	while(1)
 	//		mxt_read_messages_t44(data);
@@ -648,6 +697,126 @@ static uint16_t mxt_initialize(mxt_data_t *data, uint16_t ts_SizeX, uint16_t ts_
 	//	error = mxt_get_init_setting(data);
 	//	if (error != HAL_OK)
 	//		return error;
+
+	return error;
+}*/
+
+static uint16_t mxt_initialize(mxt_data_t *data, uint16_t ts_SizeX, uint16_t ts_SizeY)
+{
+	mxt_info_t *info = &data->info;
+	uint16_t error = HAL_OK;
+	uint8_t retry_count = 0;
+
+	// Read info block
+	while ((error != HAL_OK || info->family_id == 0) && retry_count++ < 100)
+	{
+		error = ts_bsp_drv.ReadMultiple(data->shiftedAddress, MXT_FAMILY_ID, (uint8_t*)info, MXT_OBJECT_NUM - MXT_FAMILY_ID + 1);
+	}
+
+	if (error != HAL_OK) {
+		return error;
+	}
+	// Get object table information
+	error = mxt_get_object_table(data);
+	if (error != HAL_OK)
+		return error;
+
+	//Time interval between successive idle burst cycles.  Typical: 32ms
+	mxt_write_object(data, data->T7_address, MXT_POWER_IDLEACQINT, 32);
+	//Time interval between successive active burst cycles.  Typical: 16ms
+	mxt_write_object(data, data->T7_address, MXT_POWER_ACTVACQINT, 16);
+	//Timeout period; the device remains active for this period after the first touch. Typical: 50 (10 sec)
+	mxt_write_object(data, data->T7_address, MXT_POWER_ACTV2IDLETO, 50);
+	//start in active mode, suppress overflow msgs, 4 MSBs, pipeline both modes
+	mxt_write_object(data, data->T7_address, MXT_POWER_CFG, 0b11000011);
+	uint8_t init_val =0;
+	//The ACTV2IDLETO is reset on subsequent touches and counts from the last touch
+	mxt_read_object(data, data->T7_address, MXT_POWER_CFG2, &init_val);
+	init_val = init_val & (0b11111110);
+	mxt_write_object(data, data->T7_address, MXT_POWER_CFG2, init_val);
+
+
+	//Scanning time. default: 0
+	mxt_write_object(data, data->T8_address, MXT_ACQUIRE_CHRGTIME, 0);
+	//Typical: 20
+	mxt_write_object(data, data->T8_address, MXT_ACQUIRE_TCHDRIFT, 20);
+
+	mxt_write_object(data, data->T8_address, MXT_ACQUIRE_DRIFTST, 10);
+	//Recalibrate if an object remains in contact with CTP for certain time
+	mxt_write_object(data, data->T8_address, MXT_ACQUIRE_TCHAUTOCAL, 100);
+
+	mxt_read_object(data, data->T8_address, MXT_ACQUIRE_SYNC, &init_val);
+	init_val = init_val & (0b11111010);
+	mxt_write_object(data, data->T8_address, MXT_ACQUIRE_SYNC, init_val);
+	//Should be less than DRIFTST and 0 if only mutual capacitace is used
+	mxt_write_object(data, data->T8_address, MXT_ACQUIRE_ATCHCALST, 0);
+	mxt_write_object(data, data->T8_address, MXT_ACQUIRE_ATCHCALSTHR, 255);
+	mxt_write_object(data, data->T8_address, MXT_ACQUIRE_ATCHFRCCALTHR, 50);
+	mxt_write_object(data, data->T8_address, MXT_ACQUIRE_ATCHFRCCALRATIO, 25);
+	//Enable/disable mutual cap, self cap, selfprox with bits 0 1 & 3 respectively
+	mxt_read_object(data, data->T8_address, MXT_ACQUIRE_MEASALLOW, &init_val);
+	init_val = init_val & (0b11111111);
+    mxt_write_object(data, data->T8_address, MXT_ACQUIRE_MEASALLOW, init_val);
+	//Enable/disable mutual cap, self cap, selfprox in idle mode with bits 0 1 & 3 respectively
+    mxt_read_object(data, data->T8_address, MXT_ACQUIRE_MEASIDLEDEF, &init_val);
+    init_val = init_val & (0b11111111);
+    mxt_write_object(data, data->T8_address, MXT_ACQUIRE_MEASIDLEDEF, init_val);
+	//Enable/disable mutual cap, self cap, selfprox in active mode with bits 0 1 & 3 respectively
+    mxt_read_object(data, data->T8_address, MXT_ACQUIRE_MEASACTVDEF, &init_val);
+    init_val = init_val & (0b11111111);
+    mxt_write_object(data, data->T8_address, MXT_ACQUIRE_MEASACTVDEF, init_val);
+    //1 is recommended by microchip
+    mxt_write_object(data, data->T8_address, MXT_ACQUIRE_REFMODE, 1);
+    mxt_read_object(data, data->T8_address, MXT_MULTITOUCH_NUMTCH, &init_val);
+    init_val = init_val & (0b11100101);
+    mxt_write_object(data, data->T8_address, MXT_MULTITOUCH_NUMTCH, init_val);
+
+    mxt_read_object(data, data->T8_address, MXT_ACQUIRE_CFG, &init_val);
+    init_val = init_val & (0b01111001);
+    mxt_write_object(data, data->T8_address, MXT_ACQUIRE_CFG, init_val);
+
+
+	if (mxt_get_object(data, MXT_TOUCH_MULTI_T100) != NULL)
+	{
+		error = mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHAUX, &data->t100_tchaux_bits);
+		if (error != HAL_OK)
+			return error;
+	}
+
+
+	SetResolution(data, ts_SizeX, ts_SizeY);
+
+	// set touch threshold
+	mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHTHR, 30);
+
+	mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_CFG1, &init_val);
+	init_val = init_val & (0b11010000);
+	mxt_write_object(data, MXT_SPT_COMMSCONFIG_T18, MXT_COMMS_CTRL, init_val);
+	init_val = 1;
+	mxt_write_object(data, MXT_SPT_COMMSCONFIG_T18, MXT_COMMS_CMD, init_val);
+	//
+	mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_CFG1, &init_val);
+    //////////////////////////////////////////////////
+    mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHDIDOWN, &init_val);
+	init_val = init_val & (0b11000011);//(0b11011110);
+	mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHDIDOWN, init_val);
+	 //////////////////////////////////////////////////
+	mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHDIUP, &init_val);
+	init_val = init_val & (0b11000011);//(0b11011110);
+	mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHDIUP, init_val);
+	//////////////////////////////////////////////////
+	mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_NEXTTCHDI, &init_val);
+	init_val = init_val & (0b11000011);//(0b11011110);
+	mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_NEXTTCHDI, init_val);
+
+	mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHHYST, &init_val);
+	init_val = init_val & (0b11000111);
+	mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHHYST, init_val);
+
+	mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_CTRL, &init_val);
+	init_val = init_val & (0b11111111);
+	mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_CTRL, init_val);
+
 
 	return error;
 }

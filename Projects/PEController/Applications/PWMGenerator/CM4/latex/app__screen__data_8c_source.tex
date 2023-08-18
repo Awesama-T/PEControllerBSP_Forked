@@ -1,0 +1,53 @@
+\doxysection{app\+\_\+screen\+\_\+data.\+c}
+\hypertarget{app__screen__data_8c_source}{}\label{app__screen__data_8c_source}\index{C:/TarazServer/work\_directory/00\_Osama\_Tahir/BSP/PEControllerBSP\_Forked/Projects/PEController/Applications/PWMGenerator/CM4/BSP/Display/app\_screen\_data.c@{C:/TarazServer/work\_directory/00\_Osama\_Tahir/BSP/PEControllerBSP\_Forked/Projects/PEController/Applications/PWMGenerator/CM4/BSP/Display/app\_screen\_data.c}}
+\mbox{\hyperlink{app__screen__data_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00023}00023\ \textcolor{comment}{/********************************************************************************}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00024}00024\ \textcolor{comment}{\ *\ Includes}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00025}00025\ \textcolor{comment}{\ *******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}app\_screen\_data.h"{}}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00027}00027\ \textcolor{comment}{/********************************************************************************}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00028}00028\ \textcolor{comment}{\ *\ Defines}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00029}00029\ \textcolor{comment}{\ *******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00031}00031\ \textcolor{comment}{/********************************************************************************}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00032}00032\ \textcolor{comment}{\ *\ Typedefs}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00033}00033\ \textcolor{comment}{\ *******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00035}00035\ \textcolor{comment}{/********************************************************************************}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00036}00036\ \textcolor{comment}{\ *\ Structures}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00037}00037\ \textcolor{comment}{\ *******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00039}00039\ \textcolor{comment}{/********************************************************************************}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00040}00040\ \textcolor{comment}{\ *\ Static\ Variables}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00041}00041\ \textcolor{comment}{\ *******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00043}00043\ \textcolor{comment}{/********************************************************************************}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00044}00044\ \textcolor{comment}{\ *\ Global\ Variables}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00045}00045\ \textcolor{comment}{\ *******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00051}\mbox{\hyperlink{app__screen__data_8c_aa34f610dc29078d9bc39aca50254832e}{00051}}\ appinfo\_display\_t\ \mbox{\hyperlink{app__screen__data_8c_aa34f610dc29078d9bc39aca50254832e}{appInfoDisplay}}\ =}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00052}00052\ \{}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ .appInfo\ =\ \textcolor{stringliteral}{"{}This\ application\ serves\ as\ a\ template\ to\ demonstrate\ the\ usage\ of\ PEControllerBSP.\ "{}}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}It\ can\ be\ used\ as\ a\ starting\ point\ to\ enhance\ functionality\ by\ incorporating\ various\ control\ and\ communication\ schemes."{}},}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ .connectionInfo\ =\ NULL,}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ .documentationLink\ =\ \textcolor{stringliteral}{"{}www.taraztechnologies.com/Downloads/Software/PEControllerBSP/index.html"{}},}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ .img\ =\ NULL,}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00061}00061\ \};}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00065}\mbox{\hyperlink{app__screen__data_8c_aacfac231dc1911f6c0b0dec7e8017655}{00065}}\ image\_info\_t*\ \mbox{\hyperlink{app__screen__data_8c_aacfac231dc1911f6c0b0dec7e8017655}{splashImg}}\ =\ \&taraz\_logo\_info;}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00066}00066\ \textcolor{comment}{/********************************************************************************}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00067}00067\ \textcolor{comment}{\ *\ Function\ Prototypes}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00068}00068\ \textcolor{comment}{\ *******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00070}00070\ \textcolor{comment}{/********************************************************************************}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00071}00071\ \textcolor{comment}{\ *\ Code}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00072}00072\ \textcolor{comment}{\ *******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{app__screen__data_8c_source_l00076}00076\ \textcolor{comment}{/*\ EOF\ */}}
+
+\end{DoxyCode}

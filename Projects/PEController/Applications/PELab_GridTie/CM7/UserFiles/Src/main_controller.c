@@ -88,7 +88,7 @@ static void ADC_Callback(adc_measures_t* result)
 			adcMode = ADC_MODE_MONITORING;
 		}
 	}
-	MainControl_Loop();
+	MainControl_Loop(result);
 }
 #endif
 /**

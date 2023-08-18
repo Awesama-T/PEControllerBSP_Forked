@@ -479,7 +479,7 @@ void StartDisplayTask(void *argument)
 	int i = 0;
 	for(;;)
 	{
-		if (++i > 10)
+		if (++i > 2)
 		{
 			ScreenManager_Refresh();
 			i = 0;
@@ -501,10 +501,10 @@ void StartDisplayTask(void *argument)
 void StartTouchTask(void *argument)
 {
   /* USER CODE BEGIN StartTouchTask */
-			(BSP_TS_Init(800, 480) );//!= TS_OK);
+			while (BSP_TS_Init(800, 480)!= TS_OK)
 			{
 				osDelay(100);
-				BSP_TS_Poll();
+				//BSP_TS_Poll();
 			}
 			for (;;)
 			{
@@ -513,8 +513,8 @@ void StartTouchTask(void *argument)
 			{
 				BSP_TS_Poll();
 				osDelay(10);
-	            //osSignalClear(touchTaskHandle, CTP_INT);
-				//osThreadFlagsClear(CTP_INT);
+	            //osSignalClear(touchTaskHandle, CTP_INT);// no need to use this
+				//osThreadFlagsClear(CTP_INT);// no need to use this
 			}
 			}
 			//vTaskSuspend(NULL);//suspend itself
