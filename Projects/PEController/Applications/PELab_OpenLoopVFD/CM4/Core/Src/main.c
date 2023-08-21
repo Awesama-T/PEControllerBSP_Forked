@@ -478,7 +478,7 @@ void StartDisplayTask(void *argument)
 void StartTouchTask(void *argument)
 {
   /* USER CODE BEGIN StartTouchTask */
-	while(BSP_TS_Init(800, 480) != TS_OK)
+	while((800, 480) != TS_OK)
 		osDelay(100);
 	/* Infinite loop */
 	for(;;)

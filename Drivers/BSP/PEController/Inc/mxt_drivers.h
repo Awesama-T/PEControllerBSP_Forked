@@ -54,6 +54,7 @@ extern "C" {
 #define MXT_OBJECT_NUM		0x06
 #define MXT_OBJECT_START	0x07
 
+#define MXT_ID_INFO_SIZE 7
 #define MXT_OBJECT_SIZE		6
 
 #define MXT_MAX_BLOCK_WRITE	255
@@ -571,12 +572,12 @@ typedef struct {
 
 typedef struct {
 	uint8_t type;
-	//uint16_t start_address;
 	uint8_t start_address_LSB;
 	uint8_t start_address_MSB;
 	uint8_t size;
 	uint8_t instances;
 	uint8_t num_report_ids;
+	//uint16_t start_address;
 
 	/* to map object and message */
 //	uint8_t min_reportid;
@@ -648,64 +649,159 @@ typedef struct {
 	/* Cached parameters from object table */
 	uint16_t T5_address;
 	uint8_t T5_msg_size;
+	uint8_t T5_instances;
+	uint8_t T5_reportids;
+	uint8_t T5_reportid_max;
+	uint8_t T5_reportid_min;
 
-			uint16_t T6_address;
-			uint8_t T6_msg_size;
-			uint8_t T6_reportid;
+	uint16_t T6_address;
+	uint8_t T6_msg_size;
+	uint8_t T6_instances;
+	uint8_t T6_reportids;
+	uint8_t T6_reportid_max;
+	uint8_t T6_reportid_min;
 
-			uint16_t T7_address;
-			uint8_t T7_msg_size;
-			uint8_t T7_reportid;
+	uint16_t T7_address;
+	uint8_t T7_msg_size;
+	uint8_t T7_instances;
+	uint8_t T7_reportids;
+	uint8_t T7_reportid_max;
+	uint8_t T7_reportid_min;
 
-			uint16_t T8_address;
-			uint8_t T8_msg_size;
+	uint16_t T8_address;
+	uint8_t T8_msg_size;
+	uint8_t T8_instances;
+	uint8_t T8_reportids;
+	uint8_t T8_reportid_max;
+	uint8_t T8_reportid_min;
 
-	uint8_t T9_reportid_min;
-	uint8_t T9_reportid_max;
 	uint16_t T15_address;
-	uint8_t T15_reportid_min;
+	uint8_t T15_msg_size;
+	uint8_t T15_instances;
+	uint8_t T15_reportids;
 	uint8_t T15_reportid_max;
-	uint8_t T19_reportid_min;
+	uint8_t T15_reportid_min;
+
+	uint16_t T19_address;
+	uint8_t T19_msg_size;
+	uint8_t T19_instances;
+	uint8_t T19_reportids;
 	uint8_t T19_reportid_max;
-	uint8_t T25_reportid_min;
+	uint8_t T19_reportid_min;
+
+	uint16_t T25_address;
+	uint8_t T25_msg_size;
+	uint8_t T25_instances;
+	uint8_t T25_reportids;
 	uint8_t T25_reportid_max;
+	uint8_t T25_reportid_min;
+
 	uint16_t T37_address;
-	uint8_t T42_reportid_min;
-	uint8_t T42_reportid_max;
+	uint8_t T37_msg_size;
+	uint8_t T37_instances;
+	uint8_t T37_reportids;
+	uint8_t T37_reportid_max;
+	uint8_t T37_reportid_min;
+
 	uint16_t T42_address;
 	uint8_t T42_msg_size;
-			uint16_t T44_address;
-			uint8_t T44_msg_size;
-	uint8_t T48_reportid;
+	uint8_t T42_instances;
+	uint8_t T42_reportids;
+	uint8_t T42_reportid_max;
+	uint8_t T42_reportid_min;
 
-			uint16_t T56_address;
-			uint8_t T56_msg_size;
-			uint8_t T56_reportid;
+	uint16_t T44_address;
+	uint8_t T44_msg_size;
+	uint8_t T44_instances;
+	uint8_t T44_reportids;
+	uint8_t T44_reportid_max;
+	uint8_t T44_reportid_min;
 
-	uint8_t T63_reportid_min;
+	uint16_t T48_address;
+	uint8_t T48_msg_size;
+	uint8_t T48_instances;
+	uint8_t T48_reportids;
+	uint8_t T48_reportid_max;
+	uint8_t T48_reportid_min;
+
+	uint16_t T56_address;
+	uint8_t T56_msg_size;
+	uint8_t T56_instances;
+	uint8_t T56_reportids;
+	uint8_t T56_reportid_max;
+	uint8_t T56_reportid_min;
+
+	uint16_t T63_address;
+	uint8_t T63_msg_size;
+	uint8_t T63_instances;
+	uint8_t T63_reportids;
 	uint8_t T63_reportid_max;
-	uint8_t T66_reportid;
+	uint8_t T63_reportid_min;
 
-			uint16_t T72_address;
-			uint8_t T72_msg_size;
-			uint8_t T72_reportid;
+	uint16_t T66_address;
+	uint8_t T66_msg_size;
+	uint8_t T66_instances;
+	uint8_t T66_reportids;
+	uint8_t T66_reportid_max;
+	uint8_t T66_reportid_min;
 
-	uint8_t T81_reportid_min;
+	uint16_t T72_address;
+	uint8_t T72_msg_size;
+	uint8_t T72_instances;
+	uint8_t T72_reportids;
+	uint8_t T72_reportid_max;
+	uint8_t T72_reportid_min;
+
+	uint16_t T81_address;
+	uint8_t T81_msg_size;
+	uint8_t T81_instances;
+	uint8_t T81_reportids;
 	uint8_t T81_reportid_max;
-	uint8_t T92_reportid_min;
+	uint8_t T81_reportid_min;
+
+	uint16_t T92_address;
+	uint8_t T92_msg_size;
+	uint8_t T92_instances;
+	uint8_t T92_reportids;
 	uint8_t T92_reportid_max;
-	uint8_t T93_reportid_min;
+	uint8_t T92_reportid_min;
+
+	uint16_t T93_address;
+	uint8_t T93_msg_size;
+	uint8_t T93_instances;
+	uint8_t T93_reportids;
 	uint8_t T93_reportid_max;
-	uint8_t T100_reportid_min;
+	uint8_t T93_reportid_min;
+
+	uint16_t T100_address;
+	uint8_t T100_msg_size;
+	uint8_t T100_instances;
+	uint8_t T100_reportids;
 	uint8_t T100_reportid_max;
-	uint8_t T109_reportid;
+	uint8_t T100_reportid_min;
 
-			uint8_t T110_reportid_max;
-			uint8_t T110_reportid_min;
-			uint8_t T110_instances;
+	uint16_t T109_address;
+	uint8_t T109_msg_size;
+	uint8_t T109_instances;
+	uint8_t T109_reportids;
+	uint8_t T109_reportid_max;
+	uint8_t T109_reportid_min;
 
-	uint8_t T97_reportid_min;
+	uint16_t T97_address;
+	uint8_t T97_msg_size;
+	uint8_t T97_instances;
+	uint8_t T97_reportids;
 	uint8_t T97_reportid_max;
+	uint8_t T97_reportid_min;
+
+	uint16_t T110_address;
+	uint8_t T110_msg_size;
+	uint8_t T110_instances;
+	uint8_t T110_reportids;
+	uint8_t T110_reportid_max;
+	uint8_t T110_reportid_min;
+
+
 
 //	struct pinctrl *ts_pinctrl;
 //	struct pinctrl_state *gpio_state_active;
