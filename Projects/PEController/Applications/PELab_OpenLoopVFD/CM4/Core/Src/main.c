@@ -112,22 +112,14 @@ void StartTouchTask(void *argument);
 /* USER CODE BEGIN 0 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-    if (GPIO_Pin == GPIO_PIN_1)
-    {
-    	 cntr_GP1++;
-    }
     if (GPIO_Pin == GPIO_PIN_2)
-       {
-    		cntr_GP2++;
+       {/*
+    		cntr_GP2++;//this counter is for debugging purpose
     		BaseType_t xHigherPriorityTaskWoken;
     		xHigherPriorityTaskWoken = pdFALSE;
     		vTaskNotifyGiveFromISR(touchTaskHandle, &xHigherPriorityTaskWoken);
     	    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
-    		//portEND_SWITCHING_ISR(xHigherPriorityTaskWoken);
-    		//HAL_GPIO_TogglePin(GPIO, GPIO_PIN_); // Toggle The Output (LED) Pin
-    	//osThreadFlagsSet(touchTaskHandle, CTP_INT);
-       	//osSignalSet(touchTaskHandle, CTP_INT);
-       }
+       */}
 
 }
 
@@ -344,9 +336,9 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
-  __HAL_RCC_GPIOG_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOK_CLK_ENABLE();
+  __HAL_RCC_GPIOG_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
@@ -407,11 +399,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(CS1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : INT_TESTER_Pin CTP_INT_Pin */
-  GPIO_InitStruct.Pin = INT_TESTER_Pin|CTP_INT_Pin;
+  /*Configure GPIO pin : CTP_INT_Pin */
+  GPIO_InitStruct.Pin = CTP_INT_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
+  HAL_GPIO_Init(CTP_INT_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : CS2_Pin */
   GPIO_InitStruct.Pin = CS2_Pin;
@@ -428,9 +420,6 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI1_IRQn, 5, 0);
-  HAL_NVIC_EnableIRQ(EXTI1_IRQn);
-
   HAL_NVIC_SetPriority(EXTI2_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(EXTI2_IRQn);
 
@@ -518,21 +507,16 @@ void StartTouchTask(void *argument)
 			while(BSP_TS_Init(800, 480) != TS_OK)
 				osDelay(100);
 
-			//BaseType_t xEvent;
 			const TickType_t xBlockTime = pdMS_TO_TICKS(500);
 			uint32_t ulNotifiedValue;
 			/* Infinite loop */
-			//osThreadFlagsWait(CTP_INT,osFlagsWaitAny,osWaitForever);//it clears the flag after processing it
 			for(;;)
 			{
-				ulTaskNotifyTake(pdTRUE,xBlockTime);
-				//if(ulNotifiedValue > 0 )
+				//ulTaskNotifyTake(pdTRUE,xBlockTime);
+				//////////////////////////////////////////////////if(ulNotifiedValue > 0 )
 				{
-					//xEvent = xQueryPeripheral();
-					//if( xEvent != NO_MORE_EVENTS )
 					BSP_TS_Poll();
-					//CTP_INT = HAL_GPIO_ReadPin (GPIOG, GPIO_PIN_2);
-					//osDelay(10);
+					osDelay(10);
 				}
 			}
   /* USER CODE END StartTouchTask */

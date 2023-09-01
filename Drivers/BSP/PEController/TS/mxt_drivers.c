@@ -378,8 +378,8 @@ static void mxt_read_messages_t44(mxt_data_t *data)
 	}
 }
 
-volatile uint8_t touchTH;
-static void SetResolution(mxt_data_t *data, uint16_t x, uint16_t y)
+//volatile uint8_t touchTH;
+/*static void SetResolution(mxt_data_t *data, uint16_t x, uint16_t y)
 {
 	if (mxt_get_object(data, MXT_TOUCH_MULTI_T100) != NULL) {
 
@@ -411,6 +411,7 @@ static void SetResolution(mxt_data_t *data, uint16_t x, uint16_t y)
 	mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHTHR, &touchTH);
 	mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHTHR, 0x10);
 }
+*/
 // gets the object table
 static uint16_t mxt_get_object_table(mxt_data_t *data)
 {
@@ -731,15 +732,15 @@ static uint16_t mxt_initialize(mxt_data_t *data, uint16_t ts_SizeX, uint16_t ts_
 		mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHTHR, 25);
 		mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_DXGAIN, 10);
 		mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHDIDOWN, &init_val);
-		init_val =   (init_val  & (0b1100001)) | 0b00000001;
+		init_val =   (init_val  & (0b1100010)) | 0b00000010;
 		mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHDIDOWN, init_val);
 		 //
 		mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHDIUP, &init_val);
-		init_val = (init_val  & (0b1100001)) | 0b00000001;
+		init_val = (init_val  & (0b1100010)) | 0b00000010;
 		mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_TCHDIUP, init_val);
 		//
 		mxt_read_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_NEXTTCHDI, &init_val);
-		init_val = (init_val  & (0b1100001)) | 0b00000001;
+		init_val = (init_val  & (0b1100010)) | 0b00000010;
 		mxt_write_object(data, MXT_TOUCH_MULTI_T100, MXT_MULTITOUCH_NEXTTCHDI, init_val);
 		//################################################################################
 	/*
