@@ -229,9 +229,9 @@ static void mxt_proc_t100_messages(mxt_data_t *data, uint8_t *message)
 				//					input_report_abs(input_dev, ABS_MT_ORIENTATION, vector);
 				//				mxt_input_sync(data);
 			}
-		} else {
+		} else if (touch_event == 5){
 			/* Touch no longer in detect, so close out slot */
-			if (data->touch_num == 0 &&
+			/*if (data->touch_num == 0 &&
 					data->wakeup_gesture_mode &&
 					data->is_wakeup_by_gesture) {
 				//				dev_info(dev, "wakeup finger release, restore t7 and t8!\n");
@@ -240,10 +240,13 @@ static void mxt_proc_t100_messages(mxt_data_t *data, uint8_t *message)
 			}
 			//			mxt_input_sync(data);
 			//			input_mt_report_slot_state(input_dev, MT_TOOL_FINGER, 0);
+			 *
+			 */
 			data->finger_down[id - 2] = false;
 		}
 	}
-}
+	}
+
 
 
 #endif
@@ -692,11 +695,11 @@ static uint16_t mxt_initialize(mxt_data_t *data, uint16_t ts_SizeX, uint16_t ts_
 		////////
 		//Disable the T15 Key array object
 		mxt_read_object(data, MXT_TOUCH_KEYARRAY_T15, MXT_KEYARRAY_CTRL, &init_val);
-		init_val = init_val & (0b01110100);
+		init_val = init_val & (0b00110011);
 		mxt_write_object(data, MXT_TOUCH_KEYARRAY_T15, MXT_KEYARRAY_CTRL, init_val);
 		//###########################################################################
 		mxt_read_object(data, MXT_SPT_COMMSCONFIG_T18, MXT_COMMS_CTRL, &init_val);
-		init_val = init_val & (0b00110011);
+		init_val = (init_val & (0b00110011)) |
 		mxt_write_object(data, MXT_SPT_COMMSCONFIG_T18, MXT_COMMS_CTRL, init_val);
 		mxt_write_object(data, MXT_SPT_COMMSCONFIG_T18, MXT_COMMS_CMD, 0);
 		//###########################################################################

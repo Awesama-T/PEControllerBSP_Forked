@@ -106,6 +106,8 @@ void Error_Handler(void);
 #define maxD14_GPIO_Port GPIOF
 #define maxD15_Pin GPIO_PIN_15
 #define maxD15_GPIO_Port GPIOF
+#define INT_TESTER_Pin GPIO_PIN_1
+#define INT_TESTER_GPIO_Port GPIOG
 #define CTP_INT_Pin GPIO_PIN_2
 #define CTP_INT_GPIO_Port GPIOG
 #define LCD_Disp_Pin GPIO_PIN_2

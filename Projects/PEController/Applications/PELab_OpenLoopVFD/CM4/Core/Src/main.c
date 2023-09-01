@@ -50,6 +50,9 @@
 #ifndef HSEM_ID_0
 #define HSEM_ID_0 (0U) /* HW semaphore 0*/
 #endif
+uint8_t cntr_GP1 =0;
+uint8_t cntr_GP2 =0;
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -73,21 +76,21 @@ osThreadId_t statsTaskHandle;
 const osThreadAttr_t statsTask_attributes = {
   .name = "statsTask",
   .stack_size = 1024 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+  .priority = (osPriority_t) osPriorityAboveNormal,
 };
 /* Definitions for displayTask */
 osThreadId_t displayTaskHandle;
 const osThreadAttr_t displayTask_attributes = {
   .name = "displayTask",
   .stack_size = 512 * 4,
-  .priority = (osPriority_t) osPriorityHigh,
+  .priority = (osPriority_t) osPriorityRealtime7,
 };
 /* Definitions for touchTask */
 osThreadId_t touchTaskHandle;
 const osThreadAttr_t touchTask_attributes = {
   .name = "touchTask",
   .stack_size = 256 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+  .priority = (osPriority_t) osPriorityRealtime,
 };
 /* USER CODE BEGIN PV */
 volatile bool isDispInitialized = false;
@@ -107,17 +110,27 @@ void StartTouchTask(void *argument);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-/*
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-    if (GPIO_Pin == GPIO_PIN_2)
+    if (GPIO_Pin == GPIO_PIN_1)
     {
-    	osThreadFlagsSet(touchTaskHandle, CTP_INT);
-    	//osSignalSet(touchTaskHandle, CTP_INT);
-
+    	 cntr_GP1++;
     }
+    if (GPIO_Pin == GPIO_PIN_2)
+       {
+    		cntr_GP2++;
+    		BaseType_t xHigherPriorityTaskWoken;
+    		xHigherPriorityTaskWoken = pdFALSE;
+    		vTaskNotifyGiveFromISR(touchTaskHandle, &xHigherPriorityTaskWoken);
+    	    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+    		//portEND_SWITCHING_ISR(xHigherPriorityTaskWoken);
+    		//HAL_GPIO_TogglePin(GPIO, GPIO_PIN_); // Toggle The Output (LED) Pin
+    	//osThreadFlagsSet(touchTaskHandle, CTP_INT);
+       	//osSignalSet(touchTaskHandle, CTP_INT);
+       }
+
 }
-*/
+
 /* USER CODE END 0 */
 
 /**
@@ -331,9 +344,9 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOG_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOK_CLK_ENABLE();
-  __HAL_RCC_GPIOG_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
@@ -394,11 +407,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(CS1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : CTP_INT_Pin */
-  GPIO_InitStruct.Pin = CTP_INT_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  /*Configure GPIO pins : INT_TESTER_Pin CTP_INT_Pin */
+  GPIO_InitStruct.Pin = INT_TESTER_Pin|CTP_INT_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(CTP_INT_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
 
   /*Configure GPIO pin : CS2_Pin */
   GPIO_InitStruct.Pin = CS2_Pin;
@@ -415,6 +428,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI1_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+
   HAL_NVIC_SetPriority(EXTI2_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(EXTI2_IRQn);
 
@@ -501,13 +517,23 @@ void StartTouchTask(void *argument)
   /* USER CODE BEGIN StartTouchTask */
 			while(BSP_TS_Init(800, 480) != TS_OK)
 				osDelay(100);
+
+			//BaseType_t xEvent;
+			const TickType_t xBlockTime = pdMS_TO_TICKS(500);
+			uint32_t ulNotifiedValue;
 			/* Infinite loop */
 			//osThreadFlagsWait(CTP_INT,osFlagsWaitAny,osWaitForever);//it clears the flag after processing it
 			for(;;)
 			{
-				BSP_TS_Poll();
-				//CTP_INT = HAL_GPIO_ReadPin (GPIOG, GPIO_PIN_2);
-				osDelay(10);
+				ulTaskNotifyTake(pdTRUE,xBlockTime);
+				//if(ulNotifiedValue > 0 )
+				{
+					//xEvent = xQueryPeripheral();
+					//if( xEvent != NO_MORE_EVENTS )
+					BSP_TS_Poll();
+					//CTP_INT = HAL_GPIO_ReadPin (GPIOG, GPIO_PIN_2);
+					//osDelay(10);
+				}
 			}
   /* USER CODE END StartTouchTask */
 }
